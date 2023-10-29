@@ -11,8 +11,6 @@ precedence = (
     ("left", 'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
      'DOTADD', 'DOTSUB', 'DOTMUL', 'DOTDIV'),
     ("left", 'TRANSPOSE')
-
-
     # to fill ...
 )
 
@@ -25,88 +23,117 @@ def p_error(p):
         print("Unexpected end of input")
 
 
-def p_expression(p):
-    '''expression : LPAREN expression RPAREN
+
+
+
+def p_expression_exp(p):
+    '''expression : line SEMICOLON
+                  | expression expression
                   | LCURLY expression RCURLY
-                  | ID
-                  | INT 
-                  | FLOAT
-                  | STRING 
-                  | BREAK
-                  | CONTINUE
-                  | RETURN
-                  | expression SEMICOLON expression SEMICOLON
-                  | expression SEMICOLON'''
+                  | ifelse
+                  | while '''
 
 
-def p_expression_binop(p):
-    '''expression  : expression PLUS expression 
-                    | expression MINUS expression
-                    | expression TIMES expression
-                    | expression DIVIDE expression'''
+def p_expression_pexp(p):
+    '''pexpression : LCURLY pexpression RCURLY
+                  | LCURLY expression RCURLY
+                  | line SEMICOLON
+                  | for '''
 
+def p_expression_obj(p):
+    ''' object : ID vector
+                | ID'''
 
-def p_expression_binop_dot(p):
-    '''expression  : expression DOTADD expression 
-                    | expression DOTSUB expression
-                    | expression DOTMUL expression
-                    | expression DOTDIV expression'''
-
-
-def p_expression_assign(p):
-    '''expression  : expression ASSIGN expression 
-                    | expression ADDASSIGN expression
-                    | expression SUBASSIGN expression
-                    | expression MULASSIGN expression
-                    | expression DIVASSIGN expression'''
-
-
-def p_expression_relative(p):
-    '''expression  : expression MORE expression 
-                    | expression LESS expression
-                    | expression MOREOREQ expression
-                    | expression LESSOREQ expression
-                    | expression EQUALS expression'''
-
-
-def p_expression_neg(p):
-    'expression  : MINUS expression'
-
-
-def p_expression_trans(p):
-    'expression  : expression TRANSPOSE'
-
-
-def p_expression_specials(p):
-    '''expression  : ZEROS LPAREN expression RPAREN SEMICOLON
-                    | EYE LPAREN expression RPAREN SEMICOLON
-                    | ONES LPAREN expression RPAREN SEMICOLON'''
-
-
-def p_expression_if(p):
-    '''expression : IF LPAREN expression RPAREN expression
-                    | IF LPAREN expression RPAREN expression ELSE expression
-    '''
-
-
-def p_expression_while(p):
-    '''expression : WHILE LPAREN expression RPAREN expression
-    '''
+def p_expression_line(p):
+    ''' line : assign
+                | PRINT printable
+                | BREAK
+                | CONTINUE
+                | RETURN'''
 
 
 def p_expression_for(p):
-    '''expression : FOR ID EQUALS expression COLON expression LCURLY expression expression
-    '''
+    ''' for : FOR ID EQUALS forable COLON pexpression '''
 
 
-def p_expression_read(p):
-    '''expression : LSQUAR expression RSQUAR
-                    | LSQUAR expression COMMA expression RSQUAR
-    '''
+def p_expression_printable(p):
+    ''' printable : printable COMMA printable
+                    | operation
+                    | STRING '''
 
 
-def p_expression_print(p):
-    """expression : PRINT expression"""
+def p_expression_forable(p):
+    ''' forable : object 
+                | INT '''
+
+
+def p_expression_bool(p):
+    ''' bool : LPAREN bool RPAREN 
+            | operation MORE operation 
+            | operation LESS operation 
+            | operation MOREOREQ operation 
+            | operation LESSOREQ operation 
+            | operation EQUALS operation '''
+
+
+def p_expression_assign(p):
+    ''' assign : object ASSIGN operation 
+            | object ADDASSIGN operation 
+            | object SUBASSIGN operation 
+            | object MULASSIGN operation 
+            | object DIVASSIGN operation '''
+
+
+def p_expression_operation(p):
+    ''' operation : operation PLUS operation
+                | operation MINUS operation 
+                | operation TIMES operation 
+                | operation DIVIDE operation 
+                | operation DOTADD operation 
+                | operation DOTSUB operation 
+                | operation DOTMUL operation 
+                | operation DOTDIV operation
+                | MINUS operation 
+                | operation TRANSPOSE
+                | EYE LPAREN operation RPAREN
+                | ZEROS LPAREN operation RPAREN
+                | ONES LPAREN operation RPAREN
+                | object
+                | FLOAT
+                | INT 
+                | matrix '''
+
+
+def p_expression_ifelse(p):
+    ''' ifelse : IF LPAREN bool RPAREN pexpression
+                | IF LPAREN bool RPAREN pexpression ELSE pexpression'''
+
+
+def p_expression_while(p):
+    ''' while : WHILE LPAREN bool RPAREN pexpression'''
+
+
+def p_expression_matrix(p):
+    ''' matrix : LSQUAR row RSQUAR'''
+
+
+def p_expression_row(p):
+    ''' row : row COMMA vector 
+                | vector '''
+
+
+def p_expression_vector(p):
+    ''' vector : LSQUAR elem RSQUAR '''
+
+
+def p_expression_elem(p):
+    ''' elem : elem COMMA num 
+                | num'''
+
+
+def p_expression_num(p):
+    ''' num : INT 
+            | FLOAT'''
 
 
 parser = yacc.yacc()

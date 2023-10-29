@@ -139,10 +139,10 @@ def t_error(t):
 
 lexer = lex.lex()
 fh = None
-try:
-    fh = open(sys.argv[1] if len(sys.argv) > 1 else "lab1/plik.ini", "r")
-    lexer.input(fh.read())
-    for token in lexer:
-        print("line %d: %s(%s)" % (token.lineno, token.type, token.value))
-except:
-    print("open error\n")
+# try:
+#     fh = open(sys.argv[1] if len(sys.argv) > 1 else "lab1/plik.ini", "r")
+#     lexer.input(fh.read())
+#     for token in lexer:
+#         print("line %d: %s(%s)" % (token.lineno, token.type, token.value))
+# except:
+#     print("open error\n")

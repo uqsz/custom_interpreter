@@ -49,11 +49,12 @@ def p_expression_line(p):
                 | PRINT printable
                 | BREAK
                 | CONTINUE
+                | RETURN printable
                 | RETURN'''
 
 
 def p_expression_for(p):
-    ''' for : FOR ID EQUALS forable COLON pexpression '''
+    ''' for : FOR ID ASSIGN forable COLON forable pexpression '''
 
 
 def p_expression_printable(p):
@@ -107,7 +108,12 @@ def p_expression_operation(p):
 
 def p_expression_ifelse(p):
     ''' ifelse : IF LPAREN bool RPAREN pexpression
-                | IF LPAREN bool RPAREN pexpression ELSE pexpression'''
+                | IF LPAREN bool RPAREN pexpression elif'''
+    
+def p_expresssion_elif(p):
+    '''elif : ELSE IF LPAREN bool RPAREN pexpression elif
+            | ELSE IF LPAREN bool RPAREN pexpression
+            | ELSE pexpression'''
 
 
 def p_expression_while(p):

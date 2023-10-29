@@ -99,7 +99,7 @@ t_ignore = ' \t'
 
 
 def t_FLOAT(t):
-    r'\d*\.\d*(E[-+]?\d+)?\d*'
+    r'(\d+\.\d*(E[-+]?\d+)?\d*)|(\d*\.\d*(E[-+]?\d+)?\d+)'
     return t
 
 

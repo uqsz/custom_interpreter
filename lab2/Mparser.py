@@ -23,15 +23,13 @@ def p_error(p):
         print("Unexpected end of input")
 
 
-
-
-
 def p_expression_exp(p):
     '''expression : line SEMICOLON
                   | expression expression
                   | LCURLY expression RCURLY
                   | ifelse
-                  | while '''
+                  | while 
+                  | for '''
 
 
 def p_expression_pexp(p):
@@ -40,9 +38,11 @@ def p_expression_pexp(p):
                   | line SEMICOLON
                   | for '''
 
+
 def p_expression_obj(p):
     ''' object : ID vector
                 | ID'''
+
 
 def p_expression_line(p):
     ''' line : assign
@@ -109,7 +109,8 @@ def p_expression_operation(p):
 def p_expression_ifelse(p):
     ''' ifelse : IF LPAREN bool RPAREN pexpression
                 | IF LPAREN bool RPAREN pexpression elif'''
-    
+
+
 def p_expresssion_elif(p):
     '''elif : ELSE IF LPAREN bool RPAREN pexpression elif
             | ELSE IF LPAREN bool RPAREN pexpression

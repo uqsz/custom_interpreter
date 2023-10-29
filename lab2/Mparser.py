@@ -24,19 +24,17 @@ def p_error(p):
 
 
 def p_expression_exp(p):
-    '''expression : line SEMICOLON
-                  | expression expression
-                  | LCURLY expression RCURLY
-                  | ifelse
-                  | while 
-                  | for '''
+    '''expression : expression expression
+                  | pexpression'''
 
 
 def p_expression_pexp(p):
     '''pexpression : LCURLY pexpression RCURLY
                   | LCURLY expression RCURLY
                   | line SEMICOLON
-                  | for '''
+                  | for 
+                  | ifelse 
+                  | while '''
 
 
 def p_expression_obj(p):

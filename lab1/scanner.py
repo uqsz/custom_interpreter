@@ -35,6 +35,7 @@ tokens = [
     'MOREOREQ',
     'LESSOREQ',
     'EQUALS',
+    'NOTEQUALS',
 
     'INT',
     'FLOAT',
@@ -94,6 +95,7 @@ t_LESS = r'<'
 t_MOREOREQ = r'>='
 t_LESSOREQ = r'<='
 t_EQUALS = r'=='
+t_NOTEQUALS = r'!='
 
 t_ignore = ' \t'
 

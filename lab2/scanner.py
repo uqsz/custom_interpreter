@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 import sys
 import ply.lex as lex
 
@@ -37,6 +35,7 @@ tokens = [
     'MOREOREQ',
     'LESSOREQ',
     'EQUALS',
+    'NOTEQUALS',
 
     'INT',
     'FLOAT',
@@ -96,12 +95,13 @@ t_LESS = r'<'
 t_MOREOREQ = r'>='
 t_LESSOREQ = r'<='
 t_EQUALS = r'=='
+t_NOTEQUALS = r'!='
 
 t_ignore = ' \t'
 
 
 def t_FLOAT(t):
-    r'\d*\.\d*(E[-+]?\d+)?\d*'
+    r'(\d+\.\d*(E[-+]?\d+)?\d*)|(\d*\.\d*(E[-+]?\d+)?\d+)'
     return t
 
 

@@ -31,105 +31,107 @@ Rule 25    bool -> operation LESS operation
 Rule 26    bool -> operation MOREOREQ operation
 Rule 27    bool -> operation LESSOREQ operation
 Rule 28    bool -> operation EQUALS operation
-Rule 29    assign -> object ASSIGN operation
-Rule 30    assign -> object ADDASSIGN operation
-Rule 31    assign -> object SUBASSIGN operation
-Rule 32    assign -> object MULASSIGN operation
-Rule 33    assign -> object DIVASSIGN operation
-Rule 34    operation -> operation PLUS operation
-Rule 35    operation -> operation MINUS operation
-Rule 36    operation -> operation TIMES operation
-Rule 37    operation -> operation DIVIDE operation
-Rule 38    operation -> operation DOTADD operation
-Rule 39    operation -> operation DOTSUB operation
-Rule 40    operation -> operation DOTMUL operation
-Rule 41    operation -> operation DOTDIV operation
-Rule 42    operation -> MINUS operation
-Rule 43    operation -> operation TRANSPOSE
-Rule 44    operation -> EYE LPAREN operation RPAREN
-Rule 45    operation -> ZEROS LPAREN operation RPAREN
-Rule 46    operation -> ONES LPAREN operation RPAREN
-Rule 47    operation -> object
-Rule 48    operation -> FLOAT
-Rule 49    operation -> INT
-Rule 50    operation -> matrix
-Rule 51    ifelse -> IF LPAREN bool RPAREN pexpression
-Rule 52    ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression
-Rule 53    while -> WHILE LPAREN bool RPAREN pexpression
-Rule 54    matrix -> LSQUAR row RSQUAR
-Rule 55    row -> row COMMA vector
-Rule 56    row -> vector
-Rule 57    vector -> LSQUAR elem RSQUAR
-Rule 58    elem -> elem COMMA num
-Rule 59    elem -> num
-Rule 60    num -> INT
-Rule 61    num -> FLOAT
+Rule 29    bool -> operation NOTEQUALS operation
+Rule 30    assign -> object ASSIGN operation
+Rule 31    assign -> object ADDASSIGN operation
+Rule 32    assign -> object SUBASSIGN operation
+Rule 33    assign -> object MULASSIGN operation
+Rule 34    assign -> object DIVASSIGN operation
+Rule 35    operation -> operation PLUS operation
+Rule 36    operation -> operation MINUS operation
+Rule 37    operation -> operation TIMES operation
+Rule 38    operation -> operation DIVIDE operation
+Rule 39    operation -> operation DOTADD operation
+Rule 40    operation -> operation DOTSUB operation
+Rule 41    operation -> operation DOTMUL operation
+Rule 42    operation -> operation DOTDIV operation
+Rule 43    operation -> MINUS operation
+Rule 44    operation -> operation TRANSPOSE
+Rule 45    operation -> EYE LPAREN operation RPAREN
+Rule 46    operation -> ZEROS LPAREN operation RPAREN
+Rule 47    operation -> ONES LPAREN operation RPAREN
+Rule 48    operation -> object
+Rule 49    operation -> FLOAT
+Rule 50    operation -> INT
+Rule 51    operation -> matrix
+Rule 52    ifelse -> IF LPAREN bool RPAREN pexpression
+Rule 53    ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression
+Rule 54    while -> WHILE LPAREN bool RPAREN pexpression
+Rule 55    matrix -> LSQUAR row RSQUAR
+Rule 56    row -> row COMMA vector
+Rule 57    row -> vector
+Rule 58    vector -> LSQUAR elem RSQUAR
+Rule 59    elem -> elem COMMA num
+Rule 60    elem -> num
+Rule 61    num -> INT
+Rule 62    num -> FLOAT
 
 Terminals, with rules where they appear
 
-ADDASSIGN            : 30
-ASSIGN               : 29
+ADDASSIGN            : 31
+ASSIGN               : 30
 BREAK                : 14
 COLON                : 17
-COMMA                : 18 55 58
+COMMA                : 18 56 59
 CONTINUE             : 15
-DIVASSIGN            : 33
-DIVIDE               : 37
-DOTADD               : 38
-DOTDIV               : 41
-DOTMUL               : 40
-DOTSUB               : 39
-ELSE                 : 52
+DIVASSIGN            : 34
+DIVIDE               : 38
+DOTADD               : 39
+DOTDIV               : 42
+DOTMUL               : 41
+DOTSUB               : 40
+ELSE                 : 53
 EQUALS               : 17 28
-EYE                  : 44
-FLOAT                : 48 61
+EYE                  : 45
+FLOAT                : 49 62
 FOR                  : 17
 ID                   : 10 11 17
-IF                   : 51 52
-INT                  : 22 49 60
+IF                   : 52 53
+INT                  : 22 50 61
 LCURLY               : 3 6 7
 LESS                 : 25
 LESSOREQ             : 27
-LPAREN               : 23 44 45 46 51 52 53
-LSQUAR               : 54 57
-MINUS                : 35 42
+LPAREN               : 23 45 46 47 52 53 54
+LSQUAR               : 55 58
+MINUS                : 36 43
 MORE                 : 24
 MOREOREQ             : 26
-MULASSIGN            : 32
-ONES                 : 46
-PLUS                 : 34
+MULASSIGN            : 33
+NOTEQUALS            : 29
+ONES                 : 47
+PLUS                 : 35
 PRINT                : 13
 RCURLY               : 3 6 7
 RETURN               : 16
-RPAREN               : 23 44 45 46 51 52 53
-RSQUAR               : 54 57
+RPAREN               : 23 45 46 47 52 53 54
+RSQUAR               : 55 58
 SEMICOLON            : 1 8
 STRING               : 20
-SUBASSIGN            : 31
-TIMES                : 36
-TRANSPOSE            : 43
-WHILE                : 53
-ZEROS                : 45
+SUBASSIGN            : 32
+TIMES                : 37
+TRANSPOSE            : 44
+WHILE                : 54
+ZEROS                : 46
 error                : 
 
 Nonterminals, with rules where they appear
 
 assign               : 12
-bool                 : 23 51 52 53
-elem                 : 57 58
+bool                 : 23 52 53 54
+elem                 : 58 59
 expression           : 2 2 3 7 0
 for                  : 9
 forable              : 17
 ifelse               : 4
 line                 : 1 8
-matrix               : 50
-num                  : 58 59
-object               : 21 29 30 31 32 33 47
-operation            : 19 24 24 25 25 26 26 27 27 28 28 29 30 31 32 33 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41 42 43 44 45 46
-pexpression          : 6 17 51 52 52 53
+matrix               : 51
+num                  : 59 60
+object               : 21 30 31 32 33 34 48
+operation            : 19 24 24 25 25 26 26 27 27 28 28 29 29 30 31 32 33 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41 42 42 43 44 45 46 47
+pexpression          : 6 17 52 53 53 54
 printable            : 13 18 18
-row                  : 54 55
-vector               : 10 55 56
+row                  : 55 56
+vector               : 10 56 57
 while                : 5
 
 Parsing method: LALR
@@ -147,14 +149,14 @@ state 0
     (14) line -> . BREAK
     (15) line -> . CONTINUE
     (16) line -> . RETURN
-    (51) ifelse -> . IF LPAREN bool RPAREN pexpression
-    (52) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
-    (53) while -> . WHILE LPAREN bool RPAREN pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (52) ifelse -> . IF LPAREN bool RPAREN pexpression
+    (53) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
+    (54) while -> . WHILE LPAREN bool RPAREN pexpression
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
@@ -188,14 +190,14 @@ state 1
     (14) line -> . BREAK
     (15) line -> . CONTINUE
     (16) line -> . RETURN
-    (51) ifelse -> . IF LPAREN bool RPAREN pexpression
-    (52) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
-    (53) while -> . WHILE LPAREN bool RPAREN pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (52) ifelse -> . IF LPAREN bool RPAREN pexpression
+    (53) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
+    (54) while -> . WHILE LPAREN bool RPAREN pexpression
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
@@ -235,14 +237,14 @@ state 3
     (14) line -> . BREAK
     (15) line -> . CONTINUE
     (16) line -> . RETURN
-    (51) ifelse -> . IF LPAREN bool RPAREN pexpression
-    (52) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
-    (53) while -> . WHILE LPAREN bool RPAREN pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (52) ifelse -> . IF LPAREN bool RPAREN pexpression
+    (53) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
+    (54) while -> . WHILE LPAREN bool RPAREN pexpression
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
@@ -307,26 +309,26 @@ state 7
     (18) printable -> . printable COMMA printable
     (19) printable -> . operation
     (20) printable -> . STRING
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     STRING          shift and go to state 20
     MINUS           shift and go to state 21
@@ -366,26 +368,26 @@ state 10
 
 state 11
 
-    (51) ifelse -> IF . LPAREN bool RPAREN pexpression
-    (52) ifelse -> IF . LPAREN bool RPAREN pexpression ELSE pexpression
+    (52) ifelse -> IF . LPAREN bool RPAREN pexpression
+    (53) ifelse -> IF . LPAREN bool RPAREN pexpression ELSE pexpression
 
     LPAREN          shift and go to state 30
 
 
 state 12
 
-    (53) while -> WHILE . LPAREN bool RPAREN pexpression
+    (54) while -> WHILE . LPAREN bool RPAREN pexpression
 
     LPAREN          shift and go to state 31
 
 
 state 13
 
-    (29) assign -> object . ASSIGN operation
-    (30) assign -> object . ADDASSIGN operation
-    (31) assign -> object . SUBASSIGN operation
-    (32) assign -> object . MULASSIGN operation
-    (33) assign -> object . DIVASSIGN operation
+    (30) assign -> object . ASSIGN operation
+    (31) assign -> object . ADDASSIGN operation
+    (32) assign -> object . SUBASSIGN operation
+    (33) assign -> object . MULASSIGN operation
+    (34) assign -> object . DIVASSIGN operation
 
     ASSIGN          shift and go to state 32
     ADDASSIGN       shift and go to state 33
@@ -398,7 +400,7 @@ state 14
 
     (10) object -> ID . vector
     (11) object -> ID .
-    (57) vector -> . LSQUAR elem RSQUAR
+    (58) vector -> . LSQUAR elem RSQUAR
 
     ASSIGN          reduce using rule 11 (object -> ID .)
     ADDASSIGN       reduce using rule 11 (object -> ID .)
@@ -421,6 +423,7 @@ state 14
     MOREOREQ        reduce using rule 11 (object -> ID .)
     LESSOREQ        reduce using rule 11 (object -> ID .)
     EQUALS          reduce using rule 11 (object -> ID .)
+    NOTEQUALS       reduce using rule 11 (object -> ID .)
     RPAREN          reduce using rule 11 (object -> ID .)
     COLON           reduce using rule 11 (object -> ID .)
     LSQUAR          shift and go to state 38
@@ -441,14 +444,14 @@ state 15
     (14) line -> . BREAK
     (15) line -> . CONTINUE
     (16) line -> . RETURN
-    (51) ifelse -> . IF LPAREN bool RPAREN pexpression
-    (52) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
-    (53) while -> . WHILE LPAREN bool RPAREN pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (52) ifelse -> . IF LPAREN bool RPAREN pexpression
+    (53) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
+    (54) while -> . WHILE LPAREN bool RPAREN pexpression
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
@@ -517,14 +520,14 @@ state 17
     (14) line -> . BREAK
     (15) line -> . CONTINUE
     (16) line -> . RETURN
-    (51) ifelse -> . IF LPAREN bool RPAREN pexpression
-    (52) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
-    (53) while -> . WHILE LPAREN bool RPAREN pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (52) ifelse -> . IF LPAREN bool RPAREN pexpression
+    (53) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
+    (54) while -> . WHILE LPAREN bool RPAREN pexpression
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
@@ -557,15 +560,15 @@ state 18
 state 19
 
     (19) printable -> operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
     COMMA           reduce using rule 19 (printable -> operation .)
     SEMICOLON       reduce using rule 19 (printable -> operation .)
@@ -590,27 +593,27 @@ state 20
 
 state 21
 
-    (42) operation -> MINUS . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (43) operation -> MINUS . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -627,123 +630,127 @@ state 21
 
 state 22
 
-    (44) operation -> EYE . LPAREN operation RPAREN
+    (45) operation -> EYE . LPAREN operation RPAREN
 
     LPAREN          shift and go to state 51
 
 
 state 23
 
-    (45) operation -> ZEROS . LPAREN operation RPAREN
+    (46) operation -> ZEROS . LPAREN operation RPAREN
 
     LPAREN          shift and go to state 52
 
 
 state 24
 
-    (46) operation -> ONES . LPAREN operation RPAREN
+    (47) operation -> ONES . LPAREN operation RPAREN
 
     LPAREN          shift and go to state 53
 
 
 state 25
 
-    (47) operation -> object .
+    (48) operation -> object .
 
-    PLUS            reduce using rule 47 (operation -> object .)
-    MINUS           reduce using rule 47 (operation -> object .)
-    TIMES           reduce using rule 47 (operation -> object .)
-    DIVIDE          reduce using rule 47 (operation -> object .)
-    DOTADD          reduce using rule 47 (operation -> object .)
-    DOTSUB          reduce using rule 47 (operation -> object .)
-    DOTMUL          reduce using rule 47 (operation -> object .)
-    DOTDIV          reduce using rule 47 (operation -> object .)
-    TRANSPOSE       reduce using rule 47 (operation -> object .)
-    COMMA           reduce using rule 47 (operation -> object .)
-    SEMICOLON       reduce using rule 47 (operation -> object .)
-    MORE            reduce using rule 47 (operation -> object .)
-    LESS            reduce using rule 47 (operation -> object .)
-    MOREOREQ        reduce using rule 47 (operation -> object .)
-    LESSOREQ        reduce using rule 47 (operation -> object .)
-    EQUALS          reduce using rule 47 (operation -> object .)
-    RPAREN          reduce using rule 47 (operation -> object .)
+    PLUS            reduce using rule 48 (operation -> object .)
+    MINUS           reduce using rule 48 (operation -> object .)
+    TIMES           reduce using rule 48 (operation -> object .)
+    DIVIDE          reduce using rule 48 (operation -> object .)
+    DOTADD          reduce using rule 48 (operation -> object .)
+    DOTSUB          reduce using rule 48 (operation -> object .)
+    DOTMUL          reduce using rule 48 (operation -> object .)
+    DOTDIV          reduce using rule 48 (operation -> object .)
+    TRANSPOSE       reduce using rule 48 (operation -> object .)
+    COMMA           reduce using rule 48 (operation -> object .)
+    SEMICOLON       reduce using rule 48 (operation -> object .)
+    MORE            reduce using rule 48 (operation -> object .)
+    LESS            reduce using rule 48 (operation -> object .)
+    MOREOREQ        reduce using rule 48 (operation -> object .)
+    LESSOREQ        reduce using rule 48 (operation -> object .)
+    EQUALS          reduce using rule 48 (operation -> object .)
+    NOTEQUALS       reduce using rule 48 (operation -> object .)
+    RPAREN          reduce using rule 48 (operation -> object .)
 
 
 state 26
 
-    (48) operation -> FLOAT .
+    (49) operation -> FLOAT .
 
-    PLUS            reduce using rule 48 (operation -> FLOAT .)
-    MINUS           reduce using rule 48 (operation -> FLOAT .)
-    TIMES           reduce using rule 48 (operation -> FLOAT .)
-    DIVIDE          reduce using rule 48 (operation -> FLOAT .)
-    DOTADD          reduce using rule 48 (operation -> FLOAT .)
-    DOTSUB          reduce using rule 48 (operation -> FLOAT .)
-    DOTMUL          reduce using rule 48 (operation -> FLOAT .)
-    DOTDIV          reduce using rule 48 (operation -> FLOAT .)
-    TRANSPOSE       reduce using rule 48 (operation -> FLOAT .)
-    COMMA           reduce using rule 48 (operation -> FLOAT .)
-    SEMICOLON       reduce using rule 48 (operation -> FLOAT .)
-    MORE            reduce using rule 48 (operation -> FLOAT .)
-    LESS            reduce using rule 48 (operation -> FLOAT .)
-    MOREOREQ        reduce using rule 48 (operation -> FLOAT .)
-    LESSOREQ        reduce using rule 48 (operation -> FLOAT .)
-    EQUALS          reduce using rule 48 (operation -> FLOAT .)
-    RPAREN          reduce using rule 48 (operation -> FLOAT .)
+    PLUS            reduce using rule 49 (operation -> FLOAT .)
+    MINUS           reduce using rule 49 (operation -> FLOAT .)
+    TIMES           reduce using rule 49 (operation -> FLOAT .)
+    DIVIDE          reduce using rule 49 (operation -> FLOAT .)
+    DOTADD          reduce using rule 49 (operation -> FLOAT .)
+    DOTSUB          reduce using rule 49 (operation -> FLOAT .)
+    DOTMUL          reduce using rule 49 (operation -> FLOAT .)
+    DOTDIV          reduce using rule 49 (operation -> FLOAT .)
+    TRANSPOSE       reduce using rule 49 (operation -> FLOAT .)
+    COMMA           reduce using rule 49 (operation -> FLOAT .)
+    SEMICOLON       reduce using rule 49 (operation -> FLOAT .)
+    MORE            reduce using rule 49 (operation -> FLOAT .)
+    LESS            reduce using rule 49 (operation -> FLOAT .)
+    MOREOREQ        reduce using rule 49 (operation -> FLOAT .)
+    LESSOREQ        reduce using rule 49 (operation -> FLOAT .)
+    EQUALS          reduce using rule 49 (operation -> FLOAT .)
+    NOTEQUALS       reduce using rule 49 (operation -> FLOAT .)
+    RPAREN          reduce using rule 49 (operation -> FLOAT .)
 
 
 state 27
 
-    (49) operation -> INT .
+    (50) operation -> INT .
 
-    PLUS            reduce using rule 49 (operation -> INT .)
-    MINUS           reduce using rule 49 (operation -> INT .)
-    TIMES           reduce using rule 49 (operation -> INT .)
-    DIVIDE          reduce using rule 49 (operation -> INT .)
-    DOTADD          reduce using rule 49 (operation -> INT .)
-    DOTSUB          reduce using rule 49 (operation -> INT .)
-    DOTMUL          reduce using rule 49 (operation -> INT .)
-    DOTDIV          reduce using rule 49 (operation -> INT .)
-    TRANSPOSE       reduce using rule 49 (operation -> INT .)
-    COMMA           reduce using rule 49 (operation -> INT .)
-    SEMICOLON       reduce using rule 49 (operation -> INT .)
-    MORE            reduce using rule 49 (operation -> INT .)
-    LESS            reduce using rule 49 (operation -> INT .)
-    MOREOREQ        reduce using rule 49 (operation -> INT .)
-    LESSOREQ        reduce using rule 49 (operation -> INT .)
-    EQUALS          reduce using rule 49 (operation -> INT .)
-    RPAREN          reduce using rule 49 (operation -> INT .)
+    PLUS            reduce using rule 50 (operation -> INT .)
+    MINUS           reduce using rule 50 (operation -> INT .)
+    TIMES           reduce using rule 50 (operation -> INT .)
+    DIVIDE          reduce using rule 50 (operation -> INT .)
+    DOTADD          reduce using rule 50 (operation -> INT .)
+    DOTSUB          reduce using rule 50 (operation -> INT .)
+    DOTMUL          reduce using rule 50 (operation -> INT .)
+    DOTDIV          reduce using rule 50 (operation -> INT .)
+    TRANSPOSE       reduce using rule 50 (operation -> INT .)
+    COMMA           reduce using rule 50 (operation -> INT .)
+    SEMICOLON       reduce using rule 50 (operation -> INT .)
+    MORE            reduce using rule 50 (operation -> INT .)
+    LESS            reduce using rule 50 (operation -> INT .)
+    MOREOREQ        reduce using rule 50 (operation -> INT .)
+    LESSOREQ        reduce using rule 50 (operation -> INT .)
+    EQUALS          reduce using rule 50 (operation -> INT .)
+    NOTEQUALS       reduce using rule 50 (operation -> INT .)
+    RPAREN          reduce using rule 50 (operation -> INT .)
 
 
 state 28
 
-    (50) operation -> matrix .
+    (51) operation -> matrix .
 
-    PLUS            reduce using rule 50 (operation -> matrix .)
-    MINUS           reduce using rule 50 (operation -> matrix .)
-    TIMES           reduce using rule 50 (operation -> matrix .)
-    DIVIDE          reduce using rule 50 (operation -> matrix .)
-    DOTADD          reduce using rule 50 (operation -> matrix .)
-    DOTSUB          reduce using rule 50 (operation -> matrix .)
-    DOTMUL          reduce using rule 50 (operation -> matrix .)
-    DOTDIV          reduce using rule 50 (operation -> matrix .)
-    TRANSPOSE       reduce using rule 50 (operation -> matrix .)
-    COMMA           reduce using rule 50 (operation -> matrix .)
-    SEMICOLON       reduce using rule 50 (operation -> matrix .)
-    MORE            reduce using rule 50 (operation -> matrix .)
-    LESS            reduce using rule 50 (operation -> matrix .)
-    MOREOREQ        reduce using rule 50 (operation -> matrix .)
-    LESSOREQ        reduce using rule 50 (operation -> matrix .)
-    EQUALS          reduce using rule 50 (operation -> matrix .)
-    RPAREN          reduce using rule 50 (operation -> matrix .)
+    PLUS            reduce using rule 51 (operation -> matrix .)
+    MINUS           reduce using rule 51 (operation -> matrix .)
+    TIMES           reduce using rule 51 (operation -> matrix .)
+    DIVIDE          reduce using rule 51 (operation -> matrix .)
+    DOTADD          reduce using rule 51 (operation -> matrix .)
+    DOTSUB          reduce using rule 51 (operation -> matrix .)
+    DOTMUL          reduce using rule 51 (operation -> matrix .)
+    DOTDIV          reduce using rule 51 (operation -> matrix .)
+    TRANSPOSE       reduce using rule 51 (operation -> matrix .)
+    COMMA           reduce using rule 51 (operation -> matrix .)
+    SEMICOLON       reduce using rule 51 (operation -> matrix .)
+    MORE            reduce using rule 51 (operation -> matrix .)
+    LESS            reduce using rule 51 (operation -> matrix .)
+    MOREOREQ        reduce using rule 51 (operation -> matrix .)
+    LESSOREQ        reduce using rule 51 (operation -> matrix .)
+    EQUALS          reduce using rule 51 (operation -> matrix .)
+    NOTEQUALS       reduce using rule 51 (operation -> matrix .)
+    RPAREN          reduce using rule 51 (operation -> matrix .)
 
 
 state 29
 
-    (54) matrix -> LSQUAR . row RSQUAR
-    (55) row -> . row COMMA vector
-    (56) row -> . vector
-    (57) vector -> . LSQUAR elem RSQUAR
+    (55) matrix -> LSQUAR . row RSQUAR
+    (56) row -> . row COMMA vector
+    (57) row -> . vector
+    (58) vector -> . LSQUAR elem RSQUAR
 
     LSQUAR          shift and go to state 38
 
@@ -752,34 +759,35 @@ state 29
 
 state 30
 
-    (51) ifelse -> IF LPAREN . bool RPAREN pexpression
-    (52) ifelse -> IF LPAREN . bool RPAREN pexpression ELSE pexpression
+    (52) ifelse -> IF LPAREN . bool RPAREN pexpression
+    (53) ifelse -> IF LPAREN . bool RPAREN pexpression ELSE pexpression
     (23) bool -> . LPAREN bool RPAREN
     (24) bool -> . operation MORE operation
     (25) bool -> . operation LESS operation
     (26) bool -> . operation MOREOREQ operation
     (27) bool -> . operation LESSOREQ operation
     (28) bool -> . operation EQUALS operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (29) bool -> . operation NOTEQUALS operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     LPAREN          shift and go to state 56
     MINUS           shift and go to state 21
@@ -798,33 +806,34 @@ state 30
 
 state 31
 
-    (53) while -> WHILE LPAREN . bool RPAREN pexpression
+    (54) while -> WHILE LPAREN . bool RPAREN pexpression
     (23) bool -> . LPAREN bool RPAREN
     (24) bool -> . operation MORE operation
     (25) bool -> . operation LESS operation
     (26) bool -> . operation MOREOREQ operation
     (27) bool -> . operation LESSOREQ operation
     (28) bool -> . operation EQUALS operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (29) bool -> . operation NOTEQUALS operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     LPAREN          shift and go to state 56
     MINUS           shift and go to state 21
@@ -843,27 +852,27 @@ state 31
 
 state 32
 
-    (29) assign -> object ASSIGN . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (30) assign -> object ASSIGN . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -880,27 +889,27 @@ state 32
 
 state 33
 
-    (30) assign -> object ADDASSIGN . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (31) assign -> object ADDASSIGN . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -917,27 +926,27 @@ state 33
 
 state 34
 
-    (31) assign -> object SUBASSIGN . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (32) assign -> object SUBASSIGN . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -954,27 +963,27 @@ state 34
 
 state 35
 
-    (32) assign -> object MULASSIGN . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (33) assign -> object MULASSIGN . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -991,27 +1000,27 @@ state 35
 
 state 36
 
-    (33) assign -> object DIVASSIGN . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (34) assign -> object DIVASSIGN . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -1051,17 +1060,18 @@ state 37
     MOREOREQ        reduce using rule 10 (object -> ID vector .)
     LESSOREQ        reduce using rule 10 (object -> ID vector .)
     EQUALS          reduce using rule 10 (object -> ID vector .)
+    NOTEQUALS       reduce using rule 10 (object -> ID vector .)
     RPAREN          reduce using rule 10 (object -> ID vector .)
     COLON           reduce using rule 10 (object -> ID vector .)
 
 
 state 38
 
-    (57) vector -> LSQUAR . elem RSQUAR
-    (58) elem -> . elem COMMA num
-    (59) elem -> . num
-    (60) num -> . INT
-    (61) num -> . FLOAT
+    (58) vector -> LSQUAR . elem RSQUAR
+    (59) elem -> . elem COMMA num
+    (60) elem -> . num
+    (61) num -> . INT
+    (62) num -> . FLOAT
 
     INT             shift and go to state 67
     FLOAT           shift and go to state 68
@@ -1091,26 +1101,26 @@ state 40
     (18) printable -> . printable COMMA printable
     (19) printable -> . operation
     (20) printable -> . STRING
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     STRING          shift and go to state 20
     MINUS           shift and go to state 21
@@ -1129,27 +1139,27 @@ state 40
 
 state 41
 
-    (34) operation -> operation PLUS . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (35) operation -> operation PLUS . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -1166,27 +1176,27 @@ state 41
 
 state 42
 
-    (35) operation -> operation MINUS . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (36) operation -> operation MINUS . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -1203,27 +1213,27 @@ state 42
 
 state 43
 
-    (36) operation -> operation TIMES . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (37) operation -> operation TIMES . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -1240,27 +1250,27 @@ state 43
 
 state 44
 
-    (37) operation -> operation DIVIDE . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (38) operation -> operation DIVIDE . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -1277,27 +1287,27 @@ state 44
 
 state 45
 
-    (38) operation -> operation DOTADD . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (39) operation -> operation DOTADD . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -1314,27 +1324,27 @@ state 45
 
 state 46
 
-    (39) operation -> operation DOTSUB . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (40) operation -> operation DOTSUB . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -1351,27 +1361,27 @@ state 46
 
 state 47
 
-    (40) operation -> operation DOTMUL . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (41) operation -> operation DOTMUL . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -1388,27 +1398,27 @@ state 47
 
 state 48
 
-    (41) operation -> operation DOTDIV . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (42) operation -> operation DOTDIV . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -1425,59 +1435,61 @@ state 48
 
 state 49
 
-    (43) operation -> operation TRANSPOSE .
+    (44) operation -> operation TRANSPOSE .
 
-    PLUS            reduce using rule 43 (operation -> operation TRANSPOSE .)
-    MINUS           reduce using rule 43 (operation -> operation TRANSPOSE .)
-    TIMES           reduce using rule 43 (operation -> operation TRANSPOSE .)
-    DIVIDE          reduce using rule 43 (operation -> operation TRANSPOSE .)
-    DOTADD          reduce using rule 43 (operation -> operation TRANSPOSE .)
-    DOTSUB          reduce using rule 43 (operation -> operation TRANSPOSE .)
-    DOTMUL          reduce using rule 43 (operation -> operation TRANSPOSE .)
-    DOTDIV          reduce using rule 43 (operation -> operation TRANSPOSE .)
-    TRANSPOSE       reduce using rule 43 (operation -> operation TRANSPOSE .)
-    COMMA           reduce using rule 43 (operation -> operation TRANSPOSE .)
-    SEMICOLON       reduce using rule 43 (operation -> operation TRANSPOSE .)
-    MORE            reduce using rule 43 (operation -> operation TRANSPOSE .)
-    LESS            reduce using rule 43 (operation -> operation TRANSPOSE .)
-    MOREOREQ        reduce using rule 43 (operation -> operation TRANSPOSE .)
-    LESSOREQ        reduce using rule 43 (operation -> operation TRANSPOSE .)
-    EQUALS          reduce using rule 43 (operation -> operation TRANSPOSE .)
-    RPAREN          reduce using rule 43 (operation -> operation TRANSPOSE .)
+    PLUS            reduce using rule 44 (operation -> operation TRANSPOSE .)
+    MINUS           reduce using rule 44 (operation -> operation TRANSPOSE .)
+    TIMES           reduce using rule 44 (operation -> operation TRANSPOSE .)
+    DIVIDE          reduce using rule 44 (operation -> operation TRANSPOSE .)
+    DOTADD          reduce using rule 44 (operation -> operation TRANSPOSE .)
+    DOTSUB          reduce using rule 44 (operation -> operation TRANSPOSE .)
+    DOTMUL          reduce using rule 44 (operation -> operation TRANSPOSE .)
+    DOTDIV          reduce using rule 44 (operation -> operation TRANSPOSE .)
+    TRANSPOSE       reduce using rule 44 (operation -> operation TRANSPOSE .)
+    COMMA           reduce using rule 44 (operation -> operation TRANSPOSE .)
+    SEMICOLON       reduce using rule 44 (operation -> operation TRANSPOSE .)
+    MORE            reduce using rule 44 (operation -> operation TRANSPOSE .)
+    LESS            reduce using rule 44 (operation -> operation TRANSPOSE .)
+    MOREOREQ        reduce using rule 44 (operation -> operation TRANSPOSE .)
+    LESSOREQ        reduce using rule 44 (operation -> operation TRANSPOSE .)
+    EQUALS          reduce using rule 44 (operation -> operation TRANSPOSE .)
+    NOTEQUALS       reduce using rule 44 (operation -> operation TRANSPOSE .)
+    RPAREN          reduce using rule 44 (operation -> operation TRANSPOSE .)
 
 
 state 50
 
-    (42) operation -> MINUS operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (43) operation -> MINUS operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    PLUS            reduce using rule 42 (operation -> MINUS operation .)
-    MINUS           reduce using rule 42 (operation -> MINUS operation .)
-    TIMES           reduce using rule 42 (operation -> MINUS operation .)
-    DIVIDE          reduce using rule 42 (operation -> MINUS operation .)
-    DOTADD          reduce using rule 42 (operation -> MINUS operation .)
-    DOTSUB          reduce using rule 42 (operation -> MINUS operation .)
-    DOTMUL          reduce using rule 42 (operation -> MINUS operation .)
-    DOTDIV          reduce using rule 42 (operation -> MINUS operation .)
-    COMMA           reduce using rule 42 (operation -> MINUS operation .)
-    SEMICOLON       reduce using rule 42 (operation -> MINUS operation .)
-    MORE            reduce using rule 42 (operation -> MINUS operation .)
-    LESS            reduce using rule 42 (operation -> MINUS operation .)
-    MOREOREQ        reduce using rule 42 (operation -> MINUS operation .)
-    LESSOREQ        reduce using rule 42 (operation -> MINUS operation .)
-    EQUALS          reduce using rule 42 (operation -> MINUS operation .)
-    RPAREN          reduce using rule 42 (operation -> MINUS operation .)
+    PLUS            reduce using rule 43 (operation -> MINUS operation .)
+    MINUS           reduce using rule 43 (operation -> MINUS operation .)
+    TIMES           reduce using rule 43 (operation -> MINUS operation .)
+    DIVIDE          reduce using rule 43 (operation -> MINUS operation .)
+    DOTADD          reduce using rule 43 (operation -> MINUS operation .)
+    DOTSUB          reduce using rule 43 (operation -> MINUS operation .)
+    DOTMUL          reduce using rule 43 (operation -> MINUS operation .)
+    DOTDIV          reduce using rule 43 (operation -> MINUS operation .)
+    COMMA           reduce using rule 43 (operation -> MINUS operation .)
+    SEMICOLON       reduce using rule 43 (operation -> MINUS operation .)
+    MORE            reduce using rule 43 (operation -> MINUS operation .)
+    LESS            reduce using rule 43 (operation -> MINUS operation .)
+    MOREOREQ        reduce using rule 43 (operation -> MINUS operation .)
+    LESSOREQ        reduce using rule 43 (operation -> MINUS operation .)
+    EQUALS          reduce using rule 43 (operation -> MINUS operation .)
+    NOTEQUALS       reduce using rule 43 (operation -> MINUS operation .)
+    RPAREN          reduce using rule 43 (operation -> MINUS operation .)
     TRANSPOSE       shift and go to state 49
 
-  ! TRANSPOSE       [ reduce using rule 42 (operation -> MINUS operation .) ]
+  ! TRANSPOSE       [ reduce using rule 43 (operation -> MINUS operation .) ]
   ! PLUS            [ shift and go to state 41 ]
   ! MINUS           [ shift and go to state 42 ]
   ! TIMES           [ shift and go to state 43 ]
@@ -1490,27 +1502,27 @@ state 50
 
 state 51
 
-    (44) operation -> EYE LPAREN . operation RPAREN
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (45) operation -> EYE LPAREN . operation RPAREN
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -1527,27 +1539,27 @@ state 51
 
 state 52
 
-    (45) operation -> ZEROS LPAREN . operation RPAREN
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (46) operation -> ZEROS LPAREN . operation RPAREN
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -1564,27 +1576,27 @@ state 52
 
 state 53
 
-    (46) operation -> ONES LPAREN . operation RPAREN
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (47) operation -> ONES LPAREN . operation RPAREN
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -1601,8 +1613,8 @@ state 53
 
 state 54
 
-    (54) matrix -> LSQUAR row . RSQUAR
-    (55) row -> row . COMMA vector
+    (55) matrix -> LSQUAR row . RSQUAR
+    (56) row -> row . COMMA vector
 
     RSQUAR          shift and go to state 81
     COMMA           shift and go to state 82
@@ -1610,10 +1622,10 @@ state 54
 
 state 55
 
-    (56) row -> vector .
+    (57) row -> vector .
 
-    RSQUAR          reduce using rule 56 (row -> vector .)
-    COMMA           reduce using rule 56 (row -> vector .)
+    RSQUAR          reduce using rule 57 (row -> vector .)
+    COMMA           reduce using rule 57 (row -> vector .)
 
 
 state 56
@@ -1625,26 +1637,27 @@ state 56
     (26) bool -> . operation MOREOREQ operation
     (27) bool -> . operation LESSOREQ operation
     (28) bool -> . operation EQUALS operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (29) bool -> . operation NOTEQUALS operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     LPAREN          shift and go to state 56
     MINUS           shift and go to state 21
@@ -1663,8 +1676,8 @@ state 56
 
 state 57
 
-    (51) ifelse -> IF LPAREN bool . RPAREN pexpression
-    (52) ifelse -> IF LPAREN bool . RPAREN pexpression ELSE pexpression
+    (52) ifelse -> IF LPAREN bool . RPAREN pexpression
+    (53) ifelse -> IF LPAREN bool . RPAREN pexpression ELSE pexpression
 
     RPAREN          shift and go to state 84
 
@@ -1676,21 +1689,23 @@ state 58
     (26) bool -> operation . MOREOREQ operation
     (27) bool -> operation . LESSOREQ operation
     (28) bool -> operation . EQUALS operation
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (29) bool -> operation . NOTEQUALS operation
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
     MORE            shift and go to state 85
     LESS            shift and go to state 86
     MOREOREQ        shift and go to state 87
     LESSOREQ        shift and go to state 88
     EQUALS          shift and go to state 89
+    NOTEQUALS       shift and go to state 90
     PLUS            shift and go to state 41
     MINUS           shift and go to state 42
     TIMES           shift and go to state 43
@@ -1704,25 +1719,25 @@ state 58
 
 state 59
 
-    (53) while -> WHILE LPAREN bool . RPAREN pexpression
+    (54) while -> WHILE LPAREN bool . RPAREN pexpression
 
-    RPAREN          shift and go to state 90
+    RPAREN          shift and go to state 91
 
 
 state 60
 
-    (29) assign -> object ASSIGN operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (30) assign -> object ASSIGN operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    SEMICOLON       reduce using rule 29 (assign -> object ASSIGN operation .)
+    SEMICOLON       reduce using rule 30 (assign -> object ASSIGN operation .)
     PLUS            shift and go to state 41
     MINUS           shift and go to state 42
     TIMES           shift and go to state 43
@@ -1736,18 +1751,18 @@ state 60
 
 state 61
 
-    (30) assign -> object ADDASSIGN operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (31) assign -> object ADDASSIGN operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    SEMICOLON       reduce using rule 30 (assign -> object ADDASSIGN operation .)
+    SEMICOLON       reduce using rule 31 (assign -> object ADDASSIGN operation .)
     PLUS            shift and go to state 41
     MINUS           shift and go to state 42
     TIMES           shift and go to state 43
@@ -1761,18 +1776,18 @@ state 61
 
 state 62
 
-    (31) assign -> object SUBASSIGN operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (32) assign -> object SUBASSIGN operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    SEMICOLON       reduce using rule 31 (assign -> object SUBASSIGN operation .)
+    SEMICOLON       reduce using rule 32 (assign -> object SUBASSIGN operation .)
     PLUS            shift and go to state 41
     MINUS           shift and go to state 42
     TIMES           shift and go to state 43
@@ -1786,18 +1801,18 @@ state 62
 
 state 63
 
-    (32) assign -> object MULASSIGN operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (33) assign -> object MULASSIGN operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    SEMICOLON       reduce using rule 32 (assign -> object MULASSIGN operation .)
+    SEMICOLON       reduce using rule 33 (assign -> object MULASSIGN operation .)
     PLUS            shift and go to state 41
     MINUS           shift and go to state 42
     TIMES           shift and go to state 43
@@ -1811,18 +1826,18 @@ state 63
 
 state 64
 
-    (33) assign -> object DIVASSIGN operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (34) assign -> object DIVASSIGN operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    SEMICOLON       reduce using rule 33 (assign -> object DIVASSIGN operation .)
+    SEMICOLON       reduce using rule 34 (assign -> object DIVASSIGN operation .)
     PLUS            shift and go to state 41
     MINUS           shift and go to state 42
     TIMES           shift and go to state 43
@@ -1836,35 +1851,35 @@ state 64
 
 state 65
 
-    (57) vector -> LSQUAR elem . RSQUAR
-    (58) elem -> elem . COMMA num
+    (58) vector -> LSQUAR elem . RSQUAR
+    (59) elem -> elem . COMMA num
 
-    RSQUAR          shift and go to state 91
-    COMMA           shift and go to state 92
+    RSQUAR          shift and go to state 92
+    COMMA           shift and go to state 93
 
 
 state 66
 
-    (59) elem -> num .
+    (60) elem -> num .
 
-    RSQUAR          reduce using rule 59 (elem -> num .)
-    COMMA           reduce using rule 59 (elem -> num .)
+    RSQUAR          reduce using rule 60 (elem -> num .)
+    COMMA           reduce using rule 60 (elem -> num .)
 
 
 state 67
 
-    (60) num -> INT .
+    (61) num -> INT .
 
-    RSQUAR          reduce using rule 60 (num -> INT .)
-    COMMA           reduce using rule 60 (num -> INT .)
+    RSQUAR          reduce using rule 61 (num -> INT .)
+    COMMA           reduce using rule 61 (num -> INT .)
 
 
 state 68
 
-    (61) num -> FLOAT .
+    (62) num -> FLOAT .
 
-    RSQUAR          reduce using rule 61 (num -> FLOAT .)
-    COMMA           reduce using rule 61 (num -> FLOAT .)
+    RSQUAR          reduce using rule 62 (num -> FLOAT .)
+    COMMA           reduce using rule 62 (num -> FLOAT .)
 
 
 state 69
@@ -1881,36 +1896,37 @@ state 69
 
 state 70
 
-    (34) operation -> operation PLUS operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (35) operation -> operation PLUS operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    PLUS            reduce using rule 34 (operation -> operation PLUS operation .)
-    MINUS           reduce using rule 34 (operation -> operation PLUS operation .)
-    TIMES           reduce using rule 34 (operation -> operation PLUS operation .)
-    DIVIDE          reduce using rule 34 (operation -> operation PLUS operation .)
-    DOTADD          reduce using rule 34 (operation -> operation PLUS operation .)
-    DOTSUB          reduce using rule 34 (operation -> operation PLUS operation .)
-    DOTMUL          reduce using rule 34 (operation -> operation PLUS operation .)
-    DOTDIV          reduce using rule 34 (operation -> operation PLUS operation .)
-    COMMA           reduce using rule 34 (operation -> operation PLUS operation .)
-    SEMICOLON       reduce using rule 34 (operation -> operation PLUS operation .)
-    MORE            reduce using rule 34 (operation -> operation PLUS operation .)
-    LESS            reduce using rule 34 (operation -> operation PLUS operation .)
-    MOREOREQ        reduce using rule 34 (operation -> operation PLUS operation .)
-    LESSOREQ        reduce using rule 34 (operation -> operation PLUS operation .)
-    EQUALS          reduce using rule 34 (operation -> operation PLUS operation .)
-    RPAREN          reduce using rule 34 (operation -> operation PLUS operation .)
+    PLUS            reduce using rule 35 (operation -> operation PLUS operation .)
+    MINUS           reduce using rule 35 (operation -> operation PLUS operation .)
+    TIMES           reduce using rule 35 (operation -> operation PLUS operation .)
+    DIVIDE          reduce using rule 35 (operation -> operation PLUS operation .)
+    DOTADD          reduce using rule 35 (operation -> operation PLUS operation .)
+    DOTSUB          reduce using rule 35 (operation -> operation PLUS operation .)
+    DOTMUL          reduce using rule 35 (operation -> operation PLUS operation .)
+    DOTDIV          reduce using rule 35 (operation -> operation PLUS operation .)
+    COMMA           reduce using rule 35 (operation -> operation PLUS operation .)
+    SEMICOLON       reduce using rule 35 (operation -> operation PLUS operation .)
+    MORE            reduce using rule 35 (operation -> operation PLUS operation .)
+    LESS            reduce using rule 35 (operation -> operation PLUS operation .)
+    MOREOREQ        reduce using rule 35 (operation -> operation PLUS operation .)
+    LESSOREQ        reduce using rule 35 (operation -> operation PLUS operation .)
+    EQUALS          reduce using rule 35 (operation -> operation PLUS operation .)
+    NOTEQUALS       reduce using rule 35 (operation -> operation PLUS operation .)
+    RPAREN          reduce using rule 35 (operation -> operation PLUS operation .)
     TRANSPOSE       shift and go to state 49
 
-  ! TRANSPOSE       [ reduce using rule 34 (operation -> operation PLUS operation .) ]
+  ! TRANSPOSE       [ reduce using rule 35 (operation -> operation PLUS operation .) ]
   ! PLUS            [ shift and go to state 41 ]
   ! MINUS           [ shift and go to state 42 ]
   ! TIMES           [ shift and go to state 43 ]
@@ -1923,36 +1939,37 @@ state 70
 
 state 71
 
-    (35) operation -> operation MINUS operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (36) operation -> operation MINUS operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    PLUS            reduce using rule 35 (operation -> operation MINUS operation .)
-    MINUS           reduce using rule 35 (operation -> operation MINUS operation .)
-    TIMES           reduce using rule 35 (operation -> operation MINUS operation .)
-    DIVIDE          reduce using rule 35 (operation -> operation MINUS operation .)
-    DOTADD          reduce using rule 35 (operation -> operation MINUS operation .)
-    DOTSUB          reduce using rule 35 (operation -> operation MINUS operation .)
-    DOTMUL          reduce using rule 35 (operation -> operation MINUS operation .)
-    DOTDIV          reduce using rule 35 (operation -> operation MINUS operation .)
-    COMMA           reduce using rule 35 (operation -> operation MINUS operation .)
-    SEMICOLON       reduce using rule 35 (operation -> operation MINUS operation .)
-    MORE            reduce using rule 35 (operation -> operation MINUS operation .)
-    LESS            reduce using rule 35 (operation -> operation MINUS operation .)
-    MOREOREQ        reduce using rule 35 (operation -> operation MINUS operation .)
-    LESSOREQ        reduce using rule 35 (operation -> operation MINUS operation .)
-    EQUALS          reduce using rule 35 (operation -> operation MINUS operation .)
-    RPAREN          reduce using rule 35 (operation -> operation MINUS operation .)
+    PLUS            reduce using rule 36 (operation -> operation MINUS operation .)
+    MINUS           reduce using rule 36 (operation -> operation MINUS operation .)
+    TIMES           reduce using rule 36 (operation -> operation MINUS operation .)
+    DIVIDE          reduce using rule 36 (operation -> operation MINUS operation .)
+    DOTADD          reduce using rule 36 (operation -> operation MINUS operation .)
+    DOTSUB          reduce using rule 36 (operation -> operation MINUS operation .)
+    DOTMUL          reduce using rule 36 (operation -> operation MINUS operation .)
+    DOTDIV          reduce using rule 36 (operation -> operation MINUS operation .)
+    COMMA           reduce using rule 36 (operation -> operation MINUS operation .)
+    SEMICOLON       reduce using rule 36 (operation -> operation MINUS operation .)
+    MORE            reduce using rule 36 (operation -> operation MINUS operation .)
+    LESS            reduce using rule 36 (operation -> operation MINUS operation .)
+    MOREOREQ        reduce using rule 36 (operation -> operation MINUS operation .)
+    LESSOREQ        reduce using rule 36 (operation -> operation MINUS operation .)
+    EQUALS          reduce using rule 36 (operation -> operation MINUS operation .)
+    NOTEQUALS       reduce using rule 36 (operation -> operation MINUS operation .)
+    RPAREN          reduce using rule 36 (operation -> operation MINUS operation .)
     TRANSPOSE       shift and go to state 49
 
-  ! TRANSPOSE       [ reduce using rule 35 (operation -> operation MINUS operation .) ]
+  ! TRANSPOSE       [ reduce using rule 36 (operation -> operation MINUS operation .) ]
   ! PLUS            [ shift and go to state 41 ]
   ! MINUS           [ shift and go to state 42 ]
   ! TIMES           [ shift and go to state 43 ]
@@ -1965,36 +1982,37 @@ state 71
 
 state 72
 
-    (36) operation -> operation TIMES operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (37) operation -> operation TIMES operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    PLUS            reduce using rule 36 (operation -> operation TIMES operation .)
-    MINUS           reduce using rule 36 (operation -> operation TIMES operation .)
-    TIMES           reduce using rule 36 (operation -> operation TIMES operation .)
-    DIVIDE          reduce using rule 36 (operation -> operation TIMES operation .)
-    DOTADD          reduce using rule 36 (operation -> operation TIMES operation .)
-    DOTSUB          reduce using rule 36 (operation -> operation TIMES operation .)
-    DOTMUL          reduce using rule 36 (operation -> operation TIMES operation .)
-    DOTDIV          reduce using rule 36 (operation -> operation TIMES operation .)
-    COMMA           reduce using rule 36 (operation -> operation TIMES operation .)
-    SEMICOLON       reduce using rule 36 (operation -> operation TIMES operation .)
-    MORE            reduce using rule 36 (operation -> operation TIMES operation .)
-    LESS            reduce using rule 36 (operation -> operation TIMES operation .)
-    MOREOREQ        reduce using rule 36 (operation -> operation TIMES operation .)
-    LESSOREQ        reduce using rule 36 (operation -> operation TIMES operation .)
-    EQUALS          reduce using rule 36 (operation -> operation TIMES operation .)
-    RPAREN          reduce using rule 36 (operation -> operation TIMES operation .)
+    PLUS            reduce using rule 37 (operation -> operation TIMES operation .)
+    MINUS           reduce using rule 37 (operation -> operation TIMES operation .)
+    TIMES           reduce using rule 37 (operation -> operation TIMES operation .)
+    DIVIDE          reduce using rule 37 (operation -> operation TIMES operation .)
+    DOTADD          reduce using rule 37 (operation -> operation TIMES operation .)
+    DOTSUB          reduce using rule 37 (operation -> operation TIMES operation .)
+    DOTMUL          reduce using rule 37 (operation -> operation TIMES operation .)
+    DOTDIV          reduce using rule 37 (operation -> operation TIMES operation .)
+    COMMA           reduce using rule 37 (operation -> operation TIMES operation .)
+    SEMICOLON       reduce using rule 37 (operation -> operation TIMES operation .)
+    MORE            reduce using rule 37 (operation -> operation TIMES operation .)
+    LESS            reduce using rule 37 (operation -> operation TIMES operation .)
+    MOREOREQ        reduce using rule 37 (operation -> operation TIMES operation .)
+    LESSOREQ        reduce using rule 37 (operation -> operation TIMES operation .)
+    EQUALS          reduce using rule 37 (operation -> operation TIMES operation .)
+    NOTEQUALS       reduce using rule 37 (operation -> operation TIMES operation .)
+    RPAREN          reduce using rule 37 (operation -> operation TIMES operation .)
     TRANSPOSE       shift and go to state 49
 
-  ! TRANSPOSE       [ reduce using rule 36 (operation -> operation TIMES operation .) ]
+  ! TRANSPOSE       [ reduce using rule 37 (operation -> operation TIMES operation .) ]
   ! PLUS            [ shift and go to state 41 ]
   ! MINUS           [ shift and go to state 42 ]
   ! TIMES           [ shift and go to state 43 ]
@@ -2007,36 +2025,37 @@ state 72
 
 state 73
 
-    (37) operation -> operation DIVIDE operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (38) operation -> operation DIVIDE operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    PLUS            reduce using rule 37 (operation -> operation DIVIDE operation .)
-    MINUS           reduce using rule 37 (operation -> operation DIVIDE operation .)
-    TIMES           reduce using rule 37 (operation -> operation DIVIDE operation .)
-    DIVIDE          reduce using rule 37 (operation -> operation DIVIDE operation .)
-    DOTADD          reduce using rule 37 (operation -> operation DIVIDE operation .)
-    DOTSUB          reduce using rule 37 (operation -> operation DIVIDE operation .)
-    DOTMUL          reduce using rule 37 (operation -> operation DIVIDE operation .)
-    DOTDIV          reduce using rule 37 (operation -> operation DIVIDE operation .)
-    COMMA           reduce using rule 37 (operation -> operation DIVIDE operation .)
-    SEMICOLON       reduce using rule 37 (operation -> operation DIVIDE operation .)
-    MORE            reduce using rule 37 (operation -> operation DIVIDE operation .)
-    LESS            reduce using rule 37 (operation -> operation DIVIDE operation .)
-    MOREOREQ        reduce using rule 37 (operation -> operation DIVIDE operation .)
-    LESSOREQ        reduce using rule 37 (operation -> operation DIVIDE operation .)
-    EQUALS          reduce using rule 37 (operation -> operation DIVIDE operation .)
-    RPAREN          reduce using rule 37 (operation -> operation DIVIDE operation .)
+    PLUS            reduce using rule 38 (operation -> operation DIVIDE operation .)
+    MINUS           reduce using rule 38 (operation -> operation DIVIDE operation .)
+    TIMES           reduce using rule 38 (operation -> operation DIVIDE operation .)
+    DIVIDE          reduce using rule 38 (operation -> operation DIVIDE operation .)
+    DOTADD          reduce using rule 38 (operation -> operation DIVIDE operation .)
+    DOTSUB          reduce using rule 38 (operation -> operation DIVIDE operation .)
+    DOTMUL          reduce using rule 38 (operation -> operation DIVIDE operation .)
+    DOTDIV          reduce using rule 38 (operation -> operation DIVIDE operation .)
+    COMMA           reduce using rule 38 (operation -> operation DIVIDE operation .)
+    SEMICOLON       reduce using rule 38 (operation -> operation DIVIDE operation .)
+    MORE            reduce using rule 38 (operation -> operation DIVIDE operation .)
+    LESS            reduce using rule 38 (operation -> operation DIVIDE operation .)
+    MOREOREQ        reduce using rule 38 (operation -> operation DIVIDE operation .)
+    LESSOREQ        reduce using rule 38 (operation -> operation DIVIDE operation .)
+    EQUALS          reduce using rule 38 (operation -> operation DIVIDE operation .)
+    NOTEQUALS       reduce using rule 38 (operation -> operation DIVIDE operation .)
+    RPAREN          reduce using rule 38 (operation -> operation DIVIDE operation .)
     TRANSPOSE       shift and go to state 49
 
-  ! TRANSPOSE       [ reduce using rule 37 (operation -> operation DIVIDE operation .) ]
+  ! TRANSPOSE       [ reduce using rule 38 (operation -> operation DIVIDE operation .) ]
   ! PLUS            [ shift and go to state 41 ]
   ! MINUS           [ shift and go to state 42 ]
   ! TIMES           [ shift and go to state 43 ]
@@ -2049,36 +2068,37 @@ state 73
 
 state 74
 
-    (38) operation -> operation DOTADD operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (39) operation -> operation DOTADD operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    PLUS            reduce using rule 38 (operation -> operation DOTADD operation .)
-    MINUS           reduce using rule 38 (operation -> operation DOTADD operation .)
-    TIMES           reduce using rule 38 (operation -> operation DOTADD operation .)
-    DIVIDE          reduce using rule 38 (operation -> operation DOTADD operation .)
-    DOTADD          reduce using rule 38 (operation -> operation DOTADD operation .)
-    DOTSUB          reduce using rule 38 (operation -> operation DOTADD operation .)
-    DOTMUL          reduce using rule 38 (operation -> operation DOTADD operation .)
-    DOTDIV          reduce using rule 38 (operation -> operation DOTADD operation .)
-    COMMA           reduce using rule 38 (operation -> operation DOTADD operation .)
-    SEMICOLON       reduce using rule 38 (operation -> operation DOTADD operation .)
-    MORE            reduce using rule 38 (operation -> operation DOTADD operation .)
-    LESS            reduce using rule 38 (operation -> operation DOTADD operation .)
-    MOREOREQ        reduce using rule 38 (operation -> operation DOTADD operation .)
-    LESSOREQ        reduce using rule 38 (operation -> operation DOTADD operation .)
-    EQUALS          reduce using rule 38 (operation -> operation DOTADD operation .)
-    RPAREN          reduce using rule 38 (operation -> operation DOTADD operation .)
+    PLUS            reduce using rule 39 (operation -> operation DOTADD operation .)
+    MINUS           reduce using rule 39 (operation -> operation DOTADD operation .)
+    TIMES           reduce using rule 39 (operation -> operation DOTADD operation .)
+    DIVIDE          reduce using rule 39 (operation -> operation DOTADD operation .)
+    DOTADD          reduce using rule 39 (operation -> operation DOTADD operation .)
+    DOTSUB          reduce using rule 39 (operation -> operation DOTADD operation .)
+    DOTMUL          reduce using rule 39 (operation -> operation DOTADD operation .)
+    DOTDIV          reduce using rule 39 (operation -> operation DOTADD operation .)
+    COMMA           reduce using rule 39 (operation -> operation DOTADD operation .)
+    SEMICOLON       reduce using rule 39 (operation -> operation DOTADD operation .)
+    MORE            reduce using rule 39 (operation -> operation DOTADD operation .)
+    LESS            reduce using rule 39 (operation -> operation DOTADD operation .)
+    MOREOREQ        reduce using rule 39 (operation -> operation DOTADD operation .)
+    LESSOREQ        reduce using rule 39 (operation -> operation DOTADD operation .)
+    EQUALS          reduce using rule 39 (operation -> operation DOTADD operation .)
+    NOTEQUALS       reduce using rule 39 (operation -> operation DOTADD operation .)
+    RPAREN          reduce using rule 39 (operation -> operation DOTADD operation .)
     TRANSPOSE       shift and go to state 49
 
-  ! TRANSPOSE       [ reduce using rule 38 (operation -> operation DOTADD operation .) ]
+  ! TRANSPOSE       [ reduce using rule 39 (operation -> operation DOTADD operation .) ]
   ! PLUS            [ shift and go to state 41 ]
   ! MINUS           [ shift and go to state 42 ]
   ! TIMES           [ shift and go to state 43 ]
@@ -2091,36 +2111,37 @@ state 74
 
 state 75
 
-    (39) operation -> operation DOTSUB operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (40) operation -> operation DOTSUB operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    PLUS            reduce using rule 39 (operation -> operation DOTSUB operation .)
-    MINUS           reduce using rule 39 (operation -> operation DOTSUB operation .)
-    TIMES           reduce using rule 39 (operation -> operation DOTSUB operation .)
-    DIVIDE          reduce using rule 39 (operation -> operation DOTSUB operation .)
-    DOTADD          reduce using rule 39 (operation -> operation DOTSUB operation .)
-    DOTSUB          reduce using rule 39 (operation -> operation DOTSUB operation .)
-    DOTMUL          reduce using rule 39 (operation -> operation DOTSUB operation .)
-    DOTDIV          reduce using rule 39 (operation -> operation DOTSUB operation .)
-    COMMA           reduce using rule 39 (operation -> operation DOTSUB operation .)
-    SEMICOLON       reduce using rule 39 (operation -> operation DOTSUB operation .)
-    MORE            reduce using rule 39 (operation -> operation DOTSUB operation .)
-    LESS            reduce using rule 39 (operation -> operation DOTSUB operation .)
-    MOREOREQ        reduce using rule 39 (operation -> operation DOTSUB operation .)
-    LESSOREQ        reduce using rule 39 (operation -> operation DOTSUB operation .)
-    EQUALS          reduce using rule 39 (operation -> operation DOTSUB operation .)
-    RPAREN          reduce using rule 39 (operation -> operation DOTSUB operation .)
+    PLUS            reduce using rule 40 (operation -> operation DOTSUB operation .)
+    MINUS           reduce using rule 40 (operation -> operation DOTSUB operation .)
+    TIMES           reduce using rule 40 (operation -> operation DOTSUB operation .)
+    DIVIDE          reduce using rule 40 (operation -> operation DOTSUB operation .)
+    DOTADD          reduce using rule 40 (operation -> operation DOTSUB operation .)
+    DOTSUB          reduce using rule 40 (operation -> operation DOTSUB operation .)
+    DOTMUL          reduce using rule 40 (operation -> operation DOTSUB operation .)
+    DOTDIV          reduce using rule 40 (operation -> operation DOTSUB operation .)
+    COMMA           reduce using rule 40 (operation -> operation DOTSUB operation .)
+    SEMICOLON       reduce using rule 40 (operation -> operation DOTSUB operation .)
+    MORE            reduce using rule 40 (operation -> operation DOTSUB operation .)
+    LESS            reduce using rule 40 (operation -> operation DOTSUB operation .)
+    MOREOREQ        reduce using rule 40 (operation -> operation DOTSUB operation .)
+    LESSOREQ        reduce using rule 40 (operation -> operation DOTSUB operation .)
+    EQUALS          reduce using rule 40 (operation -> operation DOTSUB operation .)
+    NOTEQUALS       reduce using rule 40 (operation -> operation DOTSUB operation .)
+    RPAREN          reduce using rule 40 (operation -> operation DOTSUB operation .)
     TRANSPOSE       shift and go to state 49
 
-  ! TRANSPOSE       [ reduce using rule 39 (operation -> operation DOTSUB operation .) ]
+  ! TRANSPOSE       [ reduce using rule 40 (operation -> operation DOTSUB operation .) ]
   ! PLUS            [ shift and go to state 41 ]
   ! MINUS           [ shift and go to state 42 ]
   ! TIMES           [ shift and go to state 43 ]
@@ -2133,36 +2154,37 @@ state 75
 
 state 76
 
-    (40) operation -> operation DOTMUL operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (41) operation -> operation DOTMUL operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    PLUS            reduce using rule 40 (operation -> operation DOTMUL operation .)
-    MINUS           reduce using rule 40 (operation -> operation DOTMUL operation .)
-    TIMES           reduce using rule 40 (operation -> operation DOTMUL operation .)
-    DIVIDE          reduce using rule 40 (operation -> operation DOTMUL operation .)
-    DOTADD          reduce using rule 40 (operation -> operation DOTMUL operation .)
-    DOTSUB          reduce using rule 40 (operation -> operation DOTMUL operation .)
-    DOTMUL          reduce using rule 40 (operation -> operation DOTMUL operation .)
-    DOTDIV          reduce using rule 40 (operation -> operation DOTMUL operation .)
-    COMMA           reduce using rule 40 (operation -> operation DOTMUL operation .)
-    SEMICOLON       reduce using rule 40 (operation -> operation DOTMUL operation .)
-    MORE            reduce using rule 40 (operation -> operation DOTMUL operation .)
-    LESS            reduce using rule 40 (operation -> operation DOTMUL operation .)
-    MOREOREQ        reduce using rule 40 (operation -> operation DOTMUL operation .)
-    LESSOREQ        reduce using rule 40 (operation -> operation DOTMUL operation .)
-    EQUALS          reduce using rule 40 (operation -> operation DOTMUL operation .)
-    RPAREN          reduce using rule 40 (operation -> operation DOTMUL operation .)
+    PLUS            reduce using rule 41 (operation -> operation DOTMUL operation .)
+    MINUS           reduce using rule 41 (operation -> operation DOTMUL operation .)
+    TIMES           reduce using rule 41 (operation -> operation DOTMUL operation .)
+    DIVIDE          reduce using rule 41 (operation -> operation DOTMUL operation .)
+    DOTADD          reduce using rule 41 (operation -> operation DOTMUL operation .)
+    DOTSUB          reduce using rule 41 (operation -> operation DOTMUL operation .)
+    DOTMUL          reduce using rule 41 (operation -> operation DOTMUL operation .)
+    DOTDIV          reduce using rule 41 (operation -> operation DOTMUL operation .)
+    COMMA           reduce using rule 41 (operation -> operation DOTMUL operation .)
+    SEMICOLON       reduce using rule 41 (operation -> operation DOTMUL operation .)
+    MORE            reduce using rule 41 (operation -> operation DOTMUL operation .)
+    LESS            reduce using rule 41 (operation -> operation DOTMUL operation .)
+    MOREOREQ        reduce using rule 41 (operation -> operation DOTMUL operation .)
+    LESSOREQ        reduce using rule 41 (operation -> operation DOTMUL operation .)
+    EQUALS          reduce using rule 41 (operation -> operation DOTMUL operation .)
+    NOTEQUALS       reduce using rule 41 (operation -> operation DOTMUL operation .)
+    RPAREN          reduce using rule 41 (operation -> operation DOTMUL operation .)
     TRANSPOSE       shift and go to state 49
 
-  ! TRANSPOSE       [ reduce using rule 40 (operation -> operation DOTMUL operation .) ]
+  ! TRANSPOSE       [ reduce using rule 41 (operation -> operation DOTMUL operation .) ]
   ! PLUS            [ shift and go to state 41 ]
   ! MINUS           [ shift and go to state 42 ]
   ! TIMES           [ shift and go to state 43 ]
@@ -2175,36 +2197,37 @@ state 76
 
 state 77
 
-    (41) operation -> operation DOTDIV operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (42) operation -> operation DOTDIV operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    PLUS            reduce using rule 41 (operation -> operation DOTDIV operation .)
-    MINUS           reduce using rule 41 (operation -> operation DOTDIV operation .)
-    TIMES           reduce using rule 41 (operation -> operation DOTDIV operation .)
-    DIVIDE          reduce using rule 41 (operation -> operation DOTDIV operation .)
-    DOTADD          reduce using rule 41 (operation -> operation DOTDIV operation .)
-    DOTSUB          reduce using rule 41 (operation -> operation DOTDIV operation .)
-    DOTMUL          reduce using rule 41 (operation -> operation DOTDIV operation .)
-    DOTDIV          reduce using rule 41 (operation -> operation DOTDIV operation .)
-    COMMA           reduce using rule 41 (operation -> operation DOTDIV operation .)
-    SEMICOLON       reduce using rule 41 (operation -> operation DOTDIV operation .)
-    MORE            reduce using rule 41 (operation -> operation DOTDIV operation .)
-    LESS            reduce using rule 41 (operation -> operation DOTDIV operation .)
-    MOREOREQ        reduce using rule 41 (operation -> operation DOTDIV operation .)
-    LESSOREQ        reduce using rule 41 (operation -> operation DOTDIV operation .)
-    EQUALS          reduce using rule 41 (operation -> operation DOTDIV operation .)
-    RPAREN          reduce using rule 41 (operation -> operation DOTDIV operation .)
+    PLUS            reduce using rule 42 (operation -> operation DOTDIV operation .)
+    MINUS           reduce using rule 42 (operation -> operation DOTDIV operation .)
+    TIMES           reduce using rule 42 (operation -> operation DOTDIV operation .)
+    DIVIDE          reduce using rule 42 (operation -> operation DOTDIV operation .)
+    DOTADD          reduce using rule 42 (operation -> operation DOTDIV operation .)
+    DOTSUB          reduce using rule 42 (operation -> operation DOTDIV operation .)
+    DOTMUL          reduce using rule 42 (operation -> operation DOTDIV operation .)
+    DOTDIV          reduce using rule 42 (operation -> operation DOTDIV operation .)
+    COMMA           reduce using rule 42 (operation -> operation DOTDIV operation .)
+    SEMICOLON       reduce using rule 42 (operation -> operation DOTDIV operation .)
+    MORE            reduce using rule 42 (operation -> operation DOTDIV operation .)
+    LESS            reduce using rule 42 (operation -> operation DOTDIV operation .)
+    MOREOREQ        reduce using rule 42 (operation -> operation DOTDIV operation .)
+    LESSOREQ        reduce using rule 42 (operation -> operation DOTDIV operation .)
+    EQUALS          reduce using rule 42 (operation -> operation DOTDIV operation .)
+    NOTEQUALS       reduce using rule 42 (operation -> operation DOTDIV operation .)
+    RPAREN          reduce using rule 42 (operation -> operation DOTDIV operation .)
     TRANSPOSE       shift and go to state 49
 
-  ! TRANSPOSE       [ reduce using rule 41 (operation -> operation DOTDIV operation .) ]
+  ! TRANSPOSE       [ reduce using rule 42 (operation -> operation DOTDIV operation .) ]
   ! PLUS            [ shift and go to state 41 ]
   ! MINUS           [ shift and go to state 42 ]
   ! TIMES           [ shift and go to state 43 ]
@@ -2217,41 +2240,16 @@ state 77
 
 state 78
 
-    (44) operation -> EYE LPAREN operation . RPAREN
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
-
-    RPAREN          shift and go to state 93
-    PLUS            shift and go to state 41
-    MINUS           shift and go to state 42
-    TIMES           shift and go to state 43
-    DIVIDE          shift and go to state 44
-    DOTADD          shift and go to state 45
-    DOTSUB          shift and go to state 46
-    DOTMUL          shift and go to state 47
-    DOTDIV          shift and go to state 48
-    TRANSPOSE       shift and go to state 49
-
-
-state 79
-
-    (45) operation -> ZEROS LPAREN operation . RPAREN
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (45) operation -> EYE LPAREN operation . RPAREN
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
     RPAREN          shift and go to state 94
     PLUS            shift and go to state 41
@@ -2265,18 +2263,18 @@ state 79
     TRANSPOSE       shift and go to state 49
 
 
-state 80
+state 79
 
-    (46) operation -> ONES LPAREN operation . RPAREN
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (46) operation -> ZEROS LPAREN operation . RPAREN
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
     RPAREN          shift and go to state 95
     PLUS            shift and go to state 41
@@ -2290,49 +2288,75 @@ state 80
     TRANSPOSE       shift and go to state 49
 
 
+state 80
+
+    (47) operation -> ONES LPAREN operation . RPAREN
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
+
+    RPAREN          shift and go to state 96
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+    TIMES           shift and go to state 43
+    DIVIDE          shift and go to state 44
+    DOTADD          shift and go to state 45
+    DOTSUB          shift and go to state 46
+    DOTMUL          shift and go to state 47
+    DOTDIV          shift and go to state 48
+    TRANSPOSE       shift and go to state 49
+
+
 state 81
 
-    (54) matrix -> LSQUAR row RSQUAR .
+    (55) matrix -> LSQUAR row RSQUAR .
 
-    PLUS            reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    MINUS           reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    TIMES           reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    DIVIDE          reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    DOTADD          reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    DOTSUB          reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    DOTMUL          reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    DOTDIV          reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    TRANSPOSE       reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    COMMA           reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    SEMICOLON       reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    MORE            reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    LESS            reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    MOREOREQ        reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    LESSOREQ        reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    EQUALS          reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
-    RPAREN          reduce using rule 54 (matrix -> LSQUAR row RSQUAR .)
+    PLUS            reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    MINUS           reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    TIMES           reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    DIVIDE          reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    DOTADD          reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    DOTSUB          reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    DOTMUL          reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    DOTDIV          reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    TRANSPOSE       reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    COMMA           reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    SEMICOLON       reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    MORE            reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    LESS            reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    MOREOREQ        reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    LESSOREQ        reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    EQUALS          reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    NOTEQUALS       reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
+    RPAREN          reduce using rule 55 (matrix -> LSQUAR row RSQUAR .)
 
 
 state 82
 
-    (55) row -> row COMMA . vector
-    (57) vector -> . LSQUAR elem RSQUAR
+    (56) row -> row COMMA . vector
+    (58) vector -> . LSQUAR elem RSQUAR
 
     LSQUAR          shift and go to state 38
 
-    vector                         shift and go to state 96
+    vector                         shift and go to state 97
 
 state 83
 
     (23) bool -> LPAREN bool . RPAREN
 
-    RPAREN          shift and go to state 97
+    RPAREN          shift and go to state 98
 
 
 state 84
 
-    (51) ifelse -> IF LPAREN bool RPAREN . pexpression
-    (52) ifelse -> IF LPAREN bool RPAREN . pexpression ELSE pexpression
+    (52) ifelse -> IF LPAREN bool RPAREN . pexpression
+    (53) ifelse -> IF LPAREN bool RPAREN . pexpression ELSE pexpression
     (6) pexpression -> . LCURLY pexpression RCURLY
     (7) pexpression -> . LCURLY expression RCURLY
     (8) pexpression -> . line SEMICOLON
@@ -2343,88 +2367,51 @@ state 84
     (15) line -> . CONTINUE
     (16) line -> . RETURN
     (17) for -> . FOR ID EQUALS forable COLON pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
-    LCURLY          shift and go to state 99
+    LCURLY          shift and go to state 100
     PRINT           shift and go to state 7
     BREAK           shift and go to state 8
     CONTINUE        shift and go to state 9
     RETURN          shift and go to state 10
-    FOR             shift and go to state 102
+    FOR             shift and go to state 103
     ID              shift and go to state 14
 
-    pexpression                    shift and go to state 98
-    line                           shift and go to state 100
-    for                            shift and go to state 101
+    pexpression                    shift and go to state 99
+    line                           shift and go to state 101
+    for                            shift and go to state 102
     assign                         shift and go to state 6
     object                         shift and go to state 13
 
 state 85
 
     (24) bool -> operation MORE . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
-
-    MINUS           shift and go to state 21
-    EYE             shift and go to state 22
-    ZEROS           shift and go to state 23
-    ONES            shift and go to state 24
-    FLOAT           shift and go to state 26
-    INT             shift and go to state 27
-    ID              shift and go to state 14
-    LSQUAR          shift and go to state 29
-
-    operation                      shift and go to state 103
-    object                         shift and go to state 25
-    matrix                         shift and go to state 28
-
-state 86
-
-    (25) bool -> operation LESS . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
-    (10) object -> . ID vector
-    (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -2439,29 +2426,29 @@ state 86
     object                         shift and go to state 25
     matrix                         shift and go to state 28
 
-state 87
+state 86
 
-    (26) bool -> operation MOREOREQ . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (25) bool -> operation LESS . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -2476,29 +2463,29 @@ state 87
     object                         shift and go to state 25
     matrix                         shift and go to state 28
 
-state 88
+state 87
 
-    (27) bool -> operation LESSOREQ . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (26) bool -> operation MOREOREQ . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -2513,29 +2500,29 @@ state 88
     object                         shift and go to state 25
     matrix                         shift and go to state 28
 
-state 89
+state 88
 
-    (28) bool -> operation EQUALS . operation
-    (34) operation -> . operation PLUS operation
-    (35) operation -> . operation MINUS operation
-    (36) operation -> . operation TIMES operation
-    (37) operation -> . operation DIVIDE operation
-    (38) operation -> . operation DOTADD operation
-    (39) operation -> . operation DOTSUB operation
-    (40) operation -> . operation DOTMUL operation
-    (41) operation -> . operation DOTDIV operation
-    (42) operation -> . MINUS operation
-    (43) operation -> . operation TRANSPOSE
-    (44) operation -> . EYE LPAREN operation RPAREN
-    (45) operation -> . ZEROS LPAREN operation RPAREN
-    (46) operation -> . ONES LPAREN operation RPAREN
-    (47) operation -> . object
-    (48) operation -> . FLOAT
-    (49) operation -> . INT
-    (50) operation -> . matrix
+    (27) bool -> operation LESSOREQ . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
     (10) object -> . ID vector
     (11) object -> . ID
-    (54) matrix -> . LSQUAR row RSQUAR
+    (55) matrix -> . LSQUAR row RSQUAR
 
     MINUS           shift and go to state 21
     EYE             shift and go to state 22
@@ -2550,9 +2537,83 @@ state 89
     object                         shift and go to state 25
     matrix                         shift and go to state 28
 
+state 89
+
+    (28) bool -> operation EQUALS . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
+    (10) object -> . ID vector
+    (11) object -> . ID
+    (55) matrix -> . LSQUAR row RSQUAR
+
+    MINUS           shift and go to state 21
+    EYE             shift and go to state 22
+    ZEROS           shift and go to state 23
+    ONES            shift and go to state 24
+    FLOAT           shift and go to state 26
+    INT             shift and go to state 27
+    ID              shift and go to state 14
+    LSQUAR          shift and go to state 29
+
+    operation                      shift and go to state 108
+    object                         shift and go to state 25
+    matrix                         shift and go to state 28
+
 state 90
 
-    (53) while -> WHILE LPAREN bool RPAREN . pexpression
+    (29) bool -> operation NOTEQUALS . operation
+    (35) operation -> . operation PLUS operation
+    (36) operation -> . operation MINUS operation
+    (37) operation -> . operation TIMES operation
+    (38) operation -> . operation DIVIDE operation
+    (39) operation -> . operation DOTADD operation
+    (40) operation -> . operation DOTSUB operation
+    (41) operation -> . operation DOTMUL operation
+    (42) operation -> . operation DOTDIV operation
+    (43) operation -> . MINUS operation
+    (44) operation -> . operation TRANSPOSE
+    (45) operation -> . EYE LPAREN operation RPAREN
+    (46) operation -> . ZEROS LPAREN operation RPAREN
+    (47) operation -> . ONES LPAREN operation RPAREN
+    (48) operation -> . object
+    (49) operation -> . FLOAT
+    (50) operation -> . INT
+    (51) operation -> . matrix
+    (10) object -> . ID vector
+    (11) object -> . ID
+    (55) matrix -> . LSQUAR row RSQUAR
+
+    MINUS           shift and go to state 21
+    EYE             shift and go to state 22
+    ZEROS           shift and go to state 23
+    ONES            shift and go to state 24
+    FLOAT           shift and go to state 26
+    INT             shift and go to state 27
+    ID              shift and go to state 14
+    LSQUAR          shift and go to state 29
+
+    operation                      shift and go to state 109
+    object                         shift and go to state 25
+    matrix                         shift and go to state 28
+
+state 91
+
+    (54) while -> WHILE LPAREN bool RPAREN . pexpression
     (6) pexpression -> . LCURLY pexpression RCURLY
     (7) pexpression -> . LCURLY expression RCURLY
     (8) pexpression -> . line SEMICOLON
@@ -2563,172 +2624,176 @@ state 90
     (15) line -> . CONTINUE
     (16) line -> . RETURN
     (17) for -> . FOR ID EQUALS forable COLON pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
-    LCURLY          shift and go to state 99
+    LCURLY          shift and go to state 100
     PRINT           shift and go to state 7
     BREAK           shift and go to state 8
     CONTINUE        shift and go to state 9
     RETURN          shift and go to state 10
-    FOR             shift and go to state 102
+    FOR             shift and go to state 103
     ID              shift and go to state 14
 
-    pexpression                    shift and go to state 108
-    line                           shift and go to state 100
-    for                            shift and go to state 101
+    pexpression                    shift and go to state 110
+    line                           shift and go to state 101
+    for                            shift and go to state 102
     assign                         shift and go to state 6
     object                         shift and go to state 13
 
-state 91
-
-    (57) vector -> LSQUAR elem RSQUAR .
-
-    ASSIGN          reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    ADDASSIGN       reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    SUBASSIGN       reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    MULASSIGN       reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    DIVASSIGN       reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    PLUS            reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    MINUS           reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    TIMES           reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    DIVIDE          reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    DOTADD          reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    DOTSUB          reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    DOTMUL          reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    DOTDIV          reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    TRANSPOSE       reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    COMMA           reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    SEMICOLON       reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    MORE            reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    LESS            reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    MOREOREQ        reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    LESSOREQ        reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    EQUALS          reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    RPAREN          reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    COLON           reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-    RSQUAR          reduce using rule 57 (vector -> LSQUAR elem RSQUAR .)
-
-
 state 92
 
-    (58) elem -> elem COMMA . num
-    (60) num -> . INT
-    (61) num -> . FLOAT
+    (58) vector -> LSQUAR elem RSQUAR .
+
+    ASSIGN          reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    ADDASSIGN       reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    SUBASSIGN       reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    MULASSIGN       reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    DIVASSIGN       reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    PLUS            reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    MINUS           reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    TIMES           reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    DIVIDE          reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    DOTADD          reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    DOTSUB          reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    DOTMUL          reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    DOTDIV          reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    TRANSPOSE       reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    COMMA           reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    SEMICOLON       reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    MORE            reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    LESS            reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    MOREOREQ        reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    LESSOREQ        reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    EQUALS          reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    NOTEQUALS       reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    RPAREN          reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    COLON           reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+    RSQUAR          reduce using rule 58 (vector -> LSQUAR elem RSQUAR .)
+
+
+state 93
+
+    (59) elem -> elem COMMA . num
+    (61) num -> . INT
+    (62) num -> . FLOAT
 
     INT             shift and go to state 67
     FLOAT           shift and go to state 68
 
-    num                            shift and go to state 109
-
-state 93
-
-    (44) operation -> EYE LPAREN operation RPAREN .
-
-    PLUS            reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    MINUS           reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    TIMES           reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    DIVIDE          reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    DOTADD          reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    DOTSUB          reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    DOTMUL          reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    DOTDIV          reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    TRANSPOSE       reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    COMMA           reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    SEMICOLON       reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    MORE            reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    LESS            reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    MOREOREQ        reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    LESSOREQ        reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    EQUALS          reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-    RPAREN          reduce using rule 44 (operation -> EYE LPAREN operation RPAREN .)
-
+    num                            shift and go to state 111
 
 state 94
 
-    (45) operation -> ZEROS LPAREN operation RPAREN .
+    (45) operation -> EYE LPAREN operation RPAREN .
 
-    PLUS            reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    MINUS           reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    TIMES           reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    DIVIDE          reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    DOTADD          reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    DOTSUB          reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    DOTMUL          reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    DOTDIV          reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    TRANSPOSE       reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    COMMA           reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    SEMICOLON       reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    MORE            reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    LESS            reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    MOREOREQ        reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    LESSOREQ        reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    EQUALS          reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
-    RPAREN          reduce using rule 45 (operation -> ZEROS LPAREN operation RPAREN .)
+    PLUS            reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    MINUS           reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    TIMES           reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    DIVIDE          reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    DOTADD          reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    DOTSUB          reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    DOTMUL          reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    DOTDIV          reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    TRANSPOSE       reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    COMMA           reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    SEMICOLON       reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    MORE            reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    LESS            reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    MOREOREQ        reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    LESSOREQ        reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    EQUALS          reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    NOTEQUALS       reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
+    RPAREN          reduce using rule 45 (operation -> EYE LPAREN operation RPAREN .)
 
 
 state 95
 
-    (46) operation -> ONES LPAREN operation RPAREN .
+    (46) operation -> ZEROS LPAREN operation RPAREN .
 
-    PLUS            reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    MINUS           reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    TIMES           reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    DIVIDE          reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    DOTADD          reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    DOTSUB          reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    DOTMUL          reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    DOTDIV          reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    TRANSPOSE       reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    COMMA           reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    SEMICOLON       reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    MORE            reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    LESS            reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    MOREOREQ        reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    LESSOREQ        reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    EQUALS          reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
-    RPAREN          reduce using rule 46 (operation -> ONES LPAREN operation RPAREN .)
+    PLUS            reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    MINUS           reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    TIMES           reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    DIVIDE          reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    DOTADD          reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    DOTSUB          reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    DOTMUL          reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    DOTDIV          reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    TRANSPOSE       reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    COMMA           reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    SEMICOLON       reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    MORE            reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    LESS            reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    MOREOREQ        reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    LESSOREQ        reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    EQUALS          reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    NOTEQUALS       reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
+    RPAREN          reduce using rule 46 (operation -> ZEROS LPAREN operation RPAREN .)
 
 
 state 96
 
-    (55) row -> row COMMA vector .
+    (47) operation -> ONES LPAREN operation RPAREN .
 
-    RSQUAR          reduce using rule 55 (row -> row COMMA vector .)
-    COMMA           reduce using rule 55 (row -> row COMMA vector .)
+    PLUS            reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    MINUS           reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    TIMES           reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    DIVIDE          reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    DOTADD          reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    DOTSUB          reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    DOTMUL          reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    DOTDIV          reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    TRANSPOSE       reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    COMMA           reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    SEMICOLON       reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    MORE            reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    LESS            reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    MOREOREQ        reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    LESSOREQ        reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    EQUALS          reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    NOTEQUALS       reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
+    RPAREN          reduce using rule 47 (operation -> ONES LPAREN operation RPAREN .)
 
 
 state 97
+
+    (56) row -> row COMMA vector .
+
+    RSQUAR          reduce using rule 56 (row -> row COMMA vector .)
+    COMMA           reduce using rule 56 (row -> row COMMA vector .)
+
+
+state 98
 
     (23) bool -> LPAREN bool RPAREN .
 
     RPAREN          reduce using rule 23 (bool -> LPAREN bool RPAREN .)
 
 
-state 98
-
-    (51) ifelse -> IF LPAREN bool RPAREN pexpression .
-    (52) ifelse -> IF LPAREN bool RPAREN pexpression . ELSE pexpression
-
-    LCURLY          reduce using rule 51 (ifelse -> IF LPAREN bool RPAREN pexpression .)
-    PRINT           reduce using rule 51 (ifelse -> IF LPAREN bool RPAREN pexpression .)
-    BREAK           reduce using rule 51 (ifelse -> IF LPAREN bool RPAREN pexpression .)
-    CONTINUE        reduce using rule 51 (ifelse -> IF LPAREN bool RPAREN pexpression .)
-    RETURN          reduce using rule 51 (ifelse -> IF LPAREN bool RPAREN pexpression .)
-    IF              reduce using rule 51 (ifelse -> IF LPAREN bool RPAREN pexpression .)
-    WHILE           reduce using rule 51 (ifelse -> IF LPAREN bool RPAREN pexpression .)
-    ID              reduce using rule 51 (ifelse -> IF LPAREN bool RPAREN pexpression .)
-    $end            reduce using rule 51 (ifelse -> IF LPAREN bool RPAREN pexpression .)
-    RCURLY          reduce using rule 51 (ifelse -> IF LPAREN bool RPAREN pexpression .)
-    ELSE            shift and go to state 110
-
-
 state 99
+
+    (52) ifelse -> IF LPAREN bool RPAREN pexpression .
+    (53) ifelse -> IF LPAREN bool RPAREN pexpression . ELSE pexpression
+
+    LCURLY          reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression .)
+    PRINT           reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression .)
+    BREAK           reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression .)
+    CONTINUE        reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression .)
+    RETURN          reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression .)
+    IF              reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression .)
+    WHILE           reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression .)
+    ID              reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression .)
+    $end            reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression .)
+    RCURLY          reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression .)
+    ELSE            shift and go to state 112
+
+
+state 100
 
     (6) pexpression -> LCURLY . pexpression RCURLY
     (7) pexpression -> LCURLY . expression RCURLY
@@ -2747,44 +2812,44 @@ state 99
     (15) line -> . CONTINUE
     (16) line -> . RETURN
     (17) for -> . FOR ID EQUALS forable COLON pexpression
-    (51) ifelse -> . IF LPAREN bool RPAREN pexpression
-    (52) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
-    (53) while -> . WHILE LPAREN bool RPAREN pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (52) ifelse -> . IF LPAREN bool RPAREN pexpression
+    (53) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
+    (54) while -> . WHILE LPAREN bool RPAREN pexpression
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
-    LCURLY          shift and go to state 111
+    LCURLY          shift and go to state 113
     PRINT           shift and go to state 7
     BREAK           shift and go to state 8
     CONTINUE        shift and go to state 9
     RETURN          shift and go to state 10
-    FOR             shift and go to state 102
+    FOR             shift and go to state 103
     IF              shift and go to state 11
     WHILE           shift and go to state 12
     ID              shift and go to state 14
 
-    pexpression                    shift and go to state 112
-    expression                     shift and go to state 113
-    line                           shift and go to state 114
-    for                            shift and go to state 101
+    pexpression                    shift and go to state 114
+    expression                     shift and go to state 115
+    line                           shift and go to state 116
+    for                            shift and go to state 102
     ifelse                         shift and go to state 4
     while                          shift and go to state 5
     assign                         shift and go to state 6
     object                         shift and go to state 13
 
-state 100
+state 101
 
     (8) pexpression -> line . SEMICOLON
 
-    SEMICOLON       shift and go to state 115
+    SEMICOLON       shift and go to state 117
 
 
-state 101
+state 102
 
     (9) pexpression -> for .
 
@@ -2801,25 +2866,25 @@ state 101
     RCURLY          reduce using rule 9 (pexpression -> for .)
 
 
-state 102
+state 103
 
     (17) for -> FOR . ID EQUALS forable COLON pexpression
 
-    ID              shift and go to state 116
+    ID              shift and go to state 118
 
 
-state 103
+state 104
 
     (24) bool -> operation MORE operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
     RPAREN          reduce using rule 24 (bool -> operation MORE operation .)
     PLUS            shift and go to state 41
@@ -2833,18 +2898,18 @@ state 103
     TRANSPOSE       shift and go to state 49
 
 
-state 104
+state 105
 
     (25) bool -> operation LESS operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
     RPAREN          reduce using rule 25 (bool -> operation LESS operation .)
     PLUS            shift and go to state 41
@@ -2858,18 +2923,18 @@ state 104
     TRANSPOSE       shift and go to state 49
 
 
-state 105
+state 106
 
     (26) bool -> operation MOREOREQ operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
     RPAREN          reduce using rule 26 (bool -> operation MOREOREQ operation .)
     PLUS            shift and go to state 41
@@ -2883,18 +2948,18 @@ state 105
     TRANSPOSE       shift and go to state 49
 
 
-state 106
+state 107
 
     (27) bool -> operation LESSOREQ operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
     RPAREN          reduce using rule 27 (bool -> operation LESSOREQ operation .)
     PLUS            shift and go to state 41
@@ -2908,18 +2973,18 @@ state 106
     TRANSPOSE       shift and go to state 49
 
 
-state 107
+state 108
 
     (28) bool -> operation EQUALS operation .
-    (34) operation -> operation . PLUS operation
-    (35) operation -> operation . MINUS operation
-    (36) operation -> operation . TIMES operation
-    (37) operation -> operation . DIVIDE operation
-    (38) operation -> operation . DOTADD operation
-    (39) operation -> operation . DOTSUB operation
-    (40) operation -> operation . DOTMUL operation
-    (41) operation -> operation . DOTDIV operation
-    (43) operation -> operation . TRANSPOSE
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
     RPAREN          reduce using rule 28 (bool -> operation EQUALS operation .)
     PLUS            shift and go to state 41
@@ -2933,33 +2998,58 @@ state 107
     TRANSPOSE       shift and go to state 49
 
 
-state 108
-
-    (53) while -> WHILE LPAREN bool RPAREN pexpression .
-
-    LCURLY          reduce using rule 53 (while -> WHILE LPAREN bool RPAREN pexpression .)
-    PRINT           reduce using rule 53 (while -> WHILE LPAREN bool RPAREN pexpression .)
-    BREAK           reduce using rule 53 (while -> WHILE LPAREN bool RPAREN pexpression .)
-    CONTINUE        reduce using rule 53 (while -> WHILE LPAREN bool RPAREN pexpression .)
-    RETURN          reduce using rule 53 (while -> WHILE LPAREN bool RPAREN pexpression .)
-    IF              reduce using rule 53 (while -> WHILE LPAREN bool RPAREN pexpression .)
-    WHILE           reduce using rule 53 (while -> WHILE LPAREN bool RPAREN pexpression .)
-    ID              reduce using rule 53 (while -> WHILE LPAREN bool RPAREN pexpression .)
-    $end            reduce using rule 53 (while -> WHILE LPAREN bool RPAREN pexpression .)
-    RCURLY          reduce using rule 53 (while -> WHILE LPAREN bool RPAREN pexpression .)
-
-
 state 109
 
-    (58) elem -> elem COMMA num .
+    (29) bool -> operation NOTEQUALS operation .
+    (35) operation -> operation . PLUS operation
+    (36) operation -> operation . MINUS operation
+    (37) operation -> operation . TIMES operation
+    (38) operation -> operation . DIVIDE operation
+    (39) operation -> operation . DOTADD operation
+    (40) operation -> operation . DOTSUB operation
+    (41) operation -> operation . DOTMUL operation
+    (42) operation -> operation . DOTDIV operation
+    (44) operation -> operation . TRANSPOSE
 
-    RSQUAR          reduce using rule 58 (elem -> elem COMMA num .)
-    COMMA           reduce using rule 58 (elem -> elem COMMA num .)
+    RPAREN          reduce using rule 29 (bool -> operation NOTEQUALS operation .)
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+    TIMES           shift and go to state 43
+    DIVIDE          shift and go to state 44
+    DOTADD          shift and go to state 45
+    DOTSUB          shift and go to state 46
+    DOTMUL          shift and go to state 47
+    DOTDIV          shift and go to state 48
+    TRANSPOSE       shift and go to state 49
 
 
 state 110
 
-    (52) ifelse -> IF LPAREN bool RPAREN pexpression ELSE . pexpression
+    (54) while -> WHILE LPAREN bool RPAREN pexpression .
+
+    LCURLY          reduce using rule 54 (while -> WHILE LPAREN bool RPAREN pexpression .)
+    PRINT           reduce using rule 54 (while -> WHILE LPAREN bool RPAREN pexpression .)
+    BREAK           reduce using rule 54 (while -> WHILE LPAREN bool RPAREN pexpression .)
+    CONTINUE        reduce using rule 54 (while -> WHILE LPAREN bool RPAREN pexpression .)
+    RETURN          reduce using rule 54 (while -> WHILE LPAREN bool RPAREN pexpression .)
+    IF              reduce using rule 54 (while -> WHILE LPAREN bool RPAREN pexpression .)
+    WHILE           reduce using rule 54 (while -> WHILE LPAREN bool RPAREN pexpression .)
+    ID              reduce using rule 54 (while -> WHILE LPAREN bool RPAREN pexpression .)
+    $end            reduce using rule 54 (while -> WHILE LPAREN bool RPAREN pexpression .)
+    RCURLY          reduce using rule 54 (while -> WHILE LPAREN bool RPAREN pexpression .)
+
+
+state 111
+
+    (59) elem -> elem COMMA num .
+
+    RSQUAR          reduce using rule 59 (elem -> elem COMMA num .)
+    COMMA           reduce using rule 59 (elem -> elem COMMA num .)
+
+
+state 112
+
+    (53) ifelse -> IF LPAREN bool RPAREN pexpression ELSE . pexpression
     (6) pexpression -> . LCURLY pexpression RCURLY
     (7) pexpression -> . LCURLY expression RCURLY
     (8) pexpression -> . line SEMICOLON
@@ -2970,29 +3060,29 @@ state 110
     (15) line -> . CONTINUE
     (16) line -> . RETURN
     (17) for -> . FOR ID EQUALS forable COLON pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
-    LCURLY          shift and go to state 99
+    LCURLY          shift and go to state 100
     PRINT           shift and go to state 7
     BREAK           shift and go to state 8
     CONTINUE        shift and go to state 9
     RETURN          shift and go to state 10
-    FOR             shift and go to state 102
+    FOR             shift and go to state 103
     ID              shift and go to state 14
 
-    pexpression                    shift and go to state 117
-    line                           shift and go to state 100
-    for                            shift and go to state 101
+    pexpression                    shift and go to state 119
+    line                           shift and go to state 101
+    for                            shift and go to state 102
     assign                         shift and go to state 6
     object                         shift and go to state 13
 
-state 111
+state 113
 
     (6) pexpression -> LCURLY . pexpression RCURLY
     (7) pexpression -> LCURLY . expression RCURLY
@@ -3012,44 +3102,44 @@ state 111
     (15) line -> . CONTINUE
     (16) line -> . RETURN
     (17) for -> . FOR ID EQUALS forable COLON pexpression
-    (51) ifelse -> . IF LPAREN bool RPAREN pexpression
-    (52) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
-    (53) while -> . WHILE LPAREN bool RPAREN pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (52) ifelse -> . IF LPAREN bool RPAREN pexpression
+    (53) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
+    (54) while -> . WHILE LPAREN bool RPAREN pexpression
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
-    LCURLY          shift and go to state 111
+    LCURLY          shift and go to state 113
     PRINT           shift and go to state 7
     BREAK           shift and go to state 8
     CONTINUE        shift and go to state 9
     RETURN          shift and go to state 10
-    FOR             shift and go to state 102
+    FOR             shift and go to state 103
     IF              shift and go to state 11
     WHILE           shift and go to state 12
     ID              shift and go to state 14
 
-    pexpression                    shift and go to state 112
-    expression                     shift and go to state 118
-    line                           shift and go to state 114
-    for                            shift and go to state 101
+    pexpression                    shift and go to state 114
+    expression                     shift and go to state 120
+    line                           shift and go to state 116
+    for                            shift and go to state 102
     ifelse                         shift and go to state 4
     while                          shift and go to state 5
     assign                         shift and go to state 6
     object                         shift and go to state 13
 
-state 112
+state 114
 
     (6) pexpression -> LCURLY pexpression . RCURLY
 
-    RCURLY          shift and go to state 119
+    RCURLY          shift and go to state 121
 
 
-state 113
+state 115
 
     (7) pexpression -> LCURLY expression . RCURLY
     (2) expression -> expression . expression
@@ -3063,18 +3153,18 @@ state 113
     (14) line -> . BREAK
     (15) line -> . CONTINUE
     (16) line -> . RETURN
-    (51) ifelse -> . IF LPAREN bool RPAREN pexpression
-    (52) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
-    (53) while -> . WHILE LPAREN bool RPAREN pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (52) ifelse -> . IF LPAREN bool RPAREN pexpression
+    (53) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
+    (54) while -> . WHILE LPAREN bool RPAREN pexpression
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
-    RCURLY          shift and go to state 120
+    RCURLY          shift and go to state 122
     LCURLY          shift and go to state 3
     PRINT           shift and go to state 7
     BREAK           shift and go to state 8
@@ -3091,15 +3181,15 @@ state 113
     assign                         shift and go to state 6
     object                         shift and go to state 13
 
-state 114
+state 116
 
     (8) pexpression -> line . SEMICOLON
     (1) expression -> line . SEMICOLON
 
-    SEMICOLON       shift and go to state 121
+    SEMICOLON       shift and go to state 123
 
 
-state 115
+state 117
 
     (8) pexpression -> line SEMICOLON .
 
@@ -3116,30 +3206,30 @@ state 115
     RCURLY          reduce using rule 8 (pexpression -> line SEMICOLON .)
 
 
-state 116
+state 118
 
     (17) for -> FOR ID . EQUALS forable COLON pexpression
 
-    EQUALS          shift and go to state 122
+    EQUALS          shift and go to state 124
 
 
-state 117
+state 119
 
-    (52) ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .
+    (53) ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .
 
-    LCURLY          reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
-    PRINT           reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
-    BREAK           reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
-    CONTINUE        reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
-    RETURN          reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
-    IF              reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
-    WHILE           reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
-    ID              reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
-    $end            reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
-    RCURLY          reduce using rule 52 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
+    LCURLY          reduce using rule 53 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
+    PRINT           reduce using rule 53 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
+    BREAK           reduce using rule 53 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
+    CONTINUE        reduce using rule 53 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
+    RETURN          reduce using rule 53 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
+    IF              reduce using rule 53 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
+    WHILE           reduce using rule 53 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
+    ID              reduce using rule 53 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
+    $end            reduce using rule 53 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
+    RCURLY          reduce using rule 53 (ifelse -> IF LPAREN bool RPAREN pexpression ELSE pexpression .)
 
 
-state 118
+state 120
 
     (7) pexpression -> LCURLY expression . RCURLY
     (3) expression -> LCURLY expression . RCURLY
@@ -3154,18 +3244,18 @@ state 118
     (14) line -> . BREAK
     (15) line -> . CONTINUE
     (16) line -> . RETURN
-    (51) ifelse -> . IF LPAREN bool RPAREN pexpression
-    (52) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
-    (53) while -> . WHILE LPAREN bool RPAREN pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (52) ifelse -> . IF LPAREN bool RPAREN pexpression
+    (53) ifelse -> . IF LPAREN bool RPAREN pexpression ELSE pexpression
+    (54) while -> . WHILE LPAREN bool RPAREN pexpression
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
-    RCURLY          shift and go to state 123
+    RCURLY          shift and go to state 125
     LCURLY          shift and go to state 3
     PRINT           shift and go to state 7
     BREAK           shift and go to state 8
@@ -3182,7 +3272,7 @@ state 118
     assign                         shift and go to state 6
     object                         shift and go to state 13
 
-state 119
+state 121
 
     (6) pexpression -> LCURLY pexpression RCURLY .
 
@@ -3199,7 +3289,7 @@ state 119
     RCURLY          reduce using rule 6 (pexpression -> LCURLY pexpression RCURLY .)
 
 
-state 120
+state 122
 
     (7) pexpression -> LCURLY expression RCURLY .
 
@@ -3216,7 +3306,7 @@ state 120
     RCURLY          reduce using rule 7 (pexpression -> LCURLY expression RCURLY .)
 
 
-state 121
+state 123
 
     (8) pexpression -> line SEMICOLON .
     (1) expression -> line SEMICOLON .
@@ -3235,7 +3325,7 @@ state 121
   ! RCURLY          [ reduce using rule 8 (pexpression -> line SEMICOLON .) ]
 
 
-state 122
+state 124
 
     (17) for -> FOR ID EQUALS . forable COLON pexpression
     (21) forable -> . object
@@ -3243,13 +3333,13 @@ state 122
     (10) object -> . ID vector
     (11) object -> . ID
 
-    INT             shift and go to state 126
+    INT             shift and go to state 128
     ID              shift and go to state 14
 
-    forable                        shift and go to state 124
-    object                         shift and go to state 125
+    forable                        shift and go to state 126
+    object                         shift and go to state 127
 
-state 123
+state 125
 
     (7) pexpression -> LCURLY expression RCURLY .
     (3) expression -> LCURLY expression RCURLY .
@@ -3268,28 +3358,28 @@ state 123
   ! RCURLY          [ reduce using rule 7 (pexpression -> LCURLY expression RCURLY .) ]
 
 
-state 124
+state 126
 
     (17) for -> FOR ID EQUALS forable . COLON pexpression
 
-    COLON           shift and go to state 127
+    COLON           shift and go to state 129
 
 
-state 125
+state 127
 
     (21) forable -> object .
 
     COLON           reduce using rule 21 (forable -> object .)
 
 
-state 126
+state 128
 
     (22) forable -> INT .
 
     COLON           reduce using rule 22 (forable -> INT .)
 
 
-state 127
+state 129
 
     (17) for -> FOR ID EQUALS forable COLON . pexpression
     (6) pexpression -> . LCURLY pexpression RCURLY
@@ -3302,29 +3392,29 @@ state 127
     (15) line -> . CONTINUE
     (16) line -> . RETURN
     (17) for -> . FOR ID EQUALS forable COLON pexpression
-    (29) assign -> . object ASSIGN operation
-    (30) assign -> . object ADDASSIGN operation
-    (31) assign -> . object SUBASSIGN operation
-    (32) assign -> . object MULASSIGN operation
-    (33) assign -> . object DIVASSIGN operation
+    (30) assign -> . object ASSIGN operation
+    (31) assign -> . object ADDASSIGN operation
+    (32) assign -> . object SUBASSIGN operation
+    (33) assign -> . object MULASSIGN operation
+    (34) assign -> . object DIVASSIGN operation
     (10) object -> . ID vector
     (11) object -> . ID
 
-    LCURLY          shift and go to state 99
+    LCURLY          shift and go to state 100
     PRINT           shift and go to state 7
     BREAK           shift and go to state 8
     CONTINUE        shift and go to state 9
     RETURN          shift and go to state 10
-    FOR             shift and go to state 102
+    FOR             shift and go to state 103
     ID              shift and go to state 14
 
-    pexpression                    shift and go to state 128
-    line                           shift and go to state 100
-    for                            shift and go to state 101
+    pexpression                    shift and go to state 130
+    line                           shift and go to state 101
+    for                            shift and go to state 102
     assign                         shift and go to state 6
     object                         shift and go to state 13
 
-state 128
+state 130
 
     (17) for -> FOR ID EQUALS forable COLON pexpression .
 
@@ -3352,7 +3442,7 @@ WARNING: shift/reduce conflict for IF in state 15 resolved as shift
 WARNING: shift/reduce conflict for WHILE in state 15 resolved as shift
 WARNING: shift/reduce conflict for ID in state 15 resolved as shift
 WARNING: shift/reduce conflict for COMMA in state 69 resolved as shift
-WARNING: reduce/reduce conflict in state 121 resolved using rule (expression -> line SEMICOLON)
-WARNING: rejected rule (pexpression -> line SEMICOLON) in state 121
-WARNING: reduce/reduce conflict in state 123 resolved using rule (expression -> LCURLY expression RCURLY)
-WARNING: rejected rule (pexpression -> LCURLY expression RCURLY) in state 123
+WARNING: reduce/reduce conflict in state 123 resolved using rule (expression -> line SEMICOLON)
+WARNING: rejected rule (pexpression -> line SEMICOLON) in state 123
+WARNING: reduce/reduce conflict in state 125 resolved using rule (expression -> LCURLY expression RCURLY)
+WARNING: rejected rule (pexpression -> LCURLY expression RCURLY) in state 125

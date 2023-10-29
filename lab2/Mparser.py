@@ -7,7 +7,7 @@ tokens = scanner.tokens
 
 precedence = (
     ("left", 'ASSIGN', 'ADDASSIGN', 'SUBASSIGN', 'MULASSIGN', 'DIVASSIGN'),
-    ("left", 'MORE', 'LESS', 'MOREOREQ', 'LESSOREQ', 'EQUALS'),
+    ("left", 'MORE', 'LESS', 'MOREOREQ', 'LESSOREQ', 'EQUALS', 'NOTEQUALS'),
     ("left", 'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
      'DOTADD', 'DOTSUB', 'DOTMUL', 'DOTDIV'),
     ("left", 'TRANSPOSE')
@@ -73,7 +73,8 @@ def p_expression_bool(p):
             | operation LESS operation 
             | operation MOREOREQ operation 
             | operation LESSOREQ operation 
-            | operation EQUALS operation '''
+            | operation EQUALS operation
+            | operation NOTEQUALS operation '''
 
 
 def p_expression_assign(p):

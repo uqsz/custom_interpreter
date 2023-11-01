@@ -11,7 +11,6 @@ precedence = (
     ("left", 'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
      'DOTADD', 'DOTSUB', 'DOTMUL', 'DOTDIV'),
     ("left", 'TRANSPOSE')
-    # to fill ...
 )
 
 
@@ -23,60 +22,39 @@ def p_error(p):
         print("Unexpected end of input")
 
 
-def p_expression_exp(p):
-    '''expression : expression expression
-                  | pexpression'''
+def p_expression(p):  # 1
+    '''expression : expression instruction
+                  | instruction'''
 
 
-def p_expression_pexp(p):
-    '''pexpression : LCURLY pexpression RCURLY
-                  | LCURLY expression RCURLY
+def p_instruction(p):  # 2
+    '''instruction : LCURLY expression RCURLY
                   | line SEMICOLON
-                  | for 
-                  | ifelse 
-                  | while '''
+                  | for_state 
+                  | ifelse_state 
+                  | while_state '''
 
 
-def p_expression_obj(p):
-    ''' object : ID vector
-                | ID'''
-
-
-def p_expression_line(p):
+def p_line(p):  # 3
     ''' line : assign
-                | PRINT printable
-                | BREAK
-                | CONTINUE
-                | RETURN printable
-                | RETURN'''
+            | PRINT print_state
+            | BREAK
+            | CONTINUE
+            | RETURN print_state
+            | RETURN '''
 
 
-def p_expression_for(p):
-    ''' for : FOR ID ASSIGN forable COLON forable pexpression '''
+def p_print_state(p):  # 4
+    ''' print_state : printable COMMA print_state 
+                    | printable '''
 
 
-def p_expression_printable(p):
-    ''' printable : printable COMMA printable
-                    | operation
-                    | STRING '''
+def p_printable(p):  # 5
+    ''' printable : operation
+                | STRING '''
 
 
-def p_expression_forable(p):
-    ''' forable : object 
-                | INT '''
-
-
-def p_expression_bool(p):
-    ''' bool : LPAREN bool RPAREN 
-            | operation MORE operation 
-            | operation LESS operation 
-            | operation MOREOREQ operation 
-            | operation LESSOREQ operation 
-            | operation EQUALS operation
-            | operation NOTEQUALS operation '''
-
-
-def p_expression_assign(p):
+def p_assign(p):  # 6
     ''' assign : object ASSIGN operation 
             | object ADDASSIGN operation 
             | object SUBASSIGN operation 
@@ -84,7 +62,7 @@ def p_expression_assign(p):
             | object DIVASSIGN operation '''
 
 
-def p_expression_operation(p):
+def p_operation(p):  # 7
     ''' operation : operation PLUS operation
                 | operation MINUS operation 
                 | operation TIMES operation 
@@ -99,46 +77,63 @@ def p_expression_operation(p):
                 | ZEROS LPAREN operation RPAREN
                 | ONES LPAREN operation RPAREN
                 | object
-                | FLOAT
-                | INT 
+                | number
                 | matrix '''
 
 
-def p_expression_ifelse(p):
-    ''' ifelse : IF LPAREN bool RPAREN pexpression
-                | IF LPAREN bool RPAREN pexpression elif'''
+def p_bool(p):  # 8
+    ''' bool : LPAREN bool RPAREN 
+            | operation MORE operation 
+            | operation LESS operation 
+            | operation MOREOREQ operation 
+            | operation LESSOREQ operation 
+            | operation EQUALS operation
+            | operation NOTEQUALS operation '''
 
 
-def p_expresssion_elif(p):
-    '''elif : ELSE IF LPAREN bool RPAREN pexpression elif
-            | ELSE IF LPAREN bool RPAREN pexpression
-            | ELSE pexpression'''
+def p_object(p):  # 9
+    ''' object : ID vector
+            | ID '''
 
 
-def p_expression_while(p):
-    ''' while : WHILE LPAREN bool RPAREN pexpression'''
+def p_ifelse_state(p):  # 10
+    ''' ifelse_state : IF LPAREN bool RPAREN instruction
+                    | IF LPAREN bool RPAREN instruction ELSE instruction'''
 
 
-def p_expression_matrix(p):
+def p_while_state(p):  # 11
+    ''' while_state : WHILE LPAREN bool RPAREN instruction'''
+
+
+def p_for_state(p):  # 12
+    ''' for_state : FOR ID ASSIGN forable COLON forable instruction '''
+
+
+def p_forable(p):  # 13
+    ''' forable : object 
+                | INT '''
+
+
+def p_matrix(p):  # 14
     ''' matrix : LSQUAR row RSQUAR'''
 
 
-def p_expression_row(p):
+def p_row(p):  # 15
     ''' row : row COMMA vector 
                 | vector '''
 
 
-def p_expression_vector(p):
+def p_vector(p):  # 16
     ''' vector : LSQUAR elem RSQUAR '''
 
 
-def p_expression_elem(p):
-    ''' elem : elem COMMA num 
-                | num'''
+def p_elem(p):  # 17
+    ''' elem : elem COMMA number 
+                | number'''
 
 
-def p_expression_num(p):
-    ''' num : INT 
+def p_number(p):  # 18
+    ''' number : INT 
             | FLOAT'''
 
 

@@ -1,7 +1,7 @@
 
 import scanner as scanner
 import ply.yacc as yacc
-
+import AST
 
 tokens = scanner.tokens
 
@@ -61,6 +61,8 @@ def p_assign(p):  # 6
             | object MULASSIGN operation 
             | object DIVASSIGN operation '''
 
+    p[0] = AST.BinExpr(p[2], p[1], p[3])
+
 
 def p_operation(p):  # 7
     ''' operation : operation PLUS operation
@@ -80,6 +82,18 @@ def p_operation(p):  # 7
                 | number
                 | matrix '''
 
+    if len(p) == 4 and p[2] in ['PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'DOTADD', 'DOTMINUS', 'DOTMUL', 'DOTDIV']:
+        p[0] = AST.BinExpr(p[2], p[1], p[3])
+
+    if len(p) == 3:
+        if p[1] in ['MINUS', 'EYE', 'ZEROS', 'ONES']:
+            p[0] = AST.UnaryExpr(p[1], p[2])
+        elif p[2] == 'TRANSPOSE':
+            p[0] = AST.UnaryExpr(p[2], p[1])
+
+    elif len(p) == 2 and p[1] in ['object', 'matrix', 'number']:
+        p[0] = AST.Variable(p[1])
+
 
 def p_bool(p):  # 8
     ''' bool : LPAREN bool RPAREN 
@@ -89,6 +103,10 @@ def p_bool(p):  # 8
             | operation LESSOREQ operation 
             | operation EQUALS operation
             | operation NOTEQUALS operation '''
+    if p[2] in ['>', '<', '>=', '<=', '==', '!=']:
+        p[0] = AST.BinExpr(p[2], p[1], p[3])
+    else:
+        p[0] = AST.Parenth(p[2])
 
 
 def p_object(p):  # 9

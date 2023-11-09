@@ -8,6 +8,7 @@ class IntNum(Node):
     def __init__(self, value):
         self.value = value
 
+
 class FloatNum(Node):
 
     def __init__(self, value):
@@ -26,6 +27,17 @@ class BinExpr(Node):
         self.right = right
 
 
+class UnaryExpr(Node):
+    def __init__(self, op, expr):
+        self.op = op
+        self.object = expr
+
+
+class Parenth(Node):
+    def __init__(self, expr):
+        self.op = expr
+
+
 # ...
 # fill out missing classes
 # ...
@@ -33,4 +45,3 @@ class BinExpr(Node):
 class Error(Node):
     def __init__(self):
         pass
-      

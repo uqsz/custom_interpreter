@@ -48,7 +48,7 @@ class TreePrinter:
     @addToClass(AST.Recursion)
     def printTree(self, indent=0):
         self.left.printTree(indent)
-        self.right.printTree(indent+1)
+        self.right.printTree(indent)
 
     @addToClass(AST.PrintExpr)
     def printTree(self, indent=0):
@@ -69,22 +69,35 @@ class TreePrinter:
     @addToClass(AST.IfInstruction)
     def printTree(self, indent=0):
         print(SEP*indent, "IF")
-        self.to_return.printTree(indent + 1)
+        self.cond.printTree(indent + 1)
+        print(SEP*indent, "THEN")
+        self.instruction.printTree(indent + 1)
 
     @addToClass(AST.IfElseInstruction)
     def printTree(self, indent=0):
-        print(SEP*indent, "RETURN")
-        self.to_return.printTree(indent + 1)
+        print(SEP*indent, "IF")
+        self.cond.printTree(indent + 1)
+        print(SEP*indent, "THEN")
+        self.instruction_if.printTree(indent + 1)
+        print(SEP*indent, "ELSE")
+        self.instruction_else.printTree(indent + 1)
 
     @addToClass(AST.WhileInstruction)
     def printTree(self, indent=0):
-        print(SEP*indent, "RETURN")
-        self.to_return.printTree(indent + 1)
+        print(SEP*indent, "WHILE")
+        self.cond.printTree(indent + 1)
+        print(SEP*indent, "THEN")
+        self.instruction.printTree(indent + 1)
 
     @addToClass(AST.ForInstruction)
     def printTree(self, indent=0):
-        print(SEP*indent, "RETURN")
-        self.to_return.printTree(indent + 1)
+        print(SEP*indent, "FOR")
+        print(SEP*indent, self.iterator)
+        print(SEP*indent, "RANGE")
+        print(SEP*indent, self.start)
+        print(SEP*indent, self.end)
+        self.instruction.printTree(indent + 1)
+
 
     @addToClass(AST.Vector)
     def printTree(self, indent=0):

@@ -113,11 +113,12 @@ def p_operation(p):  # 7
         p[0] = AST.BinExpr(p[2], p[1], p[3])
 
     elif len(p) == 3:
-        if p[1] == 'MINUS':
-            p[0] = AST.UnaryExpr(p[1], p[2])
+        if p[1] == '-':
+            p[0] = AST.UnaryExpr("MINUS", p[2])
 
-        elif p[2] == 'TRANSPOSE':
-            p[0] = AST.UnaryExpr(p[2], p[1])
+        elif p[2] == '\'':
+            p[0] = AST.UnaryExpr("TRANSPOSE", p[1])
+
     elif len(p) == 2:
         p[0] = p[1]
 
@@ -130,6 +131,7 @@ def p_bool(p):  # 8
             | operation LESSOREQ operation 
             | operation EQUALS operation
             | operation NOTEQUALS operation '''
+
     if p[2] in ['>', '<', '>=', '<=', '==', '!=']:
         p[0] = AST.BinExpr(p[2], p[1], p[3])
     else:

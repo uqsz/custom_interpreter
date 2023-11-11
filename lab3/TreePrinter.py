@@ -1,6 +1,6 @@
 from __future__ import print_function
 import AST
-
+SEP = '|  '
 
 def addToClass(cls):
 
@@ -19,30 +19,30 @@ class TreePrinter:
 
     @addToClass(AST.IntNum)
     def printTree(self, indent=0):
-        print(self.value)
+        print(SEP*indent, self.value)
 
     @addToClass(AST.FloatNum)
     def printTree(self, indent=0):
-        print(self.value)
+        print(SEP*indent, self.value)
 
     @addToClass(AST.String)
     def printTree(self, indent=0):
-        print(self.string)
+        print(SEP*indent, self.string)
 
     @addToClass(AST.Variable)
     def printTree(self, indent=0):
-        print(self.name)
+        print(SEP*indent, self.name)
 
     @addToClass(AST.BinExpr)
     def printTree(self, indent):
-        print(self.op)
+        print(SEP*indent, self.op)
         self.left.printTree(indent + 1)
         if (self.right != None):
             self.right.printTree(indent + 1)
 
     @addToClass(AST.UnaryExpr)
     def printTree(self, indent=0):
-        print(self.op)
+        print(SEP*indent, self.op)
         self.expr.printTree(indent + 1)
 
     @addToClass(AST.Recursion)
@@ -52,48 +52,43 @@ class TreePrinter:
 
     @addToClass(AST.PrintExpr)
     def printTree(self, indent=0):
-        print("PRINT")
-        self.to_print.printTree(indent + 1)
-
-    @addToClass(AST.PrintExpr)
-    def printTree(self, indent=0):
-        print("PRINT")
+        print(SEP*indent, "PRINT")
         self.to_print.printTree(indent + 1)
 
     @addToClass(AST.ReturnExpr)
     def printTree(self, indent=0):
-        print("RETURN")
+        print(SEP*indent, "RETURN")
         self.to_return.printTree(indent + 1)
 
     @addToClass(AST.Reference)
     def printTree(self, indent=0):
-        print("REF")
-        print(self.name)
+        print(SEP*indent, "REF")
+        print(SEP*indent, self.name)
         self.vect.printTree(indent + 1)
 
     @addToClass(AST.IfInstruction)
     def printTree(self, indent=0):
-        print("IF")
+        print(SEP*indent, "IF")
         self.to_return.printTree(indent + 1)
 
     @addToClass(AST.IfElseInstruction)
     def printTree(self, indent=0):
-        print("RETURN")
+        print(SEP*indent, "RETURN")
         self.to_return.printTree(indent + 1)
 
     @addToClass(AST.WhileInstruction)
     def printTree(self, indent=0):
-        print("RETURN")
+        print(SEP*indent, "RETURN")
         self.to_return.printTree(indent + 1)
 
     @addToClass(AST.ForInstruction)
     def printTree(self, indent=0):
-        print("RETURN")
+        print(SEP*indent, "RETURN")
         self.to_return.printTree(indent + 1)
 
     @addToClass(AST.Vector)
     def printTree(self, indent=0):
-        print("VECTOR")
+        print(SEP*indent, "VECTOR")
         self.vector.printTree(indent + 1)
 
     @addToClass(AST.Error)

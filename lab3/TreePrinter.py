@@ -86,16 +86,15 @@ class TreePrinter:
     def printTree(self, indent=0):
         print(SEP*indent, "WHILE")
         self.cond.printTree(indent + 1)
-        print(SEP*indent, "THEN")
         self.instruction.printTree(indent + 1)
 
     @addToClass(AST.ForInstruction)
     def printTree(self, indent=0):
         print(SEP*indent, "FOR")
-        print(SEP*indent, self.iterator)
-        print(SEP*indent, "RANGE")
-        print(SEP*indent, self.start)
-        print(SEP*indent, self.end)
+        print(SEP*(indent + 1), self.iterator)
+        print(SEP*(indent + 1), "RANGE")
+        self.start.printTree(indent + 2)
+        self.end.printTree(indent + 2)
         self.instruction.printTree(indent + 1)
 
 

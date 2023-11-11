@@ -50,11 +50,12 @@ def p_line(p):  # 3
             | CONTINUE
             | RETURN print_state
             | RETURN '''
+    
     if p[1] == "assign":
         p[0] = p[1]
-    elif p[1] == "PRINT":
+    elif p[1] == "print":
         p[0] = AST.PrintExpr(p[2])
-    elif p[1] == "RETURN" and len(p) == 3:
+    elif p[1] == "return" and len(p) == 3:
         p[0] = AST.ReturnExpr(p[2])
     else:
         p[0] = p[1]
@@ -72,10 +73,11 @@ def p_print_state(p):  # 4
 def p_printable(p):  # 5
     ''' printable : operation
                 | STRING '''
-    if p[1] == "operation":
-        p[0] = p[1]
+    
+    if isinstance(p[1], str):
+        p[0] = AST.String(p[1])        
     else:
-        p[0] = AST.String(p[1])
+        p[0] = p[1]
 
 
 def p_assign(p):  # 6
@@ -170,7 +172,7 @@ def p_for_state(p):  # 12
 def p_forable(p):  # 13
     ''' forable : object 
                 | INT '''
-    if p[1] == 'INT':
+    if isinstance(p[1], int):
         p[0] = AST.IntNum(p[1])
     else:
         p[0] = p[1]

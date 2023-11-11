@@ -1,6 +1,8 @@
 from __future__ import print_function
 import AST
-SEP = '|  '
+
+SEP = ' | '
+
 
 def addToClass(cls):
 
@@ -37,8 +39,7 @@ class TreePrinter:
     def printTree(self, indent):
         print(SEP*indent, self.op)
         self.left.printTree(indent + 1)
-        if (self.right != None):
-            self.right.printTree(indent + 1)
+        self.right.printTree(indent + 1)
 
     @addToClass(AST.UnaryExpr)
     def printTree(self, indent=0):
@@ -63,7 +64,7 @@ class TreePrinter:
     @addToClass(AST.Reference)
     def printTree(self, indent=0):
         print(SEP*indent, "REF")
-        print(SEP*indent, self.name)
+        print(SEP*(indent+1), self.name)
         self.vect.printTree(indent + 1)
 
     @addToClass(AST.IfInstruction)
@@ -91,12 +92,16 @@ class TreePrinter:
     @addToClass(AST.ForInstruction)
     def printTree(self, indent=0):
         print(SEP*indent, "FOR")
-        print(SEP*(indent + 1), self.iterator)
-        print(SEP*(indent + 1), "RANGE")
+        print(SEP*(indent+1), self.iterator)
+        print(SEP*(indent+1), "RANGE")
         self.start.printTree(indent + 2)
         self.end.printTree(indent + 2)
         self.instruction.printTree(indent + 1)
 
+    @addToClass(AST.Matrix)
+    def printTree(self, indent=0):
+        print(SEP*indent, "MATRIX")
+        self.matrix.printTree(indent + 1)
 
     @addToClass(AST.Vector)
     def printTree(self, indent=0):
@@ -106,7 +111,3 @@ class TreePrinter:
     @addToClass(AST.Error)
     def printTree(self, indent=0):
         pass
-        # fill in the body
-
-    # define printTree for other classes
-    # ...

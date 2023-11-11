@@ -86,17 +86,14 @@ class ForInstruction(Node):
         self.instruction = instruction
 
 
+class Matrix(Node):
+    def __init__(self, matrix):
+        self.matrix = matrix
+
+
 class Vector(Node):
     def __init__(self, vector):
         self.vector = vector
-
-# class Production(Node):
-#     def __init__(self, production):
-#         self.production = production
-
-# ...
-# fill out missing classes
-# ...
 
 
 class Error(Node):

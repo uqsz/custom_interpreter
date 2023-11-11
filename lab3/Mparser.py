@@ -50,7 +50,6 @@ def p_line(p):  # 3
             | CONTINUE
             | RETURN print_state
             | RETURN '''
-    
     if p[1] == "assign":
         p[0] = p[1]
     elif p[1] == "print":
@@ -73,9 +72,8 @@ def p_print_state(p):  # 4
 def p_printable(p):  # 5
     ''' printable : operation
                 | STRING '''
-    
     if isinstance(p[1], str):
-        p[0] = AST.String(p[1])        
+        p[0] = AST.String(p[1])
     else:
         p[0] = p[1]
 
@@ -180,7 +178,7 @@ def p_forable(p):  # 13
 
 def p_matrix(p):  # 14
     ''' matrix : LSQUAR row RSQUAR'''
-    p[0] = p[2]
+    p[0] = AST.Matrix(p[2])
 
 
 def p_row(p):  # 15
@@ -209,7 +207,7 @@ def p_elem(p):  # 17
 def p_number(p):  # 18
     ''' number : INT 
             | FLOAT'''
-    if p[0] == "INT":
+    if isinstance(p[1], int):
         p[0] = AST.IntNum(p[1])
     else:
         p[0] = AST.FloatNum(p[1])

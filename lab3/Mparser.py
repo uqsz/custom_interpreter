@@ -72,7 +72,7 @@ def p_print_state(p):  # 4
 def p_printable(p):  # 5
     ''' printable : operation
                 | STRING '''
-    if isinstance(p[1], str):
+    if p.slice[1].type == "STRING":
         p[0] = AST.String(p[1])
     else:
         p[0] = p[1]
@@ -170,7 +170,7 @@ def p_for_state(p):  # 12
 def p_forable(p):  # 13
     ''' forable : object 
                 | INT '''
-    if isinstance(p[1], int):
+    if p.slice[1].type == "INT":
         p[0] = AST.IntNum(p[1])
     else:
         p[0] = p[1]
@@ -207,7 +207,7 @@ def p_elem(p):  # 17
 def p_number(p):  # 18
     ''' number : INT 
             | FLOAT'''
-    if isinstance(p[1], int):
+    if p.slice[1].type == "INT":
         p[0] = AST.IntNum(p[1])
     else:
         p[0] = AST.FloatNum(p[1])

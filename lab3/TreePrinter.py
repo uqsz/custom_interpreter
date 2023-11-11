@@ -47,8 +47,8 @@ class TreePrinter:
 
     @addToClass(AST.Recursion)
     def printTree(self, indent=0):
-        self.right.printTree(indent+1)
         self.left.printTree(indent)
+        self.right.printTree(indent+1)
 
     @addToClass(AST.PrintExpr)
     def printTree(self, indent=0):

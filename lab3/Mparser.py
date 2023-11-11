@@ -106,16 +106,19 @@ def p_operation(p):  # 7
                 | number
                 | matrix '''
 
-    if len(p) == 4 and p[2] in ['PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'DOTADD', 'DOTMINUS', 'DOTMUL', 'DOTDIV']:
+    if p[1] in ['EYE', 'ZEROS', 'ONES']:
+        p[0] = AST.UnaryExpr(p[1], p[3])
+
+    elif len(p) == 4:
         p[0] = AST.BinExpr(p[2], p[1], p[3])
 
-    if len(p) == 3:
-        if p[1] in ['MINUS', 'EYE', 'ZEROS', 'ONES']:
+    elif len(p) == 3:
+        if p[1] == "MINUS":
             p[0] = AST.UnaryExpr(p[1], p[2])
+
         elif p[2] == 'TRANSPOSE':
             p[0] = AST.UnaryExpr(p[2], p[1])
-
-    elif len(p) == 2 and p[1] in ['object', 'matrix', 'number']:
+    else:
         p[0] = p[1]
 
 

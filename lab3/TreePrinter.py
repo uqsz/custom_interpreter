@@ -37,7 +37,8 @@ class TreePrinter:
     def printTree(self, indent):
         print(self.op)
         self.left.printTree(indent + 1)
-        self.right.printTree(indent + 1)
+        if (self.right != None):
+            self.right.printTree(indent + 1)
 
     @addToClass(AST.UnaryExpr)
     def printTree(self, indent=0):
@@ -46,7 +47,7 @@ class TreePrinter:
 
     @addToClass(AST.Recursion)
     def printTree(self, indent=0):
-        self.right.printTree(indent)
+        self.right.printTree(indent+1)
         self.left.printTree(indent)
 
     @addToClass(AST.PrintExpr)
@@ -67,7 +68,7 @@ class TreePrinter:
     @addToClass(AST.Reference)
     def printTree(self, indent=0):
         print("REF")
-        self.name.printTree(indent + 1)
+        print(self.name)
         self.vect.printTree(indent + 1)
 
     @addToClass(AST.IfInstruction)
@@ -99,12 +100,6 @@ class TreePrinter:
     def printTree(self, indent=0):
         pass
         # fill in the body
-
-    @addToClass(AST . BinExpr)
-    def printTree(self, indent):
-        print(self.op)
-        self.left.printTree(indent + 1)
-        self.right.printTree(indent + 1)
 
     # define printTree for other classes
     # ...

@@ -19,8 +19,81 @@ class TreePrinter:
 
     @addToClass(AST.IntNum)
     def printTree(self, indent=0):
-        pass
-        # fill in the body
+        print(self.value)
+
+    @addToClass(AST.FloatNum)
+    def printTree(self, indent=0):
+        print(self.value)
+
+    @addToClass(AST.String)
+    def printTree(self, indent=0):
+        print(self.string)
+
+    @addToClass(AST.Variable)
+    def printTree(self, indent=0):
+        print(self.name)
+
+    @addToClass(AST.BinExpr)
+    def printTree(self, indent):
+        print(self.op)
+        self.left.printTree(indent + 1)
+        self.right.printTree(indent + 1)
+
+    @addToClass(AST.UnaryExpr)
+    def printTree(self, indent=0):
+        print(self.op)
+        self.expr.printTree(indent + 1)
+
+    @addToClass(AST.Recursion)
+    def printTree(self, indent=0):
+        self.right.printTree(indent)
+        self.left.printTree(indent)
+
+    @addToClass(AST.PrintExpr)
+    def printTree(self, indent=0):
+        print("PRINT")
+        self.to_print.printTree(indent + 1)
+
+    @addToClass(AST.PrintExpr)
+    def printTree(self, indent=0):
+        print("PRINT")
+        self.to_print.printTree(indent + 1)
+
+    @addToClass(AST.ReturnExpr)
+    def printTree(self, indent=0):
+        print("RETURN")
+        self.to_return.printTree(indent + 1)
+
+    @addToClass(AST.Reference)
+    def printTree(self, indent=0):
+        print("REF")
+        self.name.printTree(indent + 1)
+        self.vect.printTree(indent + 1)
+
+    @addToClass(AST.IfInstruction)
+    def printTree(self, indent=0):
+        print("IF")
+        self.to_return.printTree(indent + 1)
+
+    @addToClass(AST.IfElseInstruction)
+    def printTree(self, indent=0):
+        print("RETURN")
+        self.to_return.printTree(indent + 1)
+
+    @addToClass(AST.WhileInstruction)
+    def printTree(self, indent=0):
+        print("RETURN")
+        self.to_return.printTree(indent + 1)
+
+    @addToClass(AST.ForInstruction)
+    def printTree(self, indent=0):
+        print("RETURN")
+        self.to_return.printTree(indent + 1)
+
+    @addToClass(AST.Vector)
+    def printTree(self, indent=0):
+        print("VECTOR")
+        self.vector.printTree(indent + 1)
 
     @addToClass(AST.Error)
     def printTree(self, indent=0):
@@ -29,7 +102,7 @@ class TreePrinter:
 
     @addToClass(AST . BinExpr)
     def printTree(self, indent):
-        print(self . op)
+        print(self.op)
         self.left.printTree(indent + 1)
         self.right.printTree(indent + 1)
 

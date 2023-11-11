@@ -61,6 +61,10 @@ class TreePrinter:
         print(SEP*indent, "RETURN")
         self.to_return.printTree(indent + 1)
 
+    @addToClass(AST.EndExpr)
+    def printTree(self, indent=0):
+        print(SEP*indent, self.to_return)
+
     @addToClass(AST.Reference)
     def printTree(self, indent=0):
         print(SEP*indent, "REF")

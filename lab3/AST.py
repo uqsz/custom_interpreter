@@ -53,6 +53,11 @@ class ReturnExpr(Node):
         self.to_return = to_return
 
 
+class EndExpr(Node):
+    def __init__(self, to_return):
+        self.to_return = to_return
+
+
 class Reference(Node):
     def __init__(self, name, vect):
         self.name = name

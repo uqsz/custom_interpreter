@@ -50,14 +50,14 @@ def p_line(p):  # 3
             | CONTINUE
             | RETURN print_state
             | RETURN '''
-    if p[1] == "assign":
+    if p.slice[1].type == "assign":
         p[0] = p[1]
-    elif p[1] == "print":
+    elif p.slice[1].type == "PRINT":
         p[0] = AST.PrintExpr(p[2])
-    elif p[1] == "return" and len(p) == 3:
+    elif p.slice[1].type == "RETURN" and len(p) == 3:
         p[0] = AST.ReturnExpr(p[2])
     else:
-        p[0] = p[1]
+        p[0] = AST.EndExpr(p.slice[1].type)
 
 
 def p_print_state(p):  # 4

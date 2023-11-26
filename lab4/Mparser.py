@@ -103,7 +103,7 @@ def p_operation(p):  # 7
                 | ONES LPAREN operation RPAREN
                 | object
                 | number
-                | matrix '''
+                | matrix'''
 
     if len(p) == 5:
         p[0] = AST.UnaryExpr(p[1], p[3])

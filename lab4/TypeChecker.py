@@ -141,9 +141,23 @@ class TypeChecker(NodeVisitor):
                 print(f"Error: Operation '{op}' not for type: '{type1}'.")
                 return "error"
         elif op == "TRANSPOSE":
-            if type1 != "matrix":
+            if type1 == "matrix":
+                return "matrix"
+            else:
+                
                 print(f"Error: Operation '{op}' not for type: '{type1}'.")
                 return "error"
+        
+        elif op == "MINU":
+            if type1 in ["int", "float", "matrix"]:
+                return type1
+            else:
+                print(f"Error: Operator '-' not for type: '{type1}'.")
+                return "error"
+            
+        else:
+            print(f"Error: Unknown unary operator '{op}'")
+            return "error"
 
     def visit_Recursion(self, node):  # 7
         self.visit(node.left)

@@ -8,10 +8,9 @@ tokens = scanner.tokens
 precedence = (
     ("left", 'ASSIGN', 'ADDASSIGN', 'SUBASSIGN', 'MULASSIGN', 'DIVASSIGN'),
     ("left", 'MORE', 'LESS', 'MOREOREQ', 'LESSOREQ', 'EQUALS', 'NOTEQUALS'),
-    ("left", 'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
-     'DOTADD', 'DOTSUB', 'DOTMUL', 'DOTDIV'),
+    ("left", 'PLUS', 'MINUS', 'DOTADD', 'DOTSUB'),
+    ("left", 'TIMES', 'DIVIDE', 'DOTMUL', 'DOTDIV'),
     ("left", 'TRANSPOSE'),
-    ("left", 'LPAREN', 'RPAREN'),
 )
 
 
@@ -91,7 +90,8 @@ def p_assign(p):  # 6
 
 
 def p_operation(p):  # 7
-    ''' operation : operation PLUS operation
+    ''' operation : LPAREN operation RPAREN
+                | operation PLUS operation
                 | operation MINUS operation 
                 | operation TIMES operation 
                 | operation DIVIDE operation 
@@ -112,7 +112,10 @@ def p_operation(p):  # 7
         p[0] = AST.UnaryExpr(p[1], p[3], p.lexer.lineno)
 
     elif len(p) == 4:
-        p[0] = AST.BinExpr(p[2], p[1], p[3], p.lexer.lineno)
+        if p.slice[1].type == "LPAREN":
+            p[0] = p[2]
+        else:
+            p[0] = AST.BinExpr(p[2], p[1], p[3], p.lexer.lineno)
 
     elif len(p) == 3:
         if p[1] == '-':

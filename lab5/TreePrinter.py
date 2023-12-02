@@ -38,8 +38,8 @@ class TreePrinter:
     @addToClass(AST.BinExpr)
     def printTree(self, indent):
         print(SEP*indent, self.op)
-        self.left.printTree(indent + 1)
-        self.right.printTree(indent + 1)
+        self.left.printTree(indent+1)
+        self.right.printTree(indent+1)
 
     @addToClass(AST.UnaryExpr)
     def printTree(self, indent=0):

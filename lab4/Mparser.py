@@ -26,9 +26,9 @@ def p_expression(p):  # 1
                   | instruction'''
     if len(p) == 2:
         p[0] = p[1]
+        
     else:
-        p[0] = AST.Recursion(p[1], p[2])
-
+        p[0] = AST.Recursion(p[1], p[2], p.lexer.lineno)
 
 def p_instruction(p):  # 2
     '''instruction : LCURLY expression RCURLY
@@ -40,7 +40,7 @@ def p_instruction(p):  # 2
         p[0] = p[2]
     else:
         p[0] = p[1]
-
+    
 
 def p_line(p):  # 3
     ''' line : assign
@@ -52,11 +52,11 @@ def p_line(p):  # 3
     if p.slice[1].type == "assign":
         p[0] = p[1]
     elif p.slice[1].type == "PRINT":
-        p[0] = AST.PrintExpr(p[2])
+        p[0] = AST.PrintExpr(p[2], p.lexer.lineno)
     elif p.slice[1].type == "RETURN" and len(p) == 3:
-        p[0] = AST.ReturnExpr(p[2])
+        p[0] = AST.ReturnExpr(p[2], p.lexer.lineno)
     else:
-        p[0] = AST.EndExpr(p.slice[1].type)
+        p[0] = AST.EndExpr(p.slice[1].type, p.lexer.lineno)
 
 
 def p_print_state(p):  # 4
@@ -65,14 +65,14 @@ def p_print_state(p):  # 4
     if len(p) == 2:
         p[0] = p[1]
     else:
-        p[0] = AST.Recursion(p[1], p[3])
+        p[0] = AST.Recursion(p[1], p[3], p.lexer.lineno)
 
 
 def p_printable(p):  # 5
     ''' printable : operation
                 | STRING '''
     if p.slice[1].type == "STRING":
-        p[0] = AST.String(p[1])
+        p[0] = AST.String(p[1], p.lexer.lineno)
     else:
         p[0] = p[1]
 
@@ -84,7 +84,7 @@ def p_assign(p):  # 6
             | object MULASSIGN operation 
             | object DIVASSIGN operation '''
 
-    p[0] = AST.BinExpr(p[2], p[1], p[3])
+    p[0] = AST.BinExpr(p[2], p[1], p[3], p.lexer.lineno)
 
 
 def p_operation(p):  # 7
@@ -104,19 +104,19 @@ def p_operation(p):  # 7
                 | object
                 | number
                 | matrix'''
-
+    
     if len(p) == 5:
-        p[0] = AST.UnaryExpr(p[1], p[3])
+        p[0] = AST.UnaryExpr(p[1], p[3], p.lexer.lineno)
 
     elif len(p) == 4:
-        p[0] = AST.BinExpr(p[2], p[1], p[3])
+        p[0] = AST.BinExpr(p[2], p[1], p[3], p.lexer.lineno)
 
     elif len(p) == 3:
         if p[1] == '-':
-            p[0] = AST.UnaryExpr("MINUS", p[2])
+            p[0] = AST.UnaryExpr("MINUS", p[2], p.lexer.lineno)
 
         elif p[2] == '\'':
-            p[0] = AST.UnaryExpr("TRANSPOSE", p[1])
+            p[0] = AST.UnaryExpr("TRANSPOSE", p[1], p.lexer.lineno)
 
     elif len(p) == 2:
         p[0] = p[1]
@@ -132,7 +132,7 @@ def p_bool(p):  # 8
             | operation NOTEQUALS operation '''
 
     if p[2] in ['>', '<', '>=', '<=', '==', '!=']:
-        p[0] = AST.BinExpr(p[2], p[1], p[3])
+        p[0] = AST.BinExpr(p[2], p[1], p[3], p.lexer.lineno)
     else:
         p[0] = p[2]
 
@@ -142,42 +142,42 @@ def p_object(p):  # 9
             | ID '''
 
     if len(p) == 2:
-        p[0] = AST.Variable(p[1])
+        p[0] = AST.Variable(p[1], p.lexer.lineno)
     else:
-        p[0] = AST.Reference(p[1], p[2])
+        p[0] = AST.Reference(p[1], p[2], p.lexer.lineno)
 
 
 def p_ifelse_state(p):  # 10
     ''' ifelse_state : IF LPAREN bool RPAREN instruction
                     | IF LPAREN bool RPAREN instruction ELSE instruction'''
     if len(p) == 6:
-        p[0] = AST.IfInstruction(p[3], p[5])
+        p[0] = AST.IfInstruction(p[3], p[5], p.lexer.lineno)
     else:
-        p[0] = AST.IfElseInstruction(p[3], p[5], p[7])
+        p[0] = AST.IfElseInstruction(p[3], p[5], p[7], p.lexer.lineno)
 
 
 def p_while_state(p):  # 11
     ''' while_state : WHILE LPAREN bool RPAREN instruction'''
-    p[0] = AST.WhileInstruction(p[3], p[5])
+    p[0] = AST.WhileInstruction(p[3], p[5], p.lexer.lineno)
 
 
 def p_for_state(p):  # 12
     ''' for_state : FOR ID ASSIGN forable COLON forable instruction '''
-    p[0] = AST.ForInstruction(p[2], p[4], p[6], p[7])
+    p[0] = AST.ForInstruction(p[2], p[4], p[6], p[7], p.lexer.lineno)
 
 
 def p_forable(p):  # 13
     ''' forable : object 
                 | INT '''
     if p.slice[1].type == "INT":
-        p[0] = AST.IntNum(p[1])
+        p[0] = AST.IntNum(p[1], p.lexer.lineno)
     else:
         p[0] = p[1]
 
 
 def p_matrix(p):  # 14
     ''' matrix : LSQUAR row RSQUAR'''
-    p[0] = AST.Matrix(p[2])
+    p[0] = AST.Matrix(p[2], p.lexer.lineno)
 
 
 def p_row(p):  # 15
@@ -186,12 +186,12 @@ def p_row(p):  # 15
     if len(p) == 2:
         p[0] = p[1]
     else:
-        p[0] = AST.Recursion(p[1], p[3])
+        p[0] = AST.Recursion(p[1], p[3], p.lexer.lineno)
 
 
 def p_vector(p):  # 16
     ''' vector : LSQUAR elem RSQUAR '''
-    p[0] = AST.Vector(p[2])
+    p[0] = AST.Vector(p[2], p.lexer.lineno)
 
 
 def p_elem(p):  # 17
@@ -200,16 +200,16 @@ def p_elem(p):  # 17
     if len(p) == 2:
         p[0] = p[1]
     else:
-        p[0] = AST.Recursion(p[1], p[3])
+        p[0] = AST.Recursion(p[1], p[3], p.lexer.lineno)
 
 
 def p_number(p):  # 18
     ''' number : INT 
             | FLOAT'''
     if p.slice[1].type == "INT":
-        p[0] = AST.IntNum(p[1])
+        p[0] = AST.IntNum(p[1], p.lexer.lineno)
     else:
-        p[0] = AST.FloatNum(p[1])
+        p[0] = AST.FloatNum(p[1], p.lexer.lineno)
 
 
 parser = yacc.yacc()

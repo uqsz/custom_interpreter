@@ -2,9 +2,10 @@ import AST
 
 
 class VariableSymbol():
-    def __init__(self, name, type):
-        self.name = name  # Nazwa zmiennej
-        self.type = type  # Typ zmiennej
+    def __init__(self, name, type, size=0):
+        self.name = name
+        self.type = type
+        self.size = size
 
 
 class SymbolTable(object):
@@ -13,10 +14,11 @@ class SymbolTable(object):
         self.parent = parent  # parent scope
         self.name = name      # symbol table name
         self.symbols = {}     # dictionary to store symbols
+        self.loop = 0
 
-    def put(self, name, type):
+    def put(self, name, type, size=0):
         self.symbols[name] = VariableSymbol(
-            name, type)  # add symbol to the table
+            name, type, size)  # add symbol to the table
 
     def get(self, name):
         return self.symbols.get(name)  # retrieve symbol from the table
@@ -39,25 +41,9 @@ class NodeVisitor(object):
         visitor = getattr(self, method, self.generic_visit)
         return visitor(node)
 
-    # Called if no explicit visitor function exists for a node.
     def generic_visit(self, node):
-        if isinstance(node, list):
-            for elem in node:
-                self.visit(elem)
-        else:
-            children = vars(node)
-            for child in children.values():
-                if isinstance(child, list):
-                    for item in child:
-                        if isinstance(item, AST.Node):
-                            self.visit(item)
-                elif isinstance(child, AST.Node):
-                    self.visit(child)
-
-    # simpler version of generic_visit, not so general
-    # def generic_visit(self, node):
-    #    for child in node.children:
-    #        self.visit(child)
+        for child in node.children:
+            self.visit(child)
 
 
 class TypeChecker(NodeVisitor):
@@ -74,90 +60,87 @@ class TypeChecker(NodeVisitor):
     def visit_String(self, node):  # 3
         return "string"
 
-    def visit_Variable(self, node, declared_type=False):  # 4
-        # Example: Check if the variable is defined in the symbol table
+    def visit_Variable(self, node):  # 4
         variable_symbol = self.scope.get(node.name)
         if variable_symbol:
             return variable_symbol.type
-        
-        elif declared_type:
-            return "variable", node.name
-
         else:
-            print(f"Error: Variable '{node.name}' not defined.")
-            return 'error'
+            return 'none'
 
     def visit_BinExpr(self, node):  # 5
+        type1 = self.visit(node.left)
         type2 = self.visit(node.right)
         op = node.op
+
+        typeError = False
+
         if op == "=":
-            self.scope.put(node.left.name, type2)
+            if type2 == "matrix":
+                self.scope.put(node.left.name, type2, len(node.right.m))
+            else:
+                self.scope.put(node.left.name, type2)
+
         elif op in ["+=", "-=", "*=", "/="]:
-            type1 = self.visit(node.left)
-            if self.scope.get(type1) == None:
-                print(f"Error: Variable no in scope: '{type1}'.")
-                return 'error'
-            elif self.scope.get(type1).type != type2:
+            if self.scope.get(node.left.name) == None:
                 print(
-                    f"Error: Incompatible types for binary operation '{op}'.")
-                return 'error'
+                    f"Error at line {node.lineno}: Variable '{node.left.name}' is not defined.")
+                return 'none'
+            elif self.scope.get(node.left.name).type != type2:
+                typeError = True
+
         elif op in ["+", "-", "*", "/"]:
-            type1 = self.visit(node.left)
             if type1 == "int" and type2 == "int":
                 return "int"
-            elif (type1 == "int" and type2 == "float") or (type1 == "float" and type2 == "int") or (type1 == "float" and type2 == "float"):
+            elif type1 in {"int", "float"} and type2 in {"int", "float"}:
                 return "float"
             else:
-                print(
-                    f"Error: Operation '{op}' not for types: '{type1}','{type2}'.")
-                return 'error'
+                typeError = True
+
         elif op in [".+", ".-", ".*", "./"]:
-            type1 = self.visit(node.left)
             if type1 == "matrix" and type2 == "matrix":
                 return "matrix"
             else:
-                print(
-                    f"Error: Operation '{op}' not for types: '{type1}','{type2}'.")
-                return "error"
+                typeError = True
+
         elif op in ['>', '<', '>=', '<=', '==', '!=']:
-            type1 = self.visit(node.left)
-            if (type1 == "int" or type1 == "float") and (type2 == "int" or type2 == "float"):
+            if type1 in {"int", "float"} and type2 in {"int", "float"}:
                 return "bool"
             else:
-                print(
-                    f"Error: Operation '{op}' not for types: '{type1}','{type2}'.")
-                return "error"
+                typeError = True
 
-        # ...
-        #
+        if typeError:
+            print(
+                f"Error at line {node.lineno}: Incompatible types {type1,type2} for binary operation '{op}'.")
+        return "none"
 
     def visit_UnaryExpr(self, node):  # 6
         type1 = self.visit(node.expr)
         op = node.op
+
+        typeError = False
+
         if op in ["eye", "zeros", "ones"]:
             if type1 == "int":
                 return "matrix"
             else:
-                print(f"Error: Operation '{op}' not for type: '{type1}'.")
-                return "error"
+                typeError = True
+
         elif op == "TRANSPOSE":
             if type1 == "matrix":
                 return "matrix"
             else:
-                
-                print(f"Error: Operation '{op}' not for type: '{type1}'.")
-                return "error"
-        
-        elif op == "MINU":
+                typeError = True
+
+        elif op == "MINUS":
             if type1 in ["int", "float", "matrix"]:
                 return type1
             else:
-                print(f"Error: Operator '-' not for type: '{type1}'.")
-                return "error"
-            
-        else:
-            print(f"Error: Unknown unary operator '{op}'")
-            return "error"
+                typeError = True
+
+        if typeError:
+            print(
+                f"Error at line {node.lineno}: Incompatible type '({type1})' for unary operation: '{op}'.")
+        return "none"
 
     def visit_Recursion(self, node):  # 7
         self.visit(node.left)
@@ -170,62 +153,89 @@ class TypeChecker(NodeVisitor):
         return "return"
 
     def visit_EndExpr(self, node):  # 10
-        return "nian"
+        if self.scope.loop == 0:
+            print(
+                f"Error at line {node.lineno}: Instruction '{node.to_return}' is not in a loop.")
+        return "none"
 
     def visit_Reference(self, node):  # 11
+        var = self.scope.get(node.name)
+
+        error = False
+
+        if len(node.vect.v) != 2:
+            print(
+                f"Error at line {node.lineno}: Reference '({node.vect.v})' is not a 2-element vector.")
+            error = True
+
+        if var == None:
+            print(
+                f"Error at line {node.lineno}: Variable '{node.left.name}' is not defined.")
+            error = True
+
+        elif var.type != "matrix":
+            print(
+                f"Error at line {node.lineno}: Incompatible type '({var.type})' for reference operation.")
+            error = True
+        elif node.vect.v[0] >= var.size or node.vect.v[1] >= var.size:
+            print(
+                f"Error at line {node.lineno}: Reference '({node.vect.v})' is out of range.")
+            error = True
+        if error:
+            return "error"
         return "reference"
 
     def visit_IfInstruction(self, node):  # 12
         type1 = self.visit(node.cond)
 
-        if type1 == "bool":
-            self.visit(node.instruction)
+        self.visit(node.instruction)
 
-        else:
-            print(f"Error: Condition must be a bool statement.")
-            return "error"
-
-
+        if type1 != "bool":
+            print(
+                f"Error at line {node.lineno}: Condition is not a bool statement.")
+        return "none"
 
     def visit_IfElseInstruction(self, node):  # 13
         type1 = self.visit(node.cond)
-
-        if type1 == "bool":
-            self.visit(node.instruction_if)
-            self.visit(node.instruction_else)
-
-        else:
-            print(f"Error: Condition must be a bool statement.")
-            return "error"
-
+        self.visit(node.instruction_if)
+        self.visit(node.instruction_else)
+        if type1 != "bool":
+            print(
+                f"Error at line {node.lineno}: Condition is not a bool statement.")
+        return "none"
 
     def visit_WhileInstruction(self, node):  # 14
         type1 = self.visit(node.cond)
+        self.scope.loop += 1
+        self.visit(node.instruction)
+        self.scope.loop -= 1
 
-        if type1 == "bool":
-            self.visit(node.instruction)
+        if type1 != "bool":
+            print(
+                f"Error at line {node.lineno}: Condition is not a bool statement.")
+        return "none"
 
-        else:
-            print(f"Error: Condition must be a bool statement.")
-            return "error"
-        
-       
     def visit_ForInstruction(self, node):  # 15
-        
         type2 = self.visit(node.start)
         type3 = self.visit(node.end)
 
-        if type3 == type2 and type3 == "int":
-            self.scope.put(node.iterator.name, type2)
+        self.scope.loop += 1
+        self.scope.put(node.iterator, type2)
+        self.visit(node.instruction)
+        self.scope.loop -= 1
 
-        else:
-            print(f"Error: Range {node.start}:{node.end} must be an int.")
-            return "error"
-        
-
-
+        if not (type3 == type2 == "int"):
+            print(
+                f"Error at line {node.lineno}: Range does not contains only int types: '{type2}:{type3}'.")
+        return "none"
 
     def visit_Matrix(self, node):  # 16
+        row = len(node.m[0])
+        for i in range(1, len(node.m)):
+            if len(node.m[i]) != row:
+                print(
+                    f"Error at line {node.lineno}: Matrix is not a square matrix.")
+                return "none"
         return "matrix"
 
     def visit_Vector(self, node):  # 17
@@ -233,59 +243,3 @@ class TypeChecker(NodeVisitor):
 
     def visit_Error(self, node):  # 18
         return "error"
-
-
-# class TypeChecker(NodeVisitor):
-
-#     def __init__(self):
-#         # You may need to initialize some attributes for your type checker
-#         pass
-
-#     def visit_IntNum(self, node):  # 1
-#         # Example: Assuming integers are always valid
-#         return 'int'
-
-#     def visit_FloatNum(self, node):  # 2
-#         # Example: Assuming floating-point numbers are always valid
-#         return 'float'
-
-#     def visit_String(self, node):  # 3
-#         # Example: Assuming strings are always valid
-#         return 'string'
-
-#     def visit_Variable(self, node):  # 4
-#         # Example: Check if the variable is defined in the symbol table
-#         variable_symbol = self.scope.get(node.name)
-#         if variable_symbol:
-#             return variable_symbol.type
-#         else:
-#             print(f"Error: Variable '{node.name}' not defined.")
-#             return 'error'
-
-#     def visit_BinExpr(self, node):  # 5
-#         type1 = self.visit(node.left)
-#         type2 = self.visit(node.right)
-#         op = node.op
-
-#         # Example: Check if the types are compatible for the binary operation
-#         if type1 == 'int' and type2 == 'int':
-#             return 'int'
-#         elif type1 == 'float' and type2 == 'float':
-#             return 'float'
-#         else:
-#             print(f"Error: Incompatible types for binary operation '{op}'.")
-#             return 'error'
-
-#     def visit_UnaryExpr(self, node):  # 6
-#         # Example: Assuming unary operations are only allowed on numeric types
-#         operand_type = self.visit(node.expr)
-#         if operand_type in ['int', 'float']:
-#             return operand_type
-#         else:
-#             print(f"Error: Invalid type for unary operation '{node.op}'.")
-#             return 'error'
-
-#     # Implement similar logic for other node types...
-
-#     def visit_Error(self, node):  # 18
-#         return 'error'

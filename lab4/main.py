@@ -10,19 +10,18 @@ if __name__ == '__main__':
 
     try:
         filename = sys.argv[1] if len(
-            sys.argv) > 1 else "lab4/examples/additional/example4.m"
+            sys.argv) > 1 else "lab4/examples/init.m"
         file = open(filename, "r")
     except IOError:
         print("Cannot open {0} file".format(filename))
         sys.exit(0)
 
-
     parser = Mparser.parser
     text = file.read()
     ast = parser.parse(text, lexer=scanner.lexer)
-    #ast.printTree()
+    # ast.printTree()
 
     if ast:
         # Below code shows how to use visitor
         typeChecker = TypeChecker()
-        typeChecker.visit(ast)   # or alternatively ast.accept(typeChecker)
+        typeChecker.visit(ast)   

@@ -1,7 +1,7 @@
 # control flow instruction
 
-N = 10;
-M = 20;
+N = 10.1;
+M = 20.1;
 
 if(N==10)
     print "N==10";
@@ -38,9 +38,14 @@ while(k>0) {
 }
 
 
-for i = 1:N
-  for j = i:M
-    print i, j;
+
+
+for i = 1:N{
+    for i = 1:M
+        break;
+    break;
+}
+
  
 
 for i = 1:N {
@@ -54,10 +59,8 @@ for i = 1:N {
         return 0;
 }
 
-{
-  N = 100;
-  M = 200;  
-}
+
+
 
 
 

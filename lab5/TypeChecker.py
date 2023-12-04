@@ -1,4 +1,4 @@
-import compilator.AST as AST
+import AST as AST
 
 
 class VariableSymbol():

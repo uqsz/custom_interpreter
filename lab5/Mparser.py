@@ -1,6 +1,6 @@
-import compilator.Scanner as scanner
+import scanner as scanner
 import ply.yacc as yacc
-import compilator.AST as AST
+import AST as AST
 
 tokens = scanner.tokens
 

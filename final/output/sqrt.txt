@@ -1,0 +1,26 @@
+ FOR
+ |  x
+ |  RANGE
+ |  |  1
+ |  |  9
+ |  =
+ |  |  sqrt_x
+ |  |  1.0
+ |  FOR
+ |  |  i
+ |  |  RANGE
+ |  |  |  1
+ |  |  |  10000
+ |  |  =
+ |  |  |  sqrt_x
+ |  |  |  /
+ |  |  |  |  +
+ |  |  |  |  |  sqrt_x
+ |  |  |  |  |  /
+ |  |  |  |  |  |  x
+ |  |  |  |  |  |  sqrt_x
+ |  |  |  |  2
+ |  PRINT
+ |  |  x
+ |  |  sqrt_x
+SUCCESS

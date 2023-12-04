@@ -11,20 +11,21 @@ from Interpreter import Interpreter
 if __name__ == '__main__':
 
     try:
-        filename = "lab5/examples/sqrt.m"
+        filename = "lab5/examples/primes.m"
         file = open(filename, "r")
     except IOError:
         print("Cannot open {0} file".format(filename))
         sys.exit(0)
 
-    parser = Mparser.parser
     text = file.read()
+
+    parser = Mparser.parser
 
     ast = parser.parse(text, lexer=scanner.lexer)
     ast.printTree()
-    # Below code shows how to use visitor
+
     typeChecker = TypeChecker()
-    typeChecker.visit(ast)   # or alternatively ast.accept(typeChecker)
+    typeChecker.visit(ast)
 
     # ast.accept(Interpreter())
     # in future

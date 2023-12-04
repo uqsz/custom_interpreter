@@ -1,0 +1,13 @@
+ =
+ |  n
+ |  10
+ FOR
+ |  i
+ |  RANGE
+ |  |  1
+ |  |  n
+ |  PRINT
+ |  |  *
+ |  |  |  "*"
+ |  |  |  i
+SUCCESS

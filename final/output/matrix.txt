@@ -1,0 +1,32 @@
+ =
+ |  A
+ |  MATRIX
+ |  |  3
+ =
+ |  B
+ |  MATRIX
+ |  |  3
+ =
+ |  C
+ |  .+
+ |  |  A
+ |  |  B
+ PRINT
+ |  C
+ =
+ |  REF
+ |  |  D
+ |  |  VECTOR
+ |  |  |  0
+ |  |  |  0
+ |  42
+ PRINT
+ |  D
+ PRINT
+ |  REF
+ |  |  D
+ |  |  VECTOR
+ |  |  |  2
+ |  |  |  2
+Error at line 7: Variable 'D' is not defined.
+SUCCESS

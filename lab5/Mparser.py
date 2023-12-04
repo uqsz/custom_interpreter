@@ -168,17 +168,17 @@ def p_while_state(p):  # 11
 
 
 def p_for_state(p):  # 12
-    ''' for_state : FOR ID ASSIGN forable COLON forable instruction '''
+    ''' for_state : FOR ID ASSIGN operation COLON operation instruction '''
     p[0] = AST.ForInstruction(p[2], p[4], p[6], p[7], p.lexer.lineno)
 
 
-def p_forable(p):  # 13
-    ''' forable : object 
-                | INT '''
-    if p.slice[1].type == "INT":
-        p[0] = AST.IntNum(p[1], p.lexer.lineno)
-    else:
-        p[0] = p[1]
+# def p_forable(p):  # 13
+#     ''' forable : operation 
+#                 '''
+#     if p.slice[1].type == "INT":
+#         p[0] = AST.IntNum(p[1], p.lexer.lineno)
+#     else:
+#         p[0] = p[1]
 
 
 def p_matrix(p):  # 14

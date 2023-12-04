@@ -1,5 +1,5 @@
 from __future__ import print_function
-import AST
+import compilator.AST as AST
 
 SEP = ' | '
 

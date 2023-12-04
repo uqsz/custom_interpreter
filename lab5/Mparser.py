@@ -1,7 +1,6 @@
-
-import scanner as scanner
+import compilator.Scanner as scanner
 import ply.yacc as yacc
-import AST
+import compilator.AST as AST
 
 tokens = scanner.tokens
 
@@ -62,21 +61,21 @@ def p_line(p):  # 3
 
 
 def p_print_state(p):  # 4
-    ''' print_state : printable COMMA print_state 
-                    | printable '''
+    ''' print_state : operation COMMA print_state 
+                    | operation '''
     if len(p) == 2:
         p[0] = p[1]
     else:
         p[0] = AST.Recursion(p[1], p[3], p.lexer.lineno)
 
 
-def p_printable(p):  # 5
-    ''' printable : operation
-                | STRING '''
-    if p.slice[1].type == "STRING":
-        p[0] = AST.String(p[1], p.lexer.lineno)
-    else:
-        p[0] = p[1]
+# def p_printable(p):  # 5
+#     ''' printable : operation
+#                 | STRING '''
+#     if p.slice[1].type == "STRING":
+#         p[0] = AST.String(p[1], p.lexer.lineno)
+#     else:
+#         p[0] = p[1]
 
 
 def p_assign(p):  # 6
@@ -109,7 +108,7 @@ def p_operation(p):  # 7
                 | matrix'''
 
     if len(p) == 5:
-        p[0] = AST.UnaryExpr(p[1], p[3], p.lexer.lineno)
+        p[0] = AST.Matrix(p[3], p[1], p.lexer.lineno)
 
     elif len(p) == 4:
         if p.slice[1].type == "LPAREN":
@@ -173,8 +172,8 @@ def p_for_state(p):  # 12
 
 
 # def p_forable(p):  # 13
-#     ''' forable : operation 
-#                 '''
+#     ''' forable : object
+#                 | INT '''
 #     if p.slice[1].type == "INT":
 #         p[0] = AST.IntNum(p[1], p.lexer.lineno)
 #     else:
@@ -183,7 +182,7 @@ def p_for_state(p):  # 12
 
 def p_matrix(p):  # 14
     ''' matrix : LSQUAR row RSQUAR'''
-    p[0] = AST.Matrix(p[2], p.lexer.lineno)
+    p[0] = AST.Matrix(p[2], None, p.lexer.lineno)
 
 
 def p_row(p):  # 15
@@ -211,11 +210,14 @@ def p_elem(p):  # 17
 
 def p_number(p):  # 18
     ''' number : INT 
-            | FLOAT'''
+            | FLOAT
+            | STRING'''
     if p.slice[1].type == "INT":
         p[0] = AST.IntNum(p[1], p.lexer.lineno)
-    else:
+    elif p.slice[1].type == "FLOAT":
         p[0] = AST.FloatNum(p[1], p.lexer.lineno)
+    else:
+        p[0] = AST.String(p[1], p.lexer.lineno)
 
 
 parser = yacc.yacc()

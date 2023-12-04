@@ -1,4 +1,4 @@
-import AST
+import compilator.AST as AST
 
 
 class VariableSymbol():
@@ -49,6 +49,7 @@ class NodeVisitor(object):
 class TypeChecker(NodeVisitor):
 
     def __init__(self):
+
         self.scope = SymbolTable(None, "global")
 
     def visit_IntNum(self, node):  # 1
@@ -61,6 +62,7 @@ class TypeChecker(NodeVisitor):
         return "string"
 
     def visit_Variable(self, node):  # 4
+
         variable_symbol = self.scope.get(node.name)
         if variable_symbol:
             return variable_symbol.type
@@ -76,7 +78,11 @@ class TypeChecker(NodeVisitor):
 
         if op == "=":
             if type2 == "matrix":
-                self.scope.put(node.left.name, type2, len(node.right.m))
+                if hasattr(node.right, "m"):
+                    x = node.right.size
+                else:
+                    x = 0
+                self.scope.put(node.left.name, type2, x)
             else:
                 self.scope.put(node.left.name, type2)
 
@@ -160,17 +166,16 @@ class TypeChecker(NodeVisitor):
 
     def visit_Reference(self, node):  # 11
         var = self.scope.get(node.name)
-
         error = False
-
-        if len(node.vect.v) != 2:
-            print(
-                f"Error at line {node.lineno}: Reference '({node.vect.v})' is not a 2-element vector.")
-            error = True
 
         if var == None:
             print(
-                f"Error at line {node.lineno}: Variable '{node.left.name}' is not defined.")
+                f"Error at line {node.lineno}: Variable '{node.name}' is not defined.")
+            error = True
+
+        elif len(node.vect.v) != 2:
+            print(
+                f"Error at line {node.lineno}: Reference '({node.vect.v})' is not a 2-element vector.")
             error = True
 
         elif var.type != "matrix":
@@ -230,12 +235,13 @@ class TypeChecker(NodeVisitor):
         return "none"
 
     def visit_Matrix(self, node):  # 16
-        row = len(node.m[0])
-        for i in range(1, len(node.m)):
-            if len(node.m[i]) != row:
-                print(
-                    f"Error at line {node.lineno}: Matrix is not a square matrix.")
-                return "none"
+        if len(node.m) > 0:
+            row = len(node.m[0])
+            for i in range(1, len(node.m)):
+                if len(node.m[i]) != row:
+                    print(
+                        f"Error at line {node.lineno}: Matrix is not a square matrix.")
+                    return "none"
         return "matrix"
 
     def visit_Vector(self, node):  # 17

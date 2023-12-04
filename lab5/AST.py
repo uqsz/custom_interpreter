@@ -108,15 +108,21 @@ class ForInstruction(Node):  # 15
 
 
 class Matrix(Node):  # 16
-    def __init__(self, matrix, lineno):
+    def __init__(self, matrix, type, lineno):
         super().__init__(lineno)
         self.matrix = matrix
         self.m = []
-        while hasattr(matrix, 'left'):
-            self.m.append(matrix.right.v)
-            matrix = matrix.left
-        self.m.append(matrix.v)
-        self.m.reverse()
+        self.type = type
+        self.size = None
+        if type == None:
+            while hasattr(matrix, 'left'):
+                self.m.append(matrix.right.v)
+                matrix = matrix.left
+            self.m.append(matrix.v)
+            self.m.reverse()
+            self.size = len(self.m[0])
+        else:
+            self.size = matrix.value
 
 
 class Vector(Node):  # 17

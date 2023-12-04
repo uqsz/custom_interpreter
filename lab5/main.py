@@ -11,7 +11,7 @@ from Interpreter import Interpreter
 if __name__ == '__main__':
 
     try:
-        filename = "lab5/examples/sqrt.m"
+        filename = "lab5/examples/triangle.m"
         file = open(filename, "r")
     except IOError:
         print("Cannot open {0} file".format(filename))

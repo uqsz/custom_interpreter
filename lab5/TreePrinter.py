@@ -29,7 +29,7 @@ class TreePrinter:
 
     @addToClass(AST.String)
     def printTree(self, indent=0):
-        print(SEP*indent, self.string)
+        print(SEP*indent, self.name)
 
     @addToClass(AST.Variable)
     def printTree(self, indent=0):

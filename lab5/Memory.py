@@ -16,40 +16,40 @@ class Memory:
         self.variables[name] = value
 
 
-class MemoryStack:
-    def __init__(self, memory=None):
-        self.stack = []
-        if memory:
-            self.stack.append(memory)
+# class MemoryStack:
+#     def __init__(self, memory=None):
+#         self.stack = []
+#         if memory:
+#             self.stack.append(memory)
 
-    def get(self, name):
-        for memory in reversed(self.stack):
-            if memory.has_key(name):
-                return memory.get(name)
-        raise NameError(f"Variable '{name}' not defined in memory stack")
+#     def get(self, name):
+#         for memory in reversed(self.stack):
+#             if memory.has_key(name):
+#                 return memory.get(name)
+#         raise NameError(f"Variable '{name}' not defined in memory stack")
 
-    def insert(self, name, value):
-        if self.stack:
-            self.stack[-1].put(name, value)
-        else:
-            raise Exception("Memory stack is empty")
+#     def insert(self, name, value):
+#         if self.stack:
+#             self.stack[-1].put(name, value)
+#         else:
+#             raise Exception("Memory stack is empty")
 
-    def set(self, name, value):
-        for memory in reversed(self.stack):
-            if memory.has_key(name):
-                memory.put(name, value)
-                return
-        raise NameError(f"Variable '{name}' not defined in memory stack")
+#     def set(self, name, value):
+#         for memory in reversed(self.stack):
+#             if memory.has_key(name):
+#                 memory.put(name, value)
+#                 return
+#         raise NameError(f"Variable '{name}' not defined in memory stack")
 
-    def push(self, memory):
-        self.stack.append(memory)
+#     def push(self, memory):
+#         self.stack.append(memory)
 
-    def pop(self):
-        if self.stack:
-            return self.stack.pop()
-        raise Exception("Memory stack is empty")
+#     def pop(self):
+#         if self.stack:
+#             return self.stack.pop()
+#         raise Exception("Memory stack is empty")
 
-'''Klasa Memory reprezentuje pojedynczą pamięć, a MemoryStack reprezentuje stos pamięci. Stos ten umożliwia operacje takie jak push (dodanie pamięci na wierzch stosu) i pop (usunięcie pamięci z wierzchołka stosu). Metoda get pozwala na pobranie wartości zmiennej z całego stosu pamięci. Metody insert i set umożliwiają dodanie nowej zmiennej lub zmianę wartości istniejącej zmiennej w bieżącej pamięci na wierzchołku stosu.'''
+
 
 
 

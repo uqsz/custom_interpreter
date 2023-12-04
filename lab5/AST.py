@@ -8,19 +8,19 @@ class Node(object):
 class IntNum(Node):  # 1
     def __init__(self, value, lineno):
         super().__init__(lineno)
-        self.value = value
+        self.value = int(value)
 
 
 class FloatNum(Node):  # 2
     def __init__(self, value, lineno):
         super().__init__(lineno)
-        self.value = value
+        self.value = float(value)
 
 
 class String(Node):  # 3
     def __init__(self, string, lineno):
         super().__init__(lineno)
-        self.string = string
+        self.name = str(string)
 
 
 class Variable(Node):  # 4
@@ -55,6 +55,11 @@ class PrintExpr(Node):  # 8
     def __init__(self, to_print, lineno):
         super().__init__(lineno)
         self.to_print = to_print
+        self.v = []
+        while hasattr(to_print, 'right'):
+            self.v.append(to_print.left.name)
+            to_print = to_print.right
+        self.v.append(to_print.name)
 
 
 class ReturnExpr(Node):  # 9

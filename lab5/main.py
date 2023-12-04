@@ -11,7 +11,7 @@ from Interpreter import Interpreter
 if __name__ == '__main__':
 
     try:
-        filename = "lab5/examples/sqrt.m"
+        filename = "lab5/examples/matrix.m"
         file = open(filename, "r")
     except IOError:
         print("Cannot open {0} file".format(filename))
@@ -27,7 +27,8 @@ if __name__ == '__main__':
     typeChecker = TypeChecker()
     typeChecker.visit(ast)
 
-    # ast.accept(Interpreter())
+    Interpreter=Interpreter()
+    Interpreter.visit(ast)
     # in future
     # ast.accept(OptimizationPass1())
     # ast.accept(OptimizationPass2())

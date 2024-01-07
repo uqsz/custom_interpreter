@@ -182,7 +182,7 @@ class TypeChecker(NodeVisitor):
             print(
                 f"Error at line {node.lineno}: Incompatible type '({var.type})' for reference operation.")
             error = True
-        elif node.vect.v[0] >= var.size or node.vect.v[1] >= var.size:
+        elif (node.vect.v[0] >= var.size or node.vect.v[1] >= var.size) and var.size != 0:
             print(
                 f"Error at line {node.lineno}: Reference '({node.vect.v})' is out of range.")
             error = True

@@ -35,7 +35,10 @@ class Interpreter(object):
 
     @when(AST.BinExpr)  # 5
     def visit(self, node):
-        left = self.visit(node.left)
+        left = node.left
+        if not isinstance(left, AST.Reference):
+            left = self.visit(node.left)
+    
         right = self.visit(node.right)
         op = node.op
 
@@ -63,7 +66,11 @@ class Interpreter(object):
         if self.memory.has_key(right):
             right = self.memory.get(right)
         if op == "=":
-            self.memory.put(left, right),
+            content = right
+            if isinstance(left, AST.Reference):
+                content = self.memory.get(left.name)
+                content[left.vect.v[0]][left.vect.v[1]] = right
+            self.memory.put(left, content)
             return
 
         operation = operator_mapping[op]
@@ -126,7 +133,7 @@ class Interpreter(object):
 
     @when(AST.EndExpr)  # 10
     def visit(self, node):
-        pass
+        raise BreakException()
 
     @when(AST.Reference)  # 11
     def visit(self, node):
@@ -152,7 +159,10 @@ class Interpreter(object):
     def visit(self, node):
         r = None
         while self.visit(node.cond):
-            r = self.visit(node.instruction)
+            try:
+                r = self.visit(node.instruction)
+            except BreakException:
+                return r
         return r
 
     @when(AST.ForInstruction)  # 15
@@ -168,8 +178,11 @@ class Interpreter(object):
             end = self.memory.get(str(end))
 
         for i in range(start, end):
-            self.memory.put(node.iterator, i)
-            r = self.visit(node.instruction)
+            try:
+                self.memory.put(node.iterator, i)
+                r = self.visit(node.instruction)
+            except BreakException:
+                return r
         return r
 
     @when(AST.Matrix)  # 16

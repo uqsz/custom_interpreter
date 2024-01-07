@@ -22,7 +22,7 @@ if __name__ == '__main__':
     parser = Mparser.parser
 
     ast = parser.parse(text, lexer=scanner.lexer)
-    ast.printTree()
+    #ast.printTree()
 
     typeChecker = TypeChecker()
     typeChecker.visit(ast)

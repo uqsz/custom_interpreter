@@ -27,7 +27,7 @@ class Interpreter(object):
 
     @when(AST.String)  # 3
     def visit(self, node):
-        return node.string
+        return node.name
 
     @when(AST.Variable)  # 4
     def visit(self, node):
@@ -87,6 +87,13 @@ class Interpreter(object):
             'MINUS': lambda x: minus(x),
         }
 
+        if self.memory.has_key(expr):
+            expr = self.memory.get(expr)
+
+        operation = operator_mapping[op]
+
+        return operation(expr)
+
     @when(AST.Recursion)  # 7
     def visit(self, node):
         self.visit(node.left)
@@ -94,7 +101,19 @@ class Interpreter(object):
 
     @when(AST.PrintExpr)  # 8
     def visit(self, node):
-        for elem in node.v:
+
+        to_print = node.to_print
+        v = []
+        while to_print.right != None:
+            element = self.visit(to_print.left)
+            
+            v.append(element)
+            to_print = to_print.right
+
+        v.append(self.visit(to_print.left))
+        
+
+        for elem in v:
             if self.memory.has_key(str(elem)):
                 print(self.memory.get(str(elem)), end=" ")
             else:
@@ -111,7 +130,7 @@ class Interpreter(object):
 
     @when(AST.Reference)  # 11
     def visit(self, node):
-        return self.memory.get(node.name)[node.vect[0]][node.vect[1]]
+        return self.memory.get(node.name)[node.vect.v[0]][node.vect.v[1]]
 
     @when(AST.IfInstruction)  # 12
     def visit(self, node):

@@ -55,11 +55,11 @@ class PrintExpr(Node):  # 8
     def __init__(self, to_print, lineno):
         super().__init__(lineno)
         self.to_print = to_print
-        self.v = []
-        while hasattr(to_print, 'right'):
-            self.v.append(to_print.left.name)
-            to_print = to_print.right
-        self.v.append(to_print.name)
+        # self.v = []
+        # while hasattr(to_print, 'right'):
+        #     self.v.append(to_print.left.name)
+        #     to_print = to_print.right
+        # self.v.append(to_print.name)
 
 
 class ReturnExpr(Node):  # 9

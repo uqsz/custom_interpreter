@@ -64,7 +64,7 @@ def p_print_state(p):  # 4
     ''' print_state : operation COMMA print_state 
                     | operation '''
     if len(p) == 2:
-        p[0] = p[1]
+        p[0] = AST.Recursion(p[1], None, p.lexer.lineno)
     else:
         p[0] = AST.Recursion(p[1], p[3], p.lexer.lineno)
 
@@ -106,9 +106,9 @@ def p_operation(p):  # 7
                 | object
                 | number
                 | matrix'''
-
+    
     if len(p) == 5:
-        p[0] = AST.Matrix(p[3], p[1], p.lexer.lineno)
+        p[0] = AST.UnaryExpr(p[1], p[3], p.lexer.lineno)
 
     elif len(p) == 4:
         if p.slice[1].type == "LPAREN":

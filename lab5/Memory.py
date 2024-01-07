@@ -5,6 +5,8 @@ class Memory:
         self.variables = {}
 
     def has_key(self, name):
+        if type(name)==list:
+            return False
         return name in self.variables
 
     def get(self, name):

@@ -8,4 +8,4 @@ print C;
 D[0, 0] = 42;
 #D[1:3, 2:4] = 7;
 print D;
-print D[2, 2];
+

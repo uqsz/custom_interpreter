@@ -1,0 +1,75 @@
+example2.m
+
+ABSTRACT SYNTAX TREE:
+ =
+ |  C
+ |  MINUS
+ |  |  A
+ =
+ |  C
+ |  TRANSPOSE
+ |  |  B
+ =
+ |  C
+ |  +
+ |  |  A
+ |  |  B
+ =
+ |  C
+ |  -
+ |  |  A
+ |  |  B
+ =
+ |  C
+ |  *
+ |  |  A
+ |  |  B
+ =
+ |  C
+ |  /
+ |  |  A
+ |  |  B
+ =
+ |  C
+ |  .+
+ |  |  A
+ |  |  B
+ =
+ |  C
+ |  .-
+ |  |  A
+ |  |  B
+ =
+ |  C
+ |  .*
+ |  |  A
+ |  |  B
+ =
+ |  C
+ |  ./
+ |  |  A
+ |  |  B
+ +=
+ |  C
+ |  B
+ -=
+ |  C
+ |  B
+ *=
+ |  C
+ |  A
+ /=
+ |  C
+ |  A
+
+TYPE CHECKER:
+Error at line 5: Incompatible type '(None)' for unary operation: 'MINUS'.
+Error at line 6: Incompatible type '(None)' for unary operation: 'TRANSPOSE'.
+Error at line 7: Incompatible types (None, None) for binary operation '+'.
+Error at line 8: Incompatible types (None, None) for binary operation '-'.
+Error at line 9: Incompatible types (None, None) for binary operation '*'.
+Error at line 10: Incompatible types (None, None) for binary operation '/'.
+Error at line 11: Incompatible types (None, None) for binary operation '.+'.
+Error at line 12: Incompatible types (None, None) for binary operation '.-'.
+Error at line 13: Incompatible types (None, None) for binary operation '.*'.
+Error at line 14: Incompatible types (None, None) for binary operation './'.

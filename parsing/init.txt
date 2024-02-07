@@ -1,0 +1,59 @@
+init.m
+
+ABSTRACT SYNTAX TREE:
+ =
+ |  a
+ |  0
+ =
+ |  x
+ |  MATRIX
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  2
+ |  |  |  3
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  2
+ |  |  |  3
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  2
+ |  |  |  3
+ =
+ |  y
+ |  MATRIX
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  2
+ |  |  |  3
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  2
+ |  |  |  3
+ |  |  |  4
+ |  |  |  5
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  2
+ =
+ |  REF
+ |  |  a
+ |  |  VECTOR
+ |  |  |  0
+ |  |  |  0
+ |  |  |  1
+ |  1
+ =
+ |  i
+ |  4
+ =
+ |  REF
+ |  |  x
+ |  |  VECTOR
+ |  |  |  2
+ |  |  |  6
+ |  2
+
+TYPE CHECKER:
+Error at line 12: Matrix is not a sqaure matrix.
+Error at line 14: Reference is not a 2-element vector.

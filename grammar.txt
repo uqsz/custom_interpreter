@@ -1,0 +1,94 @@
+GRAMMAR
+
+#1
+expression -> expression instruction
+			| instruction
+			
+#2		
+instruction -> { expression }
+			 | line;
+			 | for_state
+			 | ifelse_state
+			 | while_state
+			
+#3			
+line -> assign
+	  | PRINT print_state
+	  | BREAK
+	  | CONTINUE
+		
+#4
+assign -> object = operation
+		| object += operation
+		| object -= operation
+		| object *= operation		
+		| object /= operation
+
+#5
+operation -> ( operation )
+			| operation + operation
+			| operation - operation
+			| operation * operation
+			| operation / operation
+			| operation .+ operation
+			| operation .- operation
+			| operation .* operation
+			| operation ./ operation
+			| - operation
+			| operation '
+			| EYE ( operation )
+			| ZEROS ( operation )
+			| ONES ( operation )
+			| object
+			| number
+			| matrix
+
+#6
+bool -> ( bool )
+		| operation > operation
+		| operation < operation
+		| operation >= operation
+		| operation <= operation
+		| operation == operation
+		| operation != operation
+
+#7
+print_state -> operation , print_state
+			 | operation
+
+#8		
+object -> ID 
+		| ID vector
+
+#9
+ifelse_state -> IF ( bool ) instruction
+			  | IF ( bool ) instruction ELSE instruction
+
+#10	
+while_state -> WHILE ( bool ) instruction
+
+#11
+for_state -> FOR ID = operation COLON operation instruction 
+
+#12
+matrix -> [ row ]
+
+#13
+row -> row , vector
+	| vector
+	
+#14
+vector -> [ elem ]
+
+#15
+elem -> number , elem
+
+#16
+number -> INT
+		| FLOAT
+		| STRING
+		
+
+
+
+

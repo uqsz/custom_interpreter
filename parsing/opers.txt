@@ -1,0 +1,87 @@
+opers.m
+
+ABSTRACT SYNTAX TREE:
+ =
+ |  x
+ |  0
+ =
+ |  y
+ |  zeros
+ |  |  5
+ =
+ |  z
+ |  +
+ |  |  x
+ |  |  y
+ =
+ |  x
+ |  eye
+ |  |  5
+ =
+ |  y
+ |  eye
+ |  |  8
+ =
+ |  z
+ |  +
+ |  |  x
+ |  |  y
+ =
+ |  y
+ |  MATRIX
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  2
+ |  |  |  3
+ |  |  |  4
+ |  |  |  5
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  2
+ |  |  |  3
+ |  |  |  4
+ |  |  |  5
+ =
+ |  z
+ |  +
+ |  |  x
+ |  |  y
+ =
+ |  x
+ |  zeros
+ |  |  5
+ =
+ |  y
+ |  zeros
+ |  |  5
+ =
+ |  z
+ |  .+
+ |  |  x
+ |  |  y
+ =
+ |  x
+ |  ones
+ |  |  3
+ =
+ |  z
+ |  REF
+ |  |  x
+ |  |  VECTOR
+ |  |  |  7
+ |  |  |  10
+ =
+ |  v
+ |  REF
+ |  |  x
+ |  |  VECTOR
+ |  |  |  2
+ |  |  |  3
+ |  |  |  4
+
+TYPE CHECKER:
+Error at line 4: Incompatible types ('int', 'matrix') for binary operation '+'.
+Error at line 8: Incompatible types ('matrix', 'matrix') for binary operation '+'.
+Error at line 12: Matrix is not a sqaure matrix.
+Error at line 13: Incompatible types ('matrix', None) for binary operation '+'.
+Error at line 21: Reference is not a 2-element vector.

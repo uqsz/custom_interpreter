@@ -1,0 +1,14 @@
+control_transfer.m
+
+ABSTRACT SYNTAX TREE:
+ =
+ |  x
+ |  0
+ CONTINUE
+ BREAK
+ PRINT
+ |  x
+
+TYPE CHECKER:
+Error at line 4: Instruction 'CONTINUE' is not in a loop.
+Error at line 6: Instruction 'BREAK' is not in a loop.

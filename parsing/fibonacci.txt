@@ -1,0 +1,43 @@
+fibonacci.m
+
+ABSTRACT SYNTAX TREE:
+ =
+ |  a
+ |  0
+ =
+ |  b
+ |  1
+ WHILE
+ |  <
+ |  |  b
+ |  |  1000
+ |  PRINT
+ |  |  b
+ |  +=
+ |  |  b
+ |  |  a
+ |  =
+ |  |  a
+ |  |  -
+ |  |  |  b
+ |  |  |  a
+
+TYPE CHECKER:
+
+INTERPRETER:
+1 
+1 
+2 
+3 
+5 
+8 
+13 
+21 
+34 
+55 
+89 
+144 
+233 
+377 
+610 
+987 

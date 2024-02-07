@@ -1,0 +1,48 @@
+matrix.m
+
+ABSTRACT SYNTAX TREE:
+ =
+ |  A
+ |  eye
+ |  |  3
+ =
+ |  B
+ |  ones
+ |  |  3
+ =
+ |  D
+ |  zeros
+ |  |  3
+ =
+ |  C
+ |  .+
+ |  |  A
+ |  |  A
+ PRINT
+ |  C
+ =
+ |  D
+ |  zeros
+ |  |  3
+ =
+ |  REF
+ |  |  D
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  1
+ |  42
+ =
+ |  REF
+ |  |  D
+ |  |  VECTOR
+ |  |  |  2
+ |  |  |  2
+ |  7
+ PRINT
+ |  D
+
+TYPE CHECKER:
+
+INTERPRETER:
+[[2, 0, 0], [0, 2, 0], [0, 0, 2]] 
+[[0, 0, 0], [0, 42, 0], [0, 0, 7]] 

@@ -1,0 +1,20 @@
+test.m
+
+ABSTRACT SYNTAX TREE:
+ =
+ |  A
+ |  zeros
+ |  |  +
+ |  |  |  2
+ |  |  |  2
+ =
+ |  a
+ |  MINUS
+ |  |  2
+ PRINT
+ |  A
+
+TYPE CHECKER:
+
+INTERPRETER:
+[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]] 

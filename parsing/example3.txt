@@ -1,0 +1,61 @@
+example3.m
+
+ABSTRACT SYNTAX TREE:
+ =
+ |  N
+ |  10
+ =
+ |  M
+ |  20
+ FOR
+ |  i
+ RANGE
+ |  |  1
+ |  |  N
+ |  FOR
+ |  |  j
+ |  RANGE
+ |  |  |  i
+ |  |  |  M
+ |  |  PRINT
+ |  |  |  i
+ |  |  |  j
+ WHILE
+ |  >
+ |  |  k
+ |  |  0
+ |  IF
+ |  |  <
+ |  |  |  k
+ |  |  |  5
+ |  THEN
+ |  |  =
+ |  |  |  i
+ |  |  |  1
+ |  ELSE
+ |  |  IF
+ |  |  |  <
+ |  |  |  |  k
+ |  |  |  |  10
+ |  |  THEN
+ |  |  |  =
+ |  |  |  |  i
+ |  |  |  |  2
+ |  |  ELSE
+ |  |  |  =
+ |  |  |  |  i
+ |  |  |  |  3
+ |  =
+ |  |  k
+ |  |  -
+ |  |  |  k
+ |  |  |  1
+
+TYPE CHECKER:
+Error at line 11: Incompatible types (None, 'int') for binary operation '>'.
+Error at line 12: Incompatible types (None, 'int') for binary operation '<'.
+Error at line 14: Incompatible types (None, 'int') for binary operation '<'.
+Error at line 19: Condition is not a bool statement.
+Error at line 19: Condition is not a bool statement.
+Error at line 19: Incompatible types (None, 'int') for binary operation '-'.
+Error at line 22: Condition is not a bool statement.

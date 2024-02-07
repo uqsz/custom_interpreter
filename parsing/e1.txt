@@ -1,0 +1,90 @@
+e1.m
+
+ABSTRACT SYNTAX TREE:
+ =
+ |  A
+ |  MATRIX
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  1
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  1
+ |  |  |  1
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  1
+ |  |  |  1
+ =
+ |  B
+ |  MATRIX
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  1
+ |  |  VECTOR
+ |  |  |  1
+ |  |  |  1
+ =
+ |  K
+ |  +
+ |  |  D1
+ |  |  D2
+ IF
+ |  >
+ |  |  4
+ |  |  5
+ THEN
+ |  PRINT
+ |  |  "N>5"
+ =
+ |  k
+ |  0
+ WHILE
+ |  >
+ |  |  k
+ |  |  0
+ |  IF
+ |  |  <
+ |  |  |  k
+ |  |  |  5
+ |  THEN
+ |  |  =
+ |  |  |  i
+ |  |  |  1
+ |  ELSE
+ |  |  IF
+ |  |  |  <
+ |  |  |  |  k
+ |  |  |  |  10
+ |  |  THEN
+ |  |  |  =
+ |  |  |  |  i
+ |  |  |  |  2
+ |  |  ELSE
+ |  |  |  =
+ |  |  |  |  i
+ |  |  |  |  3
+ |  =
+ |  |  k
+ |  |  -
+ |  |  |  k
+ |  |  |  1
+ FOR
+ |  i
+ RANGE
+ |  |  1
+ |  |  N
+ |  FOR
+ |  |  j
+ |  RANGE
+ |  |  |  i
+ |  |  |  M
+ |  |  PRINT
+ |  |  |  i
+ |  |  |  j
+
+TYPE CHECKER:
+Error at line 2: Matrix is not a sqaure matrix.
+Error at line 5: Incompatible types (None, None) for binary operation '+'.
+Error at line 28: Range does not contains only int types: 'int:None'.
+Error at line 30: Range does not contains only int types: 'int:None'.

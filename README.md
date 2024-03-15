@@ -41,6 +41,8 @@ For recognized lexemes, the scanner returns corresponding token, recognized lexe
 
 Spaces, tabs, newline characters and comments starting with # until the end of the line are ignored
 
+You can check the implementation in the [Scanner.py](Scanner.py).
+
 ### Parsing
 
 Creating a parser for a language for matrix operations. The parser recognizes source code in the form of tokens or report a parsing error in case of invalid input. The parser recognizes the following constructs:
@@ -59,4 +61,65 @@ Creating a parser for a language for matrix operations. The parser recognizes so
 - compound statements
 - arrays and their ranges
 
-You can check the grammar in the [grammar.txt](grammar.txt) to gain a comprehensive understanding of the language syntax and constructs recognized by the parser.
+You can check the implemented grammar in the [grammar.txt](grammar.txt) and the parser in [Parser.py](Parser.py).
+
+### Abstract Syntax Tree (AST) Generation
+
+Creating and printing an Abstract Syntax Tree (AST) which includes the following constructs in its nodes:
+
+- binary expressions
+- relational expressions
+- assignment statements
+- conditional if-else statements
+- loops: while and for
+- statements: break, continue, and return
+- print statement
+- compound statements
+- arrays and their ranges
+
+You can check the implementation of AST in [AbstractSyntaxTree.py](AbstractSyntaxTree.py) and the printer in [TreePrinter.py](TreePrinter.py).
+
+### Semantic Analysis
+
+Creating a semantic error analyzer which detects various semantic errors, including:
+
+- Matrix initialization using vectors of different sizes
+- Out-of-bounds matrix references (for constant indices)
+- Incompatible types or sizes for binary operations, such as:
+  - Adding a scalar or vector to a matrix
+  - Binary operations on vectors or matrices with incompatible dimensions
+- Incorrect usage of initialization functions (eye, zeros, ones) with incorrect parameters
+- Improper use of statements:
+  - Break or continue statements outside of a loop
+
+You can check the implementation in [TypeChecker.py](TypeChecker.py).
+
+### Interpreter
+
+Creating an interpreter for the language specified in previous exercises. Interpretation only occurs if the previous stages have completed successfully - no syntax or semantic errors occurred.
+
+You can check the implementation in [Interpreter.py](Interpreter.py).
+
+## Tests
+
+You can verify the functionality by running the `test.py` script, which executes the files from the `examples` folder and saves the results in files within the `parsing` folder.
+
+## Repository Setup and Execution
+
+To set up the repository and run the `main.py` script with a file path argument:
+
+1. Clone the repository to your local machine.
+2. Ensure that all necessary dependencies are installed (if any).
+3. Navigate to the directory containing the repository.
+4. Open a terminal or command prompt.
+5. Run the `main.py` script with the file path of the input file as an argument.
+
+Example command:
+
+```bash
+python main.py /path/to/input_file
+```
+
+## Summary
+
+This repository provides an interpreter for a specific language, allowing users to execute code and analyze results. By following the instructions provided, users can set up the repository, execute the interpreter script with input files, and review the output for further analysis and debugging.

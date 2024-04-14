@@ -1,4 +1,4 @@
-# Theory of Compilation
+# Custom Interpreter
 
 This repository is dedicated to the Theory of Compilation course project, which involves building a custom interpreter.
 

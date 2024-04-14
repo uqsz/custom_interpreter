@@ -41,7 +41,7 @@ For recognized lexemes, the scanner returns corresponding token, recognized lexe
 
 Spaces, tabs, newline characters and comments starting with # until the end of the line are ignored
 
-You can check the implementation in the [src/Scanner.py](Scanner.py).
+You can check the implementation in the [Scanner.py](src/Scanner.py).
 
 ### Parsing
 

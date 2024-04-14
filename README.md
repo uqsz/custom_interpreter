@@ -109,15 +109,15 @@ You can verify the functionality by running the `test.py` script, which executes
 To set up the repository and run the `main.py` script with a file path argument:
 
 1. Clone the repository to your local machine.
-2. Ensure that all necessary dependencies are installed (if any).
+2. Ensure that all necessary dependencies are installed.
 3. Navigate to the directory containing the repository.
 4. Open a terminal or command prompt.
-5. Run the `main.py` script with the file path of the input file as an argument.
+5. Run the `src/main.py` script with the file path of the input file as an argument.
 
 Example command:
 
 ```bash
-python main.py /path/to/input_file
+python src/main.py /path/to/input_file
 ```
 
 ## Summary

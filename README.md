@@ -61,7 +61,7 @@ Creating a parser for a language for matrix operations. The parser recognizes so
 - compound statements
 - arrays and their ranges
 
-You can check the implemented grammar in the [grammar.txt](grammar.txt) and the parser in [Parser.py](Parser.py).
+You can check the implemented grammar in the [grammar.txt](grammar.txt) and the parser in [Parser.py](src/Parser.py).
 
 ### Abstract Syntax Tree (AST) Generation
 
@@ -77,7 +77,7 @@ Creating and printing an Abstract Syntax Tree (AST) which includes the following
 - compound statements
 - arrays and their ranges
 
-You can check the implementation of AST in [AbstractSyntaxTree.py](AbstractSyntaxTree.py) and the printer in [TreePrinter.py](TreePrinter.py).
+You can check the implementation of AST in [AbstractSyntaxTree.py](src/AbstractSyntaxTree.py) and the printer in [TreePrinter.py](src/TreePrinter.py).
 
 ### Semantic Analysis
 
@@ -92,13 +92,13 @@ Creating a semantic error analyzer which detects various semantic errors, includ
 - Improper use of statements:
   - Break or continue statements outside of a loop
 
-You can check the implementation in [TypeChecker.py](TypeChecker.py).
+You can check the implementation in [TypeChecker.py](src/TypeChecker.py).
 
 ### Interpreter
 
 Creating an interpreter for the language specified in previous exercises. Interpretation only occurs if the previous stages have completed successfully - no syntax or semantic errors occurred.
 
-You can check the implementation in [Interpreter.py](Interpreter.py).
+You can check the implementation in [Interpreter.py](src/Interpreter.py).
 
 ## Tests
 
